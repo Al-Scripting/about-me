@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Muqshith Shifan | Network Engineer & Developer</title>
-    <meta name="description" content="Portfolio of Al Muqshith Shifan - Network Engineering & Software Development">
+    <title>Al Muqshith Shifan | Portfolio</title>
+    <meta name="description" content="Portfolio of Al Muqshith Shifan - Networking & Cybersecurity Student">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-          /* --- VARIABLES & RESET --- */
+        /* --- VARIABLES & RESET --- */
         :root {
             --primary: #FF6B6B; /* Pastel Red */
             --primary-hover: #ff5252;
@@ -23,7 +23,7 @@
             --bg-dark: #0a0a0a; /* Ultra dark */
             --bg-grid: #141414;
             --bg-card: rgba(20, 20, 20, 0.6);
-            --bg-card-hover: rgba(30, 30, 30, 0.8);
+            --bg-card-hover: rgba(30, 30, 30, 0.9);
             --text-main: #E0E0E0;
             --text-muted: #888888;
             --border: #2a2a2a;
@@ -138,11 +138,11 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 14px 30px;
+            padding: 16px 36px;
             font-family: var(--font-heading);
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 1rem;
             letter-spacing: 0.05em;
             cursor: pointer;
             transition: var(--transition);
@@ -151,6 +151,7 @@
             overflow: hidden;
             background: transparent;
             color: var(--primary);
+            min-width: 160px;
         }
 
         .btn::before {
@@ -187,7 +188,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.85);
+            background: rgba(10, 10, 10, 0.9);
             backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid var(--border);
@@ -235,7 +236,7 @@
 
         /* --- HERO --- */
         .hero {
-            min-height: 90vh; /* Reduced height slightly */
+            min-height: 85vh; /* Adjusted for better desktop fit */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -264,7 +265,7 @@
         .hero-label {
             display: inline-block;
             border: 1px solid var(--border-highlight);
-            padding: 6px 14px;
+            padding: 8px 16px;
             font-family: var(--font-heading);
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -275,14 +276,14 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 5.5rem);
-            line-height: 0.95;
+            font-size: clamp(3rem, 5.5vw, 5rem); /* Toned down from 6.5rem */
+            line-height: 1.1;
             margin-bottom: 25px;
             text-transform: uppercase;
         }
 
         .hero p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             color: var(--text-muted);
             max-width: 650px;
             margin-bottom: 40px;
@@ -416,9 +417,9 @@
         .tl-container::after {
             content: '';
             position: absolute;
-            width: 10px;
-            height: 10px;
-            right: -5px;
+            width: 12px;
+            height: 12px;
+            right: -6px; /* Precise centering on line */
             background-color: var(--bg-dark);
             border: 2px solid var(--primary);
             top: 25px;
@@ -434,7 +435,7 @@
 
         .left { left: 0; text-align: right; }
         .right { left: 50%; }
-        .right::after { left: -5px; }
+        .right::after { left: -6px; }
 
         .tl-content {
             padding: 25px;
@@ -483,6 +484,58 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        /* --- LAB / RESEARCH SECTION --- */
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .lab-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .lab-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .lab-img-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lab-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .lab-card:hover .lab-img {
+            transform: scale(1.05);
+        }
+
+        .lab-content {
+            padding: 25px;
+        }
+
+        .lab-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .lab-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
         /* --- LINKEDIN FEED STYLE --- */
@@ -559,7 +612,7 @@
         }
 
         @media screen and (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.8rem; }
             .timeline::after { left: 31px; }
             .tl-container { width: 100%; padding-left: 60px; padding-right: 20px; }
             .tl-container::after { left: 26px; }
@@ -584,6 +637,7 @@
                 <a href="#about" onclick="toggleMenu()">About</a>
                 <a href="#experience" onclick="toggleMenu()">Journey</a>
                 <a href="#projects" onclick="toggleMenu()">Research</a>
+                <a href="#sorcery" onclick="toggleMenu()">Code & Sorcery</a>
                 <a href="#updates" onclick="toggleMenu()">Updates</a>
                 <a href="#contact" onclick="toggleMenu()">Contact</a>
             </nav>
@@ -792,7 +846,7 @@
                 <i class="fas fa-hand-holding-medical card-icon"></i>
                 <h3>Gestura - Medical AI</h3>
                 <p style="color: var(--text-muted); margin: 15px 0;">
-                    Non-verbal patient intake tool using real-time hand tracking and Gemini API for SOAP notes. Won recognition at HackHive 2026.
+                    Real-time AI body mapping tool for telehealth. Translates gestures into clinical data using Computer Vision and a 3D Digital Twin. Built for HackHive 2026.
                 </p>
                 <div class="project-meta">
                     <span style="color: var(--text-muted); font-size: 0.8rem;">FLASK / CV / THREE.JS</span>
@@ -825,6 +879,61 @@
         </div>
     </section>
 
+    <!-- NEW SECTION: Code & Sorcery Lab -->
+    <section id="sorcery">
+        <div class="section-header reveal">
+            <div>
+                <div class="section-subtitle">Research Lab</div>
+                <h2 class="section-title">Code & <span class="highlight">Sorcery</span></h2>
+                <p style="color: var(--text-muted); margin-top: 5px;">Supervised by <strong style="color: #fff;">Dr. Cristiano Politowski</strong></p>
+            </div>
+        </div>
+
+        <div class="lab-grid reveal">
+            <!-- Team Card -->
+            <div class="lab-card">
+                <div class="lab-img-wrapper">
+                    <!-- Replace with your actual image path: image_1e3a26.jpg -->
+                    <img src="image_1e3a26.jpg" alt="Research Team Meeting" class="lab-img">
+                </div>
+                <div class="lab-content">
+                    <h3>The Research Core</h3>
+                    <p>
+                        Post-conference team sync. Collaborating on the intersection of Software Engineering and AI agents for game testing.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Whiteboard/Brainstorming Card -->
+            <div class="lab-card">
+                <div class="lab-img-wrapper">
+                     <!-- Replace with your actual image path: image_1e3a9b.jpg -->
+                    <img src="image_1e3a9b.jpg" alt="Whiteboard Brainstorming" class="lab-img">
+                </div>
+                <div class="lab-content">
+                    <h3>Architecting "PEAK"</h3>
+                    <p>
+                        Defining reward functions and state spaces for our custom Deep Reinforcement Learning environment. Mapping out agent behaviors.
+                    </p>
+                </div>
+            </div>
+
+             <!-- Prototype/HackHive Card -->
+             <div class="lab-card">
+                <div class="lab-img-wrapper">
+                     <!-- Replace with your actual image path: image_1e3e9f.jpg -->
+                    <img src="image_1e3e9f.jpg" alt="Injury Painter Prototype" class="lab-img">
+                </div>
+                <div class="lab-content">
+                    <h3>Applied Computer Vision</h3>
+                    <p>
+                        Early prototyping of the 'Injury Painter' module. Translating physical gestures into digital coordinates for telehealth applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Updates Section -->
     <section id="updates">
         <div class="section-header reveal">
@@ -838,22 +947,24 @@
         </div>
 
         <div class="feed-container">
-            <!-- Simulated Feed Item 1 -->
+            <!-- Simulated Feed Item 1: NEW LINKEDIN POST -->
             <div class="feed-item reveal">
                 <div class="feed-header">
                     <img src="" class="feed-avatar github-avatar-target" alt="Profile">
                     <div class="feed-meta">
                         <h4>Al Muqshith Shifan</h4>
-                        <span>Network Engineering Assistant • 2d ago</span>
+                        <span>Future MSc Student • 1d ago</span>
                     </div>
                     <i class="fab fa-linkedin" style="margin-left: auto; color: #0077b5;"></i>
                 </div>
                 <p class="feed-content">
-                    Today’s Research 101 mini-seminar was honestly worth every minute. It helped me rethink how to approach research, especially how to identify meaningful problems. 
+                    Great chats, great tech, and a great community at OTU! 🎓🤖
 
-                    Big thanks to Professor Cristiano Politowski. I’m looking forward to applying what I learned to my DRL research.
+                    Excited to share that I got to demo our HackHive 2026 project, Gestura, today on campus! It was a fantastic opportunity to show how we’re using technology to help patients visualize and communicate pain more effectively.
+
+                    One of the highlights was chatting with fellow innovators like Nahl Farhan. Leaving today feeling energized by the connections made! 🚀
                 </p>
-                <span class="feed-tags">#Research #AcademicJourney #DeepLearning</span>
+                <span class="feed-tags">#OTU #TechCommunity #FutureOfTech #AI #Networking</span>
             </div>
 
             <!-- Simulated Feed Item 2 -->
