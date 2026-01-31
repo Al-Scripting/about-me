@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Muqshith Shifan | Portfolio</title>
-    <meta name="description" content="Portfolio of Al Muqshith Shifan - Networking & Cybersecurity Student">
+    <title>Al Muqshith Shifan | Network Engineer & Developer</title>
+    <meta name="description" content="Portfolio of Al Muqshith Shifan - Network Engineering & Software Development">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="main.css">
+    
 </head>
 <body>
 
-    <!-- Background Art Shapes -->
-    <div class="bg-shape shape-1"></div>
-    <div class="bg-shape shape-2"></div>
-
-    <!-- Navigation -->
+    <!-- Header -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">AL<span class="highlight">.</span>shifan</a>
@@ -30,376 +28,419 @@
             </div>
             <nav class="nav-links" id="navLinks">
                 <a href="#about" onclick="toggleMenu()">About</a>
-                <a href="#experience" onclick="toggleMenu()">Experience</a>
-                <a href="#projects" onclick="toggleMenu()">Projects</a>
-                <a href="#blog" onclick="toggleMenu()">Blog</a>
+                <a href="#experience" onclick="toggleMenu()">Journey</a>
+                <a href="#projects" onclick="toggleMenu()">Research</a>
+                <a href="#updates" onclick="toggleMenu()">Updates</a>
                 <a href="#contact" onclick="toggleMenu()">Contact</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section with Canvas Art -->
+    <!-- Hero Section -->
     <section class="hero">
-        <!-- Canvas for Generative Art -->
         <canvas id="hero-canvas"></canvas>
-
         <div class="hero-content">
-            <div class="uni-badge reveal">
-                <i class="fas fa-university"></i> Ontario Tech University - B.IT Networking & Cybersecurity
+            <div class="hero-label reveal">
+                <i class="fas fa-satellite-dish" style="color: var(--primary); font-size: 12px; margin-right: 8px;"></i> Open for Collaboration
             </div>
-            <h1 class="reveal">Hi, I'm <span class="highlight">Al Muqshith Shifan</span>.</h1>
-            <p class="reveal">Building and always learning. CCNA Certified & P4 Programming Specialist.</p>
-            <div class="reveal">
-                <a href="#contact" class="btn btn-primary">Hire Me</a>
-                <a href="assests/Al-Shifan Resume 2025-2026.pdf" download="Al-Shifan Resume 2025-2026.pdf" class="btn btn-outline">Download CV <i class="fas fa-download"></i></a>
+            <h1 class="reveal">Network Engineer by Trade, <br> <span class="highlight">Developer by Passion.</span></h1>
+            <p class="reveal">
+                B.IT Student at Ontario Tech University. Bridging the gap between robust network infrastructure and creative software innovation.
+            </p>
+            <div class="reveal" style="display: flex; gap: 20px;">
+                <a href="#contact" class="btn">Hire Me</a>
+                <a href="assests/Al-Shifan Resume 2026.pdf" download class="btn btn-secondary">
+                    CV <i class="fas fa-download" style="margin-left: 5px;"></i>
+                </a>
             </div>
         </div>
-        <a href="#about" class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </a>
     </section>
 
-    <!-- About Section -->
+    <!-- About Grid -->
     <section id="about">
-        <h2 class="section-title reveal">About <span class="highlight">Me</span></h2>
-        <div class="about-grid">
-            <div class="about-text reveal">
-                <p>I am a Bachelor of Information Technology student specializing in Networking & Cybersecurity at <strong>Ontario Tech University</strong> (Graduating 2026). I bridge the gap between hardware optimization and secure software deployment.</p>
-                <br>
-                <p>My passion lies in diagnosing complex network behaviors, configuring enterprise-grade firewalls, and creating automation scripts that enhance system reliability. From debugging Linux kernels to conducting vulnerability assessments on payment gateways, I love solving hard technical problems.</p>
-                
-                <div class="skill-tags">
-                    <div class="skill-tag">Cisco IOS</div>
-                    <div class="skill-tag">Network Security</div>
-                    <div class="skill-tag">Linux/Unix</div>
-                    <div class="skill-tag">Python</div>
-                    <div class="skill-tag">HTML/CSS</div>
-                    <div class="skill-tag">P4 Programming</div>
-                    <div class="skill-tag">Vulnerability Testing</div>
+        <div class="section-header reveal">
+            <div>
+                <div class="section-subtitle">Profile</div>
+                <h2 class="section-title">About Me</h2>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <!-- Profile Image (Fetches from GitHub automatically if empty) -->
+            <div class="card about-image-card reveal">
+                <div class="profile-img-container">
+                    <img src="assests/profile.png" id="github-profile-img" alt="Al Muqshith Shifan" class="profile-img">
                 </div>
             </div>
-            <div class="about-img-container reveal">
-                <div class="about-img-bg"></div>
-                <!-- Placeholder for your profile image -->
-                <img src="assests/pfp.png" alt="Al Muqshith Shifan" class="about-img">
+
+            <div class="card about-text reveal">
+                <h3 style="margin-bottom: 20px;">Who I Am</h3>
+                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.1rem;">
+                    I am a future Master's student currently completing my B.IT in Networking & Cybersecurity at <strong>Ontario Tech University</strong> (Dean's List 2024). 
+                </p>
+                <!-- Updated Paragraph -->
+                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; line-height: 1.7;">
+                    While my core discipline is <strong>Network Engineering</strong> (Cisco, P4, Linux), I have a deep love for <strong>Coding</strong>. I don't just configure networks; I build the software that automates, analyzes, and optimizes them. From deep reinforcement learning (DRL) for traffic optimization to building full-stack web apps, I love solving hard technical problems.
+                </p>
+            </div>
+
+            <!-- Expanded Tech Stack -->
+            <div class="card tech-stack-section reveal">
+                <h3 style="margin-bottom: 30px;">Technical Arsenal</h3>
+                <div class="stack-grid">
+                    <div class="stack-category">
+                        <h4><i class="fas fa-network-wired"></i> Core Networking</h4>
+                        <span class="skill-tag">Cisco IOS (CCNA)</span>
+                        <span class="skill-tag">P4 Programmable Switches</span>
+                        <span class="skill-tag">Linux / Unix Admin</span>
+                        <span class="skill-tag">TCP/IP & Subnetting</span>
+                        <span class="skill-tag">Firewall Config</span>
+                    </div>
+                    <div class="stack-category">
+                        <h4><i class="fas fa-code"></i> Development</h4>
+                        <span class="skill-tag">Python (Advanced)</span>
+                        <span class="skill-tag">C++ / C</span>
+                        <span class="skill-tag">React / Node.js</span>
+                        <span class="skill-tag">Flask / REST APIs</span>
+                        <span class="skill-tag">Gemini / Ollama AI</span>
+                    </div>
+                    <div class="stack-category">
+                        <h4><i class="fas fa-shield-alt"></i> Security</h4>
+                        <span class="skill-tag">Vulnerability Assessment</span>
+                        <span class="skill-tag">Wireshark Analysis</span>
+                        <span class="skill-tag">Nmap / Penetration Testing</span>
+                        <span class="skill-tag">Kali Linux</span>
+                        <span class="skill-tag">Cryptography Basics</span>
+                    </div>
+                    <div class="stack-category">
+                        <h4><i class="fas fa-tools"></i> Tools & DevOps</h4>
+                        <span class="skill-tag">Docker / Containers</span>
+                        <span class="skill-tag">Git / GitHub Actions</span>
+                        <span class="skill-tag">CI/CD Pipelines</span>
+                        <span class="skill-tag">Bash Scripting</span>
+                        <span class="skill-tag">SQL / MySQL</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
+    <!-- Experience Timeline -->
     <section id="experience">
-        <h2 class="section-title reveal">My <span class="highlight">Journey</span></h2>
+        <div class="section-header reveal">
+            <div>
+                <div class="section-subtitle">Experience</div>
+                <h2 class="section-title">My Journey</h2>
+            </div>
+        </div>
+
         <div class="timeline">
             
             <!-- Job 1 -->
-            <div class="container left reveal">
-                <div class="content">
-                    <span class="date">Jun 2025 - Sep 2025</span>
-                    <h3 class="job-title">Summer Research Assistant</h3>
-                    <div class="company">Ontario Tech University</div>
-                    <p class="description">Installed and troubleshot P4 programmable switches. Developed custom P4 programs to analyze network behavior and resolved Linux/Unix-based issues, reducing crash rates by 30%.</p>
+            <div class="tl-container left reveal">
+                <div class="tl-content">
+                    <span class="tl-date">SEP 2025 - PRESENT</span>
+                    <h3 class="tl-title">Teaching Assistant</h3>
+                    <div class="tl-company">Ontario Tech University</div>
+                    <p class="tl-desc">Facilitating Networking and Advanced Networking II labs. Mentoring undergraduate students on TCP/IP, subnetting, and enterprise firewall configurations.</p>
                 </div>
             </div>
 
             <!-- Job 2 -->
-            <div class="container right reveal">
-                <div class="content">
-                    <span class="date">Jun 2025 - Sep 2025</span>
-                    <h3 class="job-title">Cyber Security Analyst</h3>
-                    <div class="company">YYC Beeswax Ltd (Remote)</div>
-                    <p class="description">Conducted vulnerability assessments on WooCommerce + Stripe integrations. Audited 30+ plugins and created a technical hardening checklist adopted by the dev team.</p>
+            <div class="tl-container right reveal">
+                <div class="tl-content">
+                    <span class="tl-date">JUN 2025 - SEP 2025</span>
+                    <h3 class="tl-title">Network Research Assistant</h3>
+                    <div class="tl-company">Ontario Tech University</div>
+                    <p class="tl-desc">Engineered research infrastructure using P4 programmable switches. Developed custom P4 programs to analyze packet behavior and achieved lab-first implementations.</p>
                 </div>
             </div>
 
             <!-- Job 3 -->
-            <div class="container left reveal">
-                <div class="content">
-                    <span class="date">Sep 2024 - Jun 2025</span>
-                    <h3 class="job-title">Networking Lab Technician</h3>
-                    <div class="company">Ontario Tech University</div>
-                    <p class="description">Improved lab network performance, reducing downtime by ~20%. Configured server hardware and provided Tier-2 technical support for 50+ students weekly.</p>
+            <div class="tl-container left reveal">
+                <div class="tl-content">
+                    <span class="tl-date">JUN 2025 - SEP 2025</span>
+                    <h3 class="tl-title">Cyber Security Analyst</h3>
+                    <div class="tl-company">YYC Beeswax Ltd (Remote)</div>
+                    <p class="tl-desc">Conducted vulnerability assessments on e-commerce infrastructure. Audited 30+ plugins and created a hardening checklist adopted by the engineering team.</p>
                 </div>
             </div>
 
-            <!-- Job 4 (Moved Up - KGM) -->
-            <div class="container right reveal">
-                <div class="content">
-                    <span class="date">2022 - 2023</span>
-                    <h3 class="job-title">Programming Instructor</h3>
-                    <div class="company">Kids Great Minds - Whitby</div>
-                    <p class="description">Taught kids digital technology through hands-on courses. Utilized curriculum to guide students through personal projects and collaborated with assistant teachers.</p>
+            <!-- Job 4 -->
+            <div class="tl-container right reveal">
+                <div class="tl-content">
+                    <span class="tl-date">SEP 2024 - JUN 2025</span>
+                    <h3 class="tl-title">Networking Lab Technician</h3>
+                    <div class="tl-company">Ontario Tech University</div>
+                    <p class="tl-desc">Optimized lab network performance, reducing downtime by ~20%. Managed server hardware and connectivity for 20+ lab systems.</p>
                 </div>
             </div>
 
-            <!-- Job 5 (Moved Down - TDSB, 2018) -->
-            <div class="container left reveal">
-                <div class="content">
-                    <span class="date">2018</span>
-                    <h3 class="job-title">IT Field Service Staff</h3>
-                    <div class="company">TDSB - Scarborough</div>
-                    <p class="description">Scanned and recorded over 2,000 laptops and accessories for accurate asset management. Performed factory resets and quality checks to ensure compliance with organizational standards.</p>
+            <!-- Job 5 -->
+            <div class="tl-container left reveal">
+                <div class="tl-content">
+                    <span class="tl-date">2022 - 2023</span>
+                    <h3 class="tl-title">Programming Instructor</h3>
+                    <div class="tl-company">Kids Great Minds - Whitby</div>
+                    <p class="tl-desc">Taught digital technology through hands-on courses. Guided students through personal projects and collaborated with assistant teachers.</p>
+                </div>
+            </div>
+
+            <!-- Job 6 -->
+            <div class="tl-container right reveal">
+                <div class="tl-content">
+                    <span class="tl-date">2018</span>
+                    <h3 class="tl-title">IT Field Service Staff</h3>
+                    <div class="tl-company">TDSB - Scarborough</div>
+                    <p class="tl-desc">Managed asset inventory for 2,000+ laptops. Performed factory resets and quality checks to ensure compliance with organizational standards.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Grid -->
     <section id="projects">
-        <h2 class="section-title reveal">Featured <span class="highlight">Projects</span></h2>
-        
-        <div class="projects-grid" id="projects-grid">
-            <div class="api-loader">
-                <i class="fas fa-circle-notch fa-spin"></i> Fetching latest projects from GitHub API...
+        <div class="section-header reveal">
+            <div>
+                <div class="section-subtitle">Portfolio</div>
+                <h2 class="section-title">Research & Code</h2>
             </div>
-            <!-- Content will be populated by JS -->
-        </div>
-    </section>
-
-    <!-- Blog / LinkedIn Section -->
-    <section id="blog">
-        <h2 class="section-title reveal">Recent <span class="highlight">Updates</span></h2>
-        <div style="margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-            <p class="reveal" style="color: var(--text-muted); margin: 0;">Thoughts on Cybersecurity and Networking.</p>
-            <a href="https://www.linkedin.com/in/al-mohamed-shifan-5266b924b/" target="_blank" class="btn btn-outline reveal" style="font-size: 0.9rem; padding: 8px 20px;">
-                <i class="fab fa-linkedin"></i> Connect on LinkedIn
+            <a href="https://github.com/Al-Scripting" target="_blank" class="btn btn-secondary">
+                <i class="fab fa-github"></i> View GitHub
             </a>
         </div>
-        
-        <div class="blog-grid">
+
+        <div class="grid-container">
             
-            <!-- Post 1 -->
-            <div class="blog-card reveal">
-                <div class="blog-header">
-                    <div class="profile-pic">AL</div>
-                    <div class="author-info">
-                        <h4>Al Muqshith Shifan</h4>
-                        <span>Cybersecurity Student</span>
-                    </div>
-                    <i class="fab fa-linkedin" style="margin-left: auto; color: #0077b5; font-size: 1.2rem;"></i>
+            <!-- Featured Project -->
+            <div class="card project-card reveal" style="grid-column: span 12; display: flex; flex-direction: row; gap: 40px; align-items: center;">
+                <div style="flex: 1;">
+                    <i class="fas fa-cubes card-icon"></i>
+                    <h3>PEAK Engine (DRL Research)</h3>
+                    <p style="color: var(--text-muted); margin-top: 15px;">
+                        Developed a custom 2D game engine specifically designed for benchmarking Deep Reinforcement Learning agents. Implemented PPO agents and custom reward functions to evaluate adaptability in changing environments.
+                    </p>
                 </div>
-                <p class="blog-content">
-                    Today’s Research 101 mini-seminar was honestly worth every minute. It helped me rethink how to approach research, especially how to identify meaningful problems and refine them into focused, feasible research questions.
-
-                    I also appreciated the clear breakdown on how to build a realistic plan around methods, data, and timelines. The project presentations sparked some great discussions about scope and next steps.
-
-                    A big thank you to Professor Cristiano Politowski for organizing this, and to Professor Jessie Galasso for presenting the material so clearly and sharing her insights. I’m looking forward to applying what I learned as I shape my own research direction.
-
-                </p>
-                <div class="blog-tags">#Research #ComputerScience #Learning #Cybersecurity</div>
-                <a href="https://www.linkedin.com/posts/al-mohamed-shifan-5266b924b_research-computerscience-activity-7397425198096105472-2VjH" class="read-more">View Post <i class="fas fa-arrow-right"></i></a>
+                <div style="flex: 1; border-left: 1px solid var(--border); padding-left: 30px;">
+                    <p style="color: var(--primary); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px;">Tech Stack</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Custom Engine</span>
+                        <span class="skill-tag">AI Benchmarking</span>
+                    </div>
+                </div>
             </div>
 
-            <!-- Post 2 -->
-            <div class="blog-card reveal">
-                <div class="blog-header">
-                    <div class="profile-pic">AL</div>
-                    <div class="author-info">
-                        <h4>Al Muqshith Shifan</h4>
-                        <span>Cybersecurity Student</span>
-                    </div>
-                    <i class="fab fa-linkedin" style="margin-left: auto; color: #0077b5; font-size: 1.2rem;"></i>
-                </div>
-                <p class="blog-content">
-                    Today we presented our capstone project to our professor Kathleen Pierce, FBIT Dean Professor Carolyn McGregor AM McGregor AM, our TA, and fellow student groups—and I couldn’t be prouder of what we delivered.
-
-            As team lead, I had the privilege of guiding an incredible group through a real-world cybersecurity challenge: strengthening an e-commerce client’s website against card testing attacks. From digging deep into plugin vulnerabilities to designing long-term protection strategies, it was a high-stakes, high-reward kind of project.
-
+            <!-- Project 2 -->
+            <div class="card project-card reveal">
+                <i class="fas fa-hand-holding-medical card-icon"></i>
+                <h3>Gestura - Medical AI</h3>
+                <p style="color: var(--text-muted); margin: 15px 0;">
+                    Non-verbal patient intake tool using real-time hand tracking and Gemini API for SOAP notes. Won recognition at HackHive 2026.
                 </p>
-                <div class="blog-tags">#CyberSecurity #Auditing #TeamLead #CyberSecurity #CapstoneProject #RealWorldExperience #EcommerceSecurity #StudentShowcase #OntarioTech #Infosec </div>
-                <a href="https://www.linkedin.com/posts/al-mohamed-shifan-5266b924b_teamlead-cybersecurity-capstoneproject-activity-7356511571310759938-5iBK" class="read-more">View Post <i class="fas fa-arrow-right"></i></a>
+                <div class="project-meta">
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">FLASK / CV / THREE.JS</span>
+                    <a href="#" class="highlight"><i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
 
-            <!-- Post 3 -->
-            <div class="blog-card reveal">
-                <div class="blog-header">
-                    <div class="profile-pic">AL</div>
-                    <div class="author-info">
-                        <h4>Al Muqshith Shifan</h4>
-                        <span>Networking & IT Student</span>
-                    </div>
-                    <i class="fab fa-linkedin" style="margin-left: auto; color: #0077b5; font-size: 1.2rem;"></i>
-                </div>
-                <p class="blog-content">
-                    Excited to share what I’ve been building: T.A.R.A. (Therapeutic AI for Reassurance and Assistance)
-
-                    I’ve been pouring my heart into developing an intelligent, empathetic AI therapist designed to offer real-time emotional support and mental wellness guidance. T.A.R.A. is more than a project—it’s a mission to combine technology with compassion.
-
-                    The goal?
-                    To create a secure, voice-interactive system that supports users through stress, anxiety, or simply when they need someone to talk to—powered by natural language processing, mental health frameworks, and thoughtful UI/UX.
-
+            <!-- Project 3 -->
+            <div class="card project-card reveal">
+                <i class="fas fa-users-cog card-icon"></i>
+                <h3>The Grand Council</h3>
+                <p style="color: var(--text-muted); margin: 15px 0;">
+                    Multi-Agent Debate System where 5 distinct LLM personas debate topics, managed by a central Python controller.
                 </p>
-                <div class="blog-tags">#DevOps #MentalHealthTech #AIforGood #ProductDesign #VoiceTech #OpenToWork #TARA #UXDesign #AItherapy #EmotionalAI </div>
-                <a href="https://www.linkedin.com/posts/al-mohamed-shifan-5266b924b_mentalhealthtech-aiforgood-productdesign-activity-7313679641162960897-UXEF" class="read-more">View Post <i class="fas fa-arrow-right"></i></a>
+                <div class="project-meta">
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">OLLAMA / PYTHON</span>
+                    <a href="#" class="highlight"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Dynamic GitHub Repo Card -->
+            <div class="card project-card reveal" style="border-style: dashed;">
+                <i class="fab fa-github card-icon"></i>
+                <h3>Latest GitHub Push</h3>
+                <div id="latest-repo" style="margin-top: 10px;">
+                    <p style="color: var(--text-muted);">Fetching...</p>
+                </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="contact-container">
-            <h2 class="section-title reveal">Get In <span class="highlight">Touch</span></h2>
-            <p class="reveal">I'm currently looking for internship opportunities and connecting with people.</p>
-            
-            <div class="contact-box reveal">
-                <i class="fas fa-paper-plane" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-                <h3>Drop me an email</h3>
-                <p class="email-display">mohamealmusgi.mohamedshifan@ontariotechu.net</p>
-                <a href="mailto:mohamealmusgi.mohamedshifan@ontariotechu.net" class="btn btn-primary">Send Email</a>
-                <button onclick="copyEmail()" class="copy-btn" style="margin-left: 10px;"><i class="far fa-copy"></i> Copy</button>
+    <!-- Updates Section -->
+    <section id="updates">
+        <div class="section-header reveal">
+            <div>
+                <div class="section-subtitle">Social Feed</div>
+                <h2 class="section-title">Latest Updates</h2>
+            </div>
+            <a href="https://linkedin.com/in/al-mohamed-shifan" class="btn btn-secondary">
+                <i class="fab fa-linkedin-in"></i> Connect on LinkedIn
+            </a>
+        </div>
+
+        <div class="feed-container">
+            <!-- Simulated Feed Item 1 -->
+            <div class="feed-item reveal">
+                <div class="feed-header">
+                    <img src="" class="feed-avatar github-avatar-target" alt="Profile">
+                    <div class="feed-meta">
+                        <h4>Al Muqshith Shifan</h4>
+                        <span>Network Engineering Assistant • 2d ago</span>
+                    </div>
+                    <i class="fab fa-linkedin" style="margin-left: auto; color: #0077b5;"></i>
+                </div>
+                <p class="feed-content">
+                    Today’s Research 101 mini-seminar was honestly worth every minute. It helped me rethink how to approach research, especially how to identify meaningful problems. 
+
+                    Big thanks to Professor Cristiano Politowski. I’m looking forward to applying what I learned to my DRL research.
+                </p>
+                <span class="feed-tags">#Research #AcademicJourney #DeepLearning</span>
             </div>
 
-            <div class="social-links reveal">
-                <a href="https://linkedin.com/in/al-mohamed-shifan" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/Al-Scripting" class="social-icon"><i class="fab fa-github"></i></a>
-                <a href="https://instagram.com/@almuq_04" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <!-- Simulated Feed Item 2 -->
+            <div class="feed-item reveal">
+                <div class="feed-header">
+                    <img src="" class="feed-avatar github-avatar-target" alt="Profile">
+                    <div class="feed-meta">
+                        <h4>Al Muqshith Shifan</h4>
+                        <span>Cybersecurity Student • 1w ago</span>
+                    </div>
+                    <i class="fab fa-linkedin" style="margin-left: auto; color: #0077b5;"></i>
+                </div>
+                <p class="feed-content">
+                    Proud to present our capstone project to Dean Professor Carolyn McGregor AM!
+                    
+                    Led the team in strengthening an e-commerce client’s website against card testing attacks. We audited 30+ plugins and designed long-term protection strategies.
+                </p>
+                <span class="feed-tags">#Capstone #CyberSecurity #TeamLead</span>
+            </div>
+
+            <!-- Simulated Feed Item 3 -->
+            <div class="feed-item reveal">
+                <div class="feed-header">
+                    <img src="" class="feed-avatar github-avatar-target" alt="Profile">
+                    <div class="feed-meta">
+                        <h4>Al Muqshith Shifan</h4>
+                        <span>Applied AI Developer • 2w ago</span>
+                    </div>
+                    <i class="fab fa-linkedin" style="margin-left: auto; color: #0077b5;"></i>
+                </div>
+                <p class="feed-content">
+                    Excited to share T.A.R.A. (Therapeutic AI for Reassurance and Assistance).
+
+                    I’ve been developing an intelligent, empathetic AI therapist designed to offer real-time emotional support using natural language processing.
+                </p>
+                <span class="feed-tags">#AIforGood #MentalHealthTech #NLP</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="contact-grid reveal">
+            <div class="contact-info">
+                <h3>Let's Collaborate</h3>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">
+                    I'm actively seeking research roles and engineering opportunities.
+                </p>
+                
+                <div class="contact-detail">
+                    <i class="fas fa-envelope"></i>
+                    <span>mohamedshifan@ontariotechu.net</span>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 647-540-4866</span>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Oshawa, Ontario, Canada</span>
+                </div>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px;">
+                <a href="mailto:mohamealmusgi.mohamedshifan@ontariotechu.net" class="btn" style="width: 100%;">
+                    Send Message
+                </a>
+                <div style="display: flex; gap: 15px; width: 100%;">
+                    <a href="https://linkedin.com/in/al-mohamed-shifan" class="btn btn-secondary" style="flex: 1;"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Al-Scripting" class="btn btn-secondary" style="flex: 1;"><i class="fab fa-github"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Al Muqshith Shifan. All rights reserved. <br> Designed with Pastel Red & Dark Mode.</p>
-        
-        <!-- Easter Egg -->
-        <div class="easter-egg" title="Ontario Tech University">
-            <img src="https://placehold.co/60x60/0077CA/FFFFFF?text=OTU" alt="Ontario Tech Logo">
-            <span class="otu-text">Proud OTU Student</span>
+        <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; padding: 40px;">
+            &copy; 2026 Al Muqshith Shifan. <br>
+            Designed with Research & Code.
         </div>
     </footer>
 
     <script>
-        // --- SCROLL ANIMATIONS ---
-        window.addEventListener('scroll', reveal);
-
-        function reveal() {
-            var reveals = document.querySelectorAll('.reveal');
-
-            for (var i = 0; i < reveals.length; i++) {
-                var windowheight = window.innerHeight;
-                var revealtop = reveals[i].getBoundingClientRect().top;
-                var revealpoint = 150;
-
-                if (revealtop < windowheight - revealpoint) {
-                    reveals[i].classList.add('active');
-                } else {
-                    reveals[i].classList.remove('active');
-                }
-            }
-        }
-        
-        reveal();
-
-        // --- MOBILE MENU TOGGLE ---
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            nav.classList.toggle('active');
-        }
-
-        // --- SMOOTH SCROLL ---
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        // --- SCROLL REVEAL ---
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
             });
-        });
-        
-        // --- COPY EMAIL FUNCTION ---
-        function copyEmail() {
-            const email = "mohamealmusgi.mohamedshifan@ontariotechu.net";
-            const el = document.createElement('textarea');
-            el.value = email;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-            alert("Email copied to clipboard!");
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- MOBILE MENU ---
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
         }
 
         // --- GITHUB API FETCH ---
-        async function fetchProjects() {
-            const grid = document.getElementById('projects-grid');
-            const username = 'Al-Scripting'; // Your GitHub username
+        async function fetchGitHubData() {
+            const username = 'Al-Scripting';
             
-            // Fallback Data
-            const fallbackProjects = [
-                {
-                    name: "WAN-LAN Network Design",
-                    description: "Designed and deployed a simulated enterprise LAN/WAN infrastructure for a multi-site network.",
-                    html_url: "#",
-                    language: "Cisco Packet Tracer"
-                },
-                {
-                    name: "Database-Project-Amazone",
-                    description: "Built a mock e-commerce platform with MySQL integration and optimized relational queries.",
-                    html_url: "https://github.com/Al-Scripting/Database-Project-Amazone",
-                    language: "MySQL/PHP"
-                },
-                {
-                    name: "Registry-and-Permission-Scripts",
-                    description: "Automated Windows registry edits and Linux permission management with RBAC controls.",
-                    html_url: "https://github.com/Al-Scripting/Registry-and-Permission-Scripts",
-                    language: "Shell"
-                },
-                {
-                    name: "AniWiki DevOps",
-                    description: "Led deployment of an anime information web app with CI/CD pipelines and Dockerized services.",
-                    html_url: "#",
-                    language: "Docker"
-                }
-            ];
-
-            function renderProjects(projects) {
-                grid.innerHTML = '';
-                projects.forEach((repo, index) => {
-                    const delay = index * 0.1;
-                    const card = document.createElement('div');
-                    card.className = 'project-card reveal active';
-                    card.style.transitionDelay = `${delay}s`;
-                    
-                    const language = repo.language || "Code";
-                    
-                    card.innerHTML = `
-                        <div class="project-header">
-                            <div class="project-links">
-                                <a href="${repo.html_url}" target="_blank"><i class="fab fa-github"></i></a>
-                            </div>
-                            <i class="far fa-folder folder-icon"></i>
-                            <h3 class="project-title">${repo.name.replace(/-/g, ' ')}</h3>
-                        </div>
-                        <div class="project-desc">
-                            ${repo.description || 'No description available for this project.'}
-                        </div>
-                        <div class="project-tech">
-                            <span>${language}</span>
-                            <span><i class="far fa-star"></i> ${repo.stargazers_count || 0}</span>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
-            }
-
+            // 1. Fetch Profile Data (Avatar)
             try {
-                const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&direction=desc`);
-                if (!response.ok) throw new Error('GitHub API limit reached or user not found');
-                
-                let repos = await response.json();
-                repos = repos.slice(0, 6);
-                
-                if(repos.length === 0) throw new Error('No public repos found');
-                
-                renderProjects(repos);
-            } catch (error) {
-                console.log("Using fallback projects due to API error:", error);
-                renderProjects(fallbackProjects);
+                const userRes = await fetch(`https://api.github.com/users/${username}`);
+                if(userRes.ok) {
+                    const userData = await userRes.json();
+                    
+                    // Set Profile Image in About Section
+                    const profileImg = document.getElementById('github-profile-img');
+                    if(profileImg.getAttribute('src') === "") {
+                        profileImg.src = userData.avatar_url;
+                    }
+                    
+                    // Set Avatars in Feed
+                    document.querySelectorAll('.github-avatar-target').forEach(img => {
+                        img.src = userData.avatar_url;
+                    });
+                }
+            } catch (e) { console.log('GitHub User fetch failed', e); }
+
+            // 2. Fetch Latest Repo
+            try {
+                const repoRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&direction=desc&per_page=1`);
+                if(repoRes.ok) {
+                    const repos = await repoRes.json();
+                    if(repos.length > 0) {
+                        const repo = repos[0];
+                        document.getElementById('latest-repo').innerHTML = `
+                            <h4 style="margin:0;"><a href="${repo.html_url}" target="_blank" style="color:#fff;">${repo.name}</a></h4>
+                            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:5px;">${repo.description || 'No description available.'}</p>
+                            <span style="font-size:0.75rem; color:var(--primary); text-transform:uppercase;">Last updated: ${new Date(repo.updated_at).toLocaleDateString()}</span>
+                        `;
+                    }
+                }
+            } catch (e) { 
+                document.getElementById('latest-repo').innerText = "Check GitHub for updates.";
             }
         }
-        
-        fetchProjects();
+        fetchGitHubData();
 
-        // --- CANVAS GENERATIVE ART (NETWORK CONSTELLATION) ---
+        // --- CANVAS PARTICLES ---
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         let particlesArray;
@@ -413,94 +454,45 @@
             init();
         });
 
-        const mouse = {
-            x: null,
-            y: null,
-            radius: 150
-        }
-
-        window.addEventListener('mousemove', (event) => {
-            mouse.x = event.x;
-            mouse.y = event.y;
-        });
-
         class Particle {
-            constructor(x, y, directionX, directionY, size, color) {
-                this.x = x;
-                this.y = y;
-                this.directionX = directionX;
-                this.directionY = directionY;
-                this.size = size;
-                this.color = color;
+            constructor(x, y, size) {
+                this.x = x; this.y = y; this.size = size;
+                this.baseX = this.x; this.baseY = this.y;
+                this.speedX = (Math.random() * 1) - 0.5;
+                this.speedY = (Math.random() * 1) - 0.5;
             }
-
             draw() {
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = this.color;
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = '#FF6B6B';
                 ctx.fill();
             }
-
             update() {
-                if (this.x > canvas.width || this.x < 0) {
-                    this.directionX = -this.directionX;
-                }
-                if (this.y > canvas.height || this.y < 0) {
-                    this.directionY = -this.directionY;
-                }
-
-                // Mouse interaction
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx*dx + dy*dy);
-
-                if (distance < mouse.radius + this.size) {
-                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
-                        this.x += 2;
-                    }
-                    if (mouse.x > this.x && this.x > this.size * 10) {
-                        this.x -= 2;
-                    }
-                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
-                        this.y += 2;
-                    }
-                    if (mouse.y > this.y && this.y > this.size * 10) {
-                        this.y -= 2;
-                    }
-                }
-
-                this.x += this.directionX;
-                this.y += this.directionY;
+                this.x += this.speedX; this.y += this.speedY;
+                if(this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if(this.y > canvas.height || this.y < 0) this.speedY *= -1;
                 this.draw();
             }
         }
 
         function init() {
             particlesArray = [];
-            // Calculate density based on screen size
-            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            let numberOfParticles = (canvas.height * canvas.width) / 20000;
             for (let i = 0; i < numberOfParticles; i++) {
                 let size = (Math.random() * 2) + 1;
-                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-                let directionX = (Math.random() * 1) - 0.5;
-                let directionY = (Math.random() * 1) - 0.5;
-                let color = '#FF6B6B'; // Pastel Red
-
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+                let x = Math.random() * canvas.width;
+                let y = Math.random() * canvas.height;
+                particlesArray.push(new Particle(x, y, size));
             }
         }
 
         function connect() {
-            let opacityValue = 1;
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) 
-                    + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                    
-                    if (distance < (canvas.width/7) * (canvas.height/7)) {
-                        opacityValue = 1 - (distance/20000);
-                        ctx.strokeStyle = 'rgba(255, 107, 107,' + opacityValue + ')';
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                    if (distance < (canvas.width/9) * (canvas.height/9)) {
+                        let opacity = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(255, 107, 107, ${opacity * 0.4})`;
                         ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -513,11 +505,8 @@
 
         function animate() {
             requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, innerWidth, innerHeight);
-
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) { particlesArray[i].update(); }
             connect();
         }
 
