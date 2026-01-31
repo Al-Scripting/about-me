@@ -240,7 +240,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-top: 80px;
+            padding-top: 100px;
+            padding-bottom: 60px;
             position: relative;
             overflow: hidden;
             border-bottom: 1px solid var(--border);
@@ -256,10 +257,46 @@
             opacity: 0.3;
         }
 
-        .hero-content {
+        /* New Hero Wrapper Layout */
+        .hero-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
             position: relative;
             z-index: 2;
-            max-width: 1100px;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 650px;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-img-container {
+            position: relative;
+            max-width: 900px; /* Increased significantly for bigger impact */
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 40px rgba(255, 107, 107, 0.15);
+        }
+
+        .hero-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            /* Optional: slight stylistic filter to match theme */
+            filter: contrast(1.1) saturate(1.1); 
         }
 
         .hero-label {
@@ -276,7 +313,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 5.5vw, 5rem); /* Toned down from 6.5rem */
+            font-size: clamp(3rem, 5.5vw, 5rem);
             line-height: 1.1;
             margin-bottom: 25px;
             text-transform: uppercase;
@@ -285,10 +322,14 @@
         .hero p {
             font-size: clamp(1.1rem, 2vw, 1.3rem);
             color: var(--text-muted);
-            max-width: 650px;
             margin-bottom: 40px;
             border-left: 2px solid var(--primary);
             padding-left: 20px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
         }
 
         /* --- BENTO GRID SYSTEM --- */
@@ -609,6 +650,12 @@
             .about-image-card, .about-text, .project-card { grid-column: span 12 !important; }
             .about-image-card { aspect-ratio: auto; height: 350px; }
             .profile-img-container { width: 250px; height: 250px; margin: 0 auto; }
+            
+            /* Hero Tablet Adjustments */
+            .hero-wrapper { flex-direction: column; text-align: center; gap: 40px; }
+            .hero-text { max-width: 100%; }
+            .hero p { margin-left: auto; margin-right: auto; padding-left: 0; border-left: none; border-bottom: 2px solid var(--primary); padding-bottom: 20px; }
+            .hero-btns { justify-content: center; }
         }
 
         @media screen and (max-width: 768px) {
@@ -647,19 +694,28 @@
     <!-- Hero Section -->
     <section class="hero">
         <canvas id="hero-canvas"></canvas>
-        <div class="hero-content">
-            <div class="hero-label reveal">
-                <i class="fas fa-satellite-dish" style="color: var(--primary); font-size: 12px; margin-right: 8px;"></i> Open for Collaboration
+        
+        <div class="hero-wrapper">
+            <div class="hero-text">
+                <div class="hero-label reveal">
+                    <i class="fas fa-satellite-dish" style="color: var(--primary); font-size: 12px; margin-right: 8px;"></i> Future Master's Student
+                </div>
+                <h1 class="reveal">Network Engineer by Trade, <br> <span class="highlight">Developer by Passion.</span></h1>
+                <p class="reveal">
+                    B.IT Student at Ontario Tech University. Bridging the gap between robust network infrastructure and creative software innovation.
+                </p>
+                <div class="hero-btns reveal">
+                    <a href="#contact" class="btn">Hire Me</a>
+                    <a href="assests/Al-Shifan Resume 2026.pdf" download class="btn btn-secondary">
+                        CV <i class="fas fa-download" style="margin-left: 5px;"></i>
+                    </a>
+                </div>
             </div>
-            <h1 class="reveal">Network Engineer by Trade, <br> <span class="highlight">Developer by Passion.</span></h1>
-            <p class="reveal">
-                B.IT Student at Ontario Tech University. Bridging the gap between robust network infrastructure and creative software innovation.
-            </p>
-            <div class="reveal" style="display: flex; gap: 20px;">
-                <a href="#contact" class="btn">Hire Me</a>
-                <a href="assests/Al-Shifan Resume 2026.pdf" download class="btn btn-secondary">
-                    CV <i class="fas fa-download" style="margin-left: 5px;"></i>
-                </a>
+            
+            <div class="hero-visual reveal">
+                <div class="hero-img-container">
+                    <img src="assests/hero.png" alt="Al Muqshith Shifan" class="hero-img">
+                </div>
             </div>
         </div>
     </section>
@@ -841,7 +897,7 @@
                 </div>
             </div>
 
-            <!-- Project 2 -->
+            <!-- Gestura -->
             <div class="card project-card reveal">
                 <i class="fas fa-hand-holding-medical card-icon"></i>
                 <h3>Gestura - Medical AI</h3>
@@ -850,25 +906,54 @@
                 </p>
                 <div class="project-meta">
                     <span style="color: var(--text-muted); font-size: 0.8rem;">FLASK / CV / THREE.JS</span>
-                    <a href="#" class="highlight"><i class="fas fa-arrow-right"></i></a>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="https://github.com/Al-Scripting/HackHive2026" target="_blank" class="highlight" title="Code"><i class="fab fa-github"></i></a>
+                        <a href="https://devpost.com/software/gestura-23czgh" target="_blank" class="highlight" title="Demo"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Project 3 -->
+            <!-- Local AI Dungeon -->
             <div class="card project-card reveal">
-                <i class="fas fa-users-cog card-icon"></i>
-                <h3>The Grand Council</h3>
+                <i class="fas fa-dungeon card-icon"></i>
+                <h3>Local AI Dungeon</h3>
                 <p style="color: var(--text-muted); margin: 15px 0;">
-                    Multi-Agent Debate System where 5 distinct LLM personas debate topics, managed by a central Python controller.
+                    A local, offline interactive fiction engine powered by Ollama and Python, allowing for limitless generated storytelling without API costs.
                 </p>
                 <div class="project-meta">
-                    <span style="color: var(--text-muted); font-size: 0.8rem;">OLLAMA / PYTHON</span>
-                    <a href="#" class="highlight"><i class="fas fa-arrow-right"></i></a>
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">PYTHON / OLLAMA / LLM</span>
+                    <a href="https://github.com/Al-Scripting/Local-AI-Dungeon-Ollama-Python" target="_blank" class="highlight"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- ML Algorithms -->
+            <div class="card project-card reveal">
+                <i class="fas fa-brain card-icon"></i>
+                <h3>ML Algorithms</h3>
+                <p style="color: var(--text-muted); margin: 15px 0;">
+                    A comprehensive collection of Machine Learning algorithms implemented from scratch to understand the mathematical foundations of AI.
+                </p>
+                <div class="project-meta">
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">PYTHON / NUMPY / MATH</span>
+                    <a href="https://github.com/Al-Scripting/Mechine-Learning-Alogrithms" target="_blank" class="highlight"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Anime Wiki -->
+            <div class="card project-card reveal">
+                <i class="fas fa-book-open card-icon"></i>
+                <h3>Anime Wiki</h3>
+                <p style="color: var(--text-muted); margin: 15px 0;">
+                    A robust documentation and information platform for anime, featuring extensive database relationships and a clean UI.
+                </p>
+                <div class="project-meta">
+                    <span style="color: var(--text-muted); font-size: 0.8rem;">WEB DEV / DATABASE</span>
+                    <a href="https://github.com/Al-Scripting/Anime-Wiki?tab=readme-ov-file" target="_blank" class="highlight"><i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
             <!-- Dynamic GitHub Repo Card -->
-            <div class="card project-card reveal" style="border-style: dashed;">
+            <div class="card project-card reveal" style="border-style: dashed; grid-column: span 12;">
                 <i class="fab fa-github card-icon"></i>
                 <h3>Latest GitHub Push</h3>
                 <div id="latest-repo" style="margin-top: 10px;">
