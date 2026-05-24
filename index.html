@@ -1,1267 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Muqshith Shifan | Portfolio</title>
-    <meta name="description" content="Portfolio of Al Muqshith Shifan - Networking & Cybersecurity Student">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* --- VARIABLES & RESET --- */
-        :root {
-            --primary: #FF6B6B; /* Pastel Red */
-            --primary-hover: #ff5252;
-            --primary-dim: rgba(255, 107, 107, 0.15);
-            --bg-dark: #0a0a0a; /* Ultra dark */
-            --bg-grid: #141414;
-            --bg-card: rgba(20, 20, 20, 0.6);
-            --bg-card-hover: rgba(30, 30, 30, 0.9);
-            --text-main: #E0E0E0;
-            --text-muted: #888888;
-            --border: #2a2a2a;
-            --border-highlight: #444444;
-            --font-heading: 'Space Grotesk', sans-serif;
-            --font-body: 'Outfit', sans-serif;
-            --transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-body);
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-            /* Technical Grid Background */
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        /* --- REDUCED PADDING FOR SEAMLESS FEEL --- */
-        section {
-            padding: 60px 20px; /* Reduced from 120px */
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3, h4, h5 {
-            font-family: var(--font-heading);
-            color: #fff;
-            letter-spacing: -0.02em;
-        }
-
-        .section-header {
-            margin-bottom: 3rem; /* Reduced from 5rem */
-            position: relative;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .section-title {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .section-subtitle {
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-subtitle::before {
-            content: '';
-            display: block;
-            width: 8px;
-            height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-        }
-
-        .highlight {
-            color: var(--primary);
-        }
-
-        /* --- UI ELEMENTS --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px 36px;
-            font-family: var(--font-heading);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 1rem;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 1px solid var(--primary);
-            position: relative;
-            overflow: hidden;
-            background: transparent;
-            color: var(--primary);
-            min-width: 160px;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--primary);
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .btn:hover::before {
-            left: 0;
-        }
-
-        .btn:hover {
-            color: #000;
-        }
-
-        .btn-secondary {
-            border-color: var(--border-highlight);
-            color: var(--text-main);
-        }
-        
-        .btn-secondary::before {
-            background: var(--text-main);
-        }
-
-        /* --- NAV --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: var(--font-heading);
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            color: var(--text-main);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* --- HERO --- */
-        .hero {
-            min-height: 85vh; /* Adjusted for better desktop fit */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-top: 100px;
-            padding-bottom: 60px;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid var(--border);
-        }
-
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            opacity: 0.3;
-        }
-
-        /* New Hero Wrapper Layout */
-        .hero-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 50px;
-            position: relative;
-            z-index: 2;
-            width: 100%;
-        }
-
-        .hero-text {
-            flex: 1;
-            max-width: 650px;
-        }
-
-        .hero-visual {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-img-container {
-            position: relative;
-            max-width: 900px; /* Increased significantly for bigger impact */
-            width: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            box-shadow: 0 0 40px rgba(255, 107, 107, 0.15);
-        }
-
-        .hero-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-            /* Optional: slight stylistic filter to match theme */
-            filter: contrast(1.1) saturate(1.1); 
-        }
-
-        .hero-label {
-            display: inline-block;
-            border: 1px solid var(--border-highlight);
-            padding: 8px 16px;
-            font-family: var(--font-heading);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 25px;
-            background: rgba(255,255,255,0.02);
-            backdrop-filter: blur(5px);
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 5.5vw, 5rem);
-            line-height: 1.1;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-
-        .hero p {
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            border-left: 2px solid var(--primary);
-            padding-left: 20px;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 20px;
-        }
-
-        /* --- BENTO GRID SYSTEM --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 35px;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-
-        .card:hover {
-            border-color: var(--primary);
-            background: var(--bg-card-hover);
-            transform: translateY(-5px);
-        }
-
-        /* --- ABOUT --- */
-        .about-image-card {
-            grid-column: span 4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            aspect-ratio: 1/1;
-        }
-
-        .profile-img-container {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid var(--border);
-            position: relative;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: var(--transition);
-        }
-
-        .card:hover .profile-img {
-            filter: grayscale(0%);
-            transform: scale(1.05);
-        }
-
-        .about-text {
-            grid-column: span 8;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* --- TECH STACK EXPANDED --- */
-        .tech-stack-section {
-            grid-column: span 12;
-            margin-top: 10px;
-        }
-
-        .stack-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .stack-category h4 {
-            color: var(--primary);
-            margin-bottom: 12px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 5px;
-        }
-
-        .skill-tag {
-            font-family: var(--font-heading);
-            font-size: 0.85rem;
-            padding: 5px 0;
-            color: var(--text-muted);
-            display: block;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            transition: var(--transition);
-        }
-
-        .skill-tag:hover {
-            color: #fff;
-            padding-left: 5px;
-        }
-
-        /* --- EXPERIENCE TIMELINE --- */
-        .timeline {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 1px;
-            background-color: var(--border-highlight);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -0.5px;
-        }
-
-        .tl-container {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            margin-bottom: 20px; /* Reduced margin */
-        }
-
-        .tl-container::after {
-            content: '';
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            right: -6px; /* Precise centering on line */
-            background-color: var(--bg-dark);
-            border: 2px solid var(--primary);
-            top: 25px;
-            border-radius: 50%;
-            z-index: 1;
-            transition: var(--transition);
-        }
-
-        .tl-container:hover::after {
-            background-color: var(--primary);
-            box-shadow: 0 0 10px var(--primary);
-        }
-
-        .left { left: 0; text-align: right; }
-        .right { left: 50%; }
-        .right::after { left: -6px; }
-
-        .tl-content {
-            padding: 25px;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .tl-content:hover {
-            border-color: var(--primary);
-        }
-
-        .tl-date {
-            font-family: var(--font-heading);
-            font-size: 0.8rem;
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 8px;
-            display: block;
-            text-transform: uppercase;
-        }
-
-        .tl-title { font-size: 1.15rem; margin-bottom: 4px; line-height: 1.3; }
-        .tl-company { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 12px; font-style: italic; }
-        .tl-desc { font-size: 0.9rem; color: var(--text-muted); }
-
-        /* --- PROJECTS & GITHUB --- */
-        .project-card {
-            grid-column: span 6;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-icon {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            opacity: 0.8;
-        }
-
-        .project-meta {
-            margin-top: auto;
-            border-top: 1px solid var(--border);
-            padding-top: 15px;
-            margin-top: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* --- LAB / RESEARCH SECTION --- */
-        .lab-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-        }
-
-        .lab-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .lab-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        .lab-img-wrapper {
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .lab-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .lab-card:hover .lab-img {
-            transform: scale(1.05);
-        }
-
-        .lab-content {
-            padding: 25px;
-        }
-
-        .lab-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .lab-content p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* --- LINKEDIN FEED STYLE --- */
-        .feed-container {
-            grid-column: span 12;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .feed-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .feed-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .feed-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 15px;
-            object-fit: cover;
-        }
-
-        .feed-meta h4 { font-size: 0.9rem; margin: 0; }
-        .feed-meta span { font-size: 0.75rem; color: var(--text-muted); }
-        
-        .feed-content {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            flex-grow: 1;
-            white-space: pre-line;
-        }
-
-        .feed-tags { color: var(--primary); font-size: 0.8rem; }
-
-        /* --- CONTACT --- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            padding: 50px;
-        }
-
-        .contact-detail {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-
-        .contact-detail i { color: var(--primary); }
-
-        /* --- RESPONSIVE --- */
-        @media screen and (max-width: 1024px) {
-            .about-image-card, .about-text, .project-card { grid-column: span 12 !important; }
-            .about-image-card { aspect-ratio: auto; height: 350px; }
-            .profile-img-container { width: 250px; height: 250px; margin: 0 auto; }
-            
-            /* Hero Tablet Adjustments */
-            .hero-wrapper { flex-direction: column; text-align: center; gap: 40px; }
-            .hero-text { max-width: 100%; }
-            .hero p { margin-left: auto; margin-right: auto; padding-left: 0; border-left: none; border-bottom: 2px solid var(--primary); padding-bottom: 20px; }
-            .hero-btns { justify-content: center; }
-        }
-
-        @media screen and (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
-            .timeline::after { left: 31px; }
-            .tl-container { width: 100%; padding-left: 60px; padding-right: 20px; }
-            .tl-container::after { left: 26px; }
-            .left, .right { left: 0; text-align: left; }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #000; flex-direction: column; padding: 30px; text-align: center; border-bottom: 1px solid var(--border); }
-            .nav-links.active { display: flex; }
-            .mobile-menu-btn { display: block; }
-            .contact-grid { grid-template-columns: 1fr; padding: 30px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al Muqshith Shifan · Portfolio</title>
+<meta name="description" content="Al Muqshith Shifan, Master's student in Computer Science at Ontario Tech. Builder of network research tools and applied AI prototypes.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo">AL<span class="highlight">.</span>shifan</a>
-            <div class="mobile-menu-btn" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </div>
-            <nav class="nav-links" id="navLinks">
-                <a href="#about" onclick="toggleMenu()">About</a>
-                <a href="#experience" onclick="toggleMenu()">Journey</a>
-                <a href="#projects" onclick="toggleMenu()">Research</a>
-                <a href="#sorcery" onclick="toggleMenu()">Code & Sorcery</a>
-                <a href="#updates" onclick="toggleMenu()">Updates</a>
-                <a href="#contact" onclick="toggleMenu()">Contact</a>
-            </nav>
+<!-- ============== NAV ============== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="Al Shifan, home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none">
+          <path d="M14 50 L26 14 L38 50" stroke="currentColor" stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="square"/>
+          <path d="M19 38 L33 38" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/>
+          <path d="M40 14 L40 50 L54 50" stroke="currentColor" stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="square"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Al Muqshith Shifan</span>
+        <span class="brand-role">MSc · Network &amp; AI</span>
+      </span>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Journey</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#sorcery">Code &amp; Sorcery</a></li>
+      <li><a href="#updates">Feed</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="assets/Al-Shifan-Resume-2026.pdf" download class="btn btn-sm"><i class="fas fa-arrow-down"></i> CV</a>
+      <a href="#contact" class="btn btn-primary btn-sm">Get in touch</a>
+      <button class="menu-btn" id="menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<main class="shell" id="top">
+
+  <!-- ============== HERO ============== -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div class="hero-left reveal">
+        <div class="hero-tag"><span class="dot"></span> Currently a Master&rsquo;s Student · Ontario Tech</div>
+        <h1>
+          Network engineer<br>
+          by trade.<br>
+          <span class="em">Developer</span> by passion.
+        </h1>
+        <p class="hero-sub">
+          I bridge robust network infrastructure with creative software, from P4 programmable switches and DRL traffic optimization to full-stack research tools and applied AI prototypes.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Hire me <i class="fas fa-arrow-right"></i></a>
+          <a href="assets/Al-Shifan-Resume-2026.pdf" download class="btn"><i class="fas fa-arrow-down"></i> Download CV</a>
+          <a href="https://github.com/Al-Scripting" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fab fa-github"></i> GitHub</a>
         </div>
+
+        <div class="hero-stats">
+          <div><div class="stat-num">2026</div><div class="stat-label">MSc Start</div></div>
+          <div><div class="stat-num">6+</div><div class="stat-label">Yrs in Tech</div></div>
+          <div><div class="stat-num">15+</div><div class="stat-label">Projects Shipped</div></div>
+          <div><div class="stat-num">3.9<span>/4</span></div><div class="stat-label">Dean&rsquo;s List &rsquo;24</div></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <img id="profile-img" src="assets/hero.png" alt="Al Muqshith Shifan portrait">
+        <div class="hero-visual-meta">
+          <span>AL · 001</span>
+          <span>OSHAWA, ON</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== ABOUT ============== -->
+  <section id="about">
+    <header class="section-head reveal">
+      <div>
+        <div class="section-eyebrow">Profile / 01</div>
+        <h2 class="section-title">A short <em>introduction</em>.</h2>
+      </div>
+      <div class="section-meta">B.IT &rsaquo; MSc · Ontario Tech</div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <canvas id="hero-canvas"></canvas>
-        
-        <div class="hero-wrapper">
-            <div class="hero-text">
-                <div class="hero-label reveal">
-                    <i class="fas fa-satellite-dish" style="color: var(--primary); font-size: 12px; margin-right: 8px;"></i> Future Master's Student
-                </div>
-                <h1 class="reveal">Network Engineer by Trade, <br> <span class="highlight">Developer by Passion.</span></h1>
-                <p class="reveal">
-                    B.IT Student at Ontario Tech University. Bridging the gap between robust network infrastructure and creative software innovation.
-                </p>
-                <div class="hero-btns reveal">
-                    <a href="#contact" class="btn">Hire Me</a>
-                    <a href="assests/Al-Shifan Resume 2026.pdf" download class="btn btn-secondary">
-                        CV <i class="fas fa-download" style="margin-left: 5px;"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="hero-visual reveal">
-                <div class="hero-img-container">
-                    <img src="assests/hero.png" alt="Al Muqshith Shifan" class="hero-img">
-                </div>
-            </div>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <h3>Who I am</h3>
+        <p>
+          I&rsquo;m a <strong>Master&rsquo;s student in Computer Science at Ontario Tech University</strong>, continuing research with Dr. Cristiano Politowski on AI agents and software engineering.
+        </p>
+        <p>
+          My day-to-day shifts between Cisco labs, P4 programmable switches, and Python. My favorite work sits at the intersection: software that automates, analyzes, and optimizes the networks I run. I&rsquo;ve built deep reinforcement learning environments for traffic optimization, a custom 2D engine for benchmarking DRL agents, and a real-time computer vision tool for telehealth.
+        </p>
+        <div class="about-meta">
+          Dean&rsquo;s List 2024 · TA, Networking II &amp; III · Research Assistant, P4 Programmable Networks
         </div>
-    </section>
+      </div>
 
-    <!-- About Grid -->
-    <section id="about">
-        <div class="section-header reveal">
-            <div>
-                <div class="section-subtitle">Profile</div>
-                <h2 class="section-title">About Me</h2>
-            </div>
+      <aside class="about-aside reveal">
+        <div class="aside-block">
+          <div class="aside-label">STATUS</div>
+          <div class="aside-value">Open to research &amp; engineering roles</div>
+          <div class="aside-meta">Summer / Fall 2026</div>
         </div>
-
-        <div class="grid-container">
-            <!-- Profile Image (Fetches from GitHub automatically if empty) -->
-            <div class="card about-image-card reveal">
-                <div class="profile-img-container">
-                    <img src="assests/profile.png" id="github-profile-img" alt="Al Muqshith Shifan" class="profile-img">
-                </div>
-            </div>
-
-            <div class="card about-text reveal">
-                <h3 style="margin-bottom: 20px;">Who I Am</h3>
-                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.1rem;">
-                    I am a future Master's student currently completing my B.IT in Networking & Cybersecurity at <strong>Ontario Tech University</strong> (Dean's List 2024). 
-                </p>
-                <!-- Updated Paragraph -->
-                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; line-height: 1.7;">
-                    While my core discipline is <strong>Network Engineering</strong> (Cisco, P4, Linux), I have a deep love for <strong>Coding</strong>. I don't just configure networks; I build the software that automates, analyzes, and optimizes them. From deep reinforcement learning (DRL) for traffic optimization to building full-stack web apps, I love solving hard technical problems.
-                </p>
-            </div>
-
-            <!-- Expanded Tech Stack -->
-            <div class="card tech-stack-section reveal">
-                <h3 style="margin-bottom: 30px;">Technical Arsenal</h3>
-                <div class="stack-grid">
-                    <div class="stack-category">
-                        <h4><i class="fas fa-network-wired"></i> Core Networking</h4>
-                        <span class="skill-tag">Cisco IOS (CCNA)</span>
-                        <span class="skill-tag">P4 Programmable Switches</span>
-                        <span class="skill-tag">Linux / Unix Admin</span>
-                        <span class="skill-tag">TCP/IP & Subnetting</span>
-                        <span class="skill-tag">Firewall Config</span>
-                    </div>
-                    <div class="stack-category">
-                        <h4><i class="fas fa-code"></i> Development</h4>
-                        <span class="skill-tag">Python (Advanced)</span>
-                        <span class="skill-tag">C++ / C</span>
-                        <span class="skill-tag">React / Node.js</span>
-                        <span class="skill-tag">Flask / REST APIs</span>
-                        <span class="skill-tag">Gemini / Ollama AI</span>
-                    </div>
-                    <div class="stack-category">
-                        <h4><i class="fas fa-shield-alt"></i> Security</h4>
-                        <span class="skill-tag">Vulnerability Assessment</span>
-                        <span class="skill-tag">Wireshark Analysis</span>
-                        <span class="skill-tag">Nmap / Penetration Testing</span>
-                        <span class="skill-tag">Kali Linux</span>
-                        <span class="skill-tag">Cryptography Basics</span>
-                    </div>
-                    <div class="stack-category">
-                        <h4><i class="fas fa-tools"></i> Tools & DevOps</h4>
-                        <span class="skill-tag">Docker / Containers</span>
-                        <span class="skill-tag">Git / GitHub Actions</span>
-                        <span class="skill-tag">CI/CD Pipelines</span>
-                        <span class="skill-tag">Bash Scripting</span>
-                        <span class="skill-tag">SQL / MySQL</span>
-                    </div>
-                </div>
-            </div>
+        <div class="aside-block">
+          <div class="aside-label">CURRENTLY</div>
+          <div class="aside-value">PEAK Engine, DRL benchmarks</div>
+          <div class="aside-meta">Custom 2D engine for evaluating PPO agents</div>
         </div>
-    </section>
-
-    <!-- Experience Timeline -->
-    <section id="experience">
-        <div class="section-header reveal">
-            <div>
-                <div class="section-subtitle">Experience</div>
-                <h2 class="section-title">My Journey</h2>
-            </div>
+        <div class="aside-block">
+          <div class="aside-label">BASED IN</div>
+          <div class="aside-value">Oshawa, Ontario</div>
+          <div class="aside-meta">Open to relocation &amp; remote</div>
         </div>
+      </aside>
+    </div>
 
-        <div class="timeline">
-            
-            <!-- Job 1 -->
-            <div class="tl-container left reveal">
-                <div class="tl-content">
-                    <span class="tl-date">SEP 2025 - PRESENT</span>
-                    <h3 class="tl-title">Teaching Assistant</h3>
-                    <div class="tl-company">Ontario Tech University</div>
-                    <p class="tl-desc">Facilitating Networking and Advanced Networking II labs. Mentoring undergraduate students on TCP/IP, subnetting, and enterprise firewall configurations.</p>
-                </div>
-            </div>
+    <div class="stack reveal">
+      <div class="stack-head">/ Technical<br>arsenal</div>
+      <div class="stack-col">
+        <h4>Networking</h4>
+        <ul>
+          <li>Cisco IOS / CCNA</li>
+          <li>P4 Programmable Switches</li>
+          <li>Linux / Unix Admin</li>
+          <li>TCP/IP &amp; Subnetting</li>
+          <li>Enterprise Firewalls</li>
+        </ul>
+      </div>
+      <div class="stack-col">
+        <h4>Development</h4>
+        <ul>
+          <li>Python (Advanced)</li>
+          <li>C / C++</li>
+          <li>React / Node.js</li>
+          <li>Flask, REST APIs</li>
+          <li>PyTorch, Ollama, Gemini</li>
+        </ul>
+      </div>
+      <div class="stack-col">
+        <h4>Security</h4>
+        <ul>
+          <li>Vulnerability Assessment</li>
+          <li>Wireshark &amp; Nmap</li>
+          <li>Kali / Pen Testing</li>
+          <li>Hardening &amp; Auditing</li>
+          <li>Cryptography Basics</li>
+        </ul>
+      </div>
+      <div class="stack-col">
+        <h4>Tools / DevOps</h4>
+        <ul>
+          <li>Docker / Containers</li>
+          <li>Git, GitHub Actions</li>
+          <li>CI/CD Pipelines</li>
+          <li>Bash Scripting</li>
+          <li>SQL / MySQL</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-            <!-- Job 2 -->
-            <div class="tl-container right reveal">
-                <div class="tl-content">
-                    <span class="tl-date">JUN 2025 - SEP 2025</span>
-                    <h3 class="tl-title">Network Research Assistant</h3>
-                    <div class="tl-company">Ontario Tech University</div>
-                    <p class="tl-desc">Engineered research infrastructure using P4 programmable switches. Developed custom P4 programs to analyze packet behavior and achieved lab-first implementations.</p>
-                </div>
-            </div>
+  <!-- ============== TIMELINE ============== -->
+  <section id="experience">
+    <header class="section-head reveal">
+      <div>
+        <div class="section-eyebrow">Experience / 02</div>
+        <h2 class="section-title">The <em>journey</em> so far.</h2>
+      </div>
+      <div class="section-meta">2018 &rsaquo; Present</div>
+    </header>
 
-            <!-- Job 3 -->
-            <div class="tl-container left reveal">
-                <div class="tl-content">
-                    <span class="tl-date">JUN 2025 - SEP 2025</span>
-                    <h3 class="tl-title">Cyber Security Analyst</h3>
-                    <div class="tl-company">YYC Beeswax Ltd (Remote)</div>
-                    <p class="tl-desc">Conducted vulnerability assessments on e-commerce infrastructure. Audited 30+ plugins and created a hardening checklist adopted by the engineering team.</p>
-                </div>
-            </div>
+    <div class="timeline">
 
-            <!-- Job 4 -->
-            <div class="tl-container right reveal">
-                <div class="tl-content">
-                    <span class="tl-date">SEP 2024 - JUN 2025</span>
-                    <h3 class="tl-title">Networking Lab Technician</h3>
-                    <div class="tl-company">Ontario Tech University</div>
-                    <p class="tl-desc">Optimized lab network performance, reducing downtime by ~20%. Managed server hardware and connectivity for 20+ lab systems.</p>
-                </div>
-            </div>
-
-            <!-- Job 5 -->
-            <div class="tl-container left reveal">
-                <div class="tl-content">
-                    <span class="tl-date">2022 - 2023</span>
-                    <h3 class="tl-title">Programming Instructor</h3>
-                    <div class="tl-company">Kids Great Minds - Whitby</div>
-                    <p class="tl-desc">Taught digital technology through hands-on courses. Guided students through personal projects and collaborated with assistant teachers.</p>
-                </div>
-            </div>
-
-            <!-- Job 6 -->
-            <div class="tl-container right reveal">
-                <div class="tl-content">
-                    <span class="tl-date">2018</span>
-                    <h3 class="tl-title">IT Field Service Staff</h3>
-                    <div class="tl-company">TDSB - Scarborough</div>
-                    <p class="tl-desc">Managed asset inventory for 2,000+ laptops. Performed factory resets and quality checks to ensure compliance with organizational standards.</p>
-                </div>
-            </div>
-
+      <div class="tl-row current">
+        <div class="tl-date">SEP 2025, PRESENT</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3 class="tl-title">MSc Student, Computer Science</h3>
+          <div class="tl-org">Ontario Tech University</div>
+          <p class="tl-desc">Continuing research on programmable networks and AI agents in software engineering. Supervised by Dr. Cristiano Politowski.</p>
         </div>
-    </section>
+      </div>
 
-    <!-- Projects Grid -->
-    <section id="projects">
-        <div class="section-header reveal">
-            <div>
-                <div class="section-subtitle">Portfolio</div>
-                <h2 class="section-title">Research & Code</h2>
-            </div>
-            <a href="https://github.com/Al-Scripting" target="_blank" class="btn btn-secondary">
-                <i class="fab fa-github"></i> View GitHub
-            </a>
+      <div class="tl-row">
+        <div class="tl-date">JAN, MAY 2026</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3 class="tl-title">Teaching Assistant, Networking III</h3>
+          <div class="tl-org">Ontario Tech University</div>
+          <p class="tl-desc">Facilitated advanced labs on routing protocols, OSPF / BGP fundamentals, and inter-VLAN routing.</p>
         </div>
+      </div>
 
-        <div class="grid-container">
-            
-            <!-- Featured Project -->
-            <div class="card project-card reveal" style="grid-column: span 12; display: flex; flex-direction: row; gap: 40px; align-items: center;">
-                <div style="flex: 1;">
-                    <i class="fas fa-cubes card-icon"></i>
-                    <h3>PEAK Engine (DRL Research)</h3>
-                    <p style="color: var(--text-muted); margin-top: 15px;">
-                        Developed a custom 2D game engine specifically designed for benchmarking Deep Reinforcement Learning agents. Implemented PPO agents and custom reward functions to evaluate adaptability in changing environments.
-                    </p>
-                </div>
-                <div style="flex: 1; border-left: 1px solid var(--border); padding-left: 30px;">
-                    <p style="color: var(--primary); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px;">Tech Stack</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">Custom Engine</span>
-                        <span class="skill-tag">AI Benchmarking</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gestura -->
-            <div class="card project-card reveal">
-                <i class="fas fa-hand-holding-medical card-icon"></i>
-                <h3>Gestura - Medical AI</h3>
-                <p style="color: var(--text-muted); margin: 15px 0;">
-                    Real-time AI body mapping tool for telehealth. Translates gestures into clinical data using Computer Vision and a 3D Digital Twin. Built for HackHive 2026.
-                </p>
-                <div class="project-meta">
-                    <span style="color: var(--text-muted); font-size: 0.8rem;">FLASK / CV / THREE.JS</span>
-                    <div style="display: flex; gap: 15px;">
-                        <a href="https://github.com/Al-Scripting/HackHive2026" target="_blank" class="highlight" title="Code"><i class="fab fa-github"></i></a>
-                        <a href="https://devpost.com/software/gestura-23czgh" target="_blank" class="highlight" title="Demo"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Local AI Dungeon -->
-            <div class="card project-card reveal">
-                <i class="fas fa-dungeon card-icon"></i>
-                <h3>Local AI Dungeon</h3>
-                <p style="color: var(--text-muted); margin: 15px 0;">
-                    A local, offline interactive fiction engine powered by Ollama and Python, allowing for limitless generated storytelling without API costs.
-                </p>
-                <div class="project-meta">
-                    <span style="color: var(--text-muted); font-size: 0.8rem;">PYTHON / OLLAMA / LLM</span>
-                    <a href="https://github.com/Al-Scripting/Local-AI-Dungeon-Ollama-Python" target="_blank" class="highlight"><i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- ML Algorithms -->
-            <div class="card project-card reveal">
-                <i class="fas fa-brain card-icon"></i>
-                <h3>ML Algorithms</h3>
-                <p style="color: var(--text-muted); margin: 15px 0;">
-                    A comprehensive collection of Machine Learning algorithms implemented from scratch to understand the mathematical foundations of AI.
-                </p>
-                <div class="project-meta">
-                    <span style="color: var(--text-muted); font-size: 0.8rem;">PYTHON / NUMPY / MATH</span>
-                    <a href="https://github.com/Al-Scripting/Mechine-Learning-Alogrithms" target="_blank" class="highlight"><i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Anime Wiki -->
-            <div class="card project-card reveal">
-                <i class="fas fa-book-open card-icon"></i>
-                <h3>Anime Wiki</h3>
-                <p style="color: var(--text-muted); margin: 15px 0;">
-                    A robust documentation and information platform for anime, featuring extensive database relationships and a clean UI.
-                </p>
-                <div class="project-meta">
-                    <span style="color: var(--text-muted); font-size: 0.8rem;">WEB DEV / DATABASE</span>
-                    <a href="https://github.com/Al-Scripting/Anime-Wiki?tab=readme-ov-file" target="_blank" class="highlight"><i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Dynamic GitHub Repo Card -->
-            <div class="card project-card reveal" style="border-style: dashed; grid-column: span 12;">
-                <i class="fab fa-github card-icon"></i>
-                <h3>Latest GitHub Push</h3>
-                <div id="latest-repo" style="margin-top: 10px;">
-                    <p style="color: var(--text-muted);">Fetching...</p>
-                </div>
-            </div>
-
+      <div class="tl-row">
+        <div class="tl-date">SEP 2025, DEC 2025</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3 class="tl-title">Teaching Assistant, Networking II</h3>
+          <div class="tl-org">Ontario Tech University</div>
+          <p class="tl-desc">Facilitated labs on TCP/IP, subnetting, and enterprise firewall configurations. Mentored undergraduates through Cisco Packet Tracer assignments.</p>
         </div>
-    </section>
+      </div>
 
-    <!-- NEW SECTION: Code & Sorcery Lab -->
-    <section id="sorcery">
-        <div class="section-header reveal">
-            <div>
-                <div class="section-subtitle">Research Lab</div>
-                <h2 class="section-title">Code & <span class="highlight">Sorcery</span></h2>
-                <p style="color: var(--text-muted); margin-top: 5px;">Supervised by <strong style="color: #fff;">Dr. Cristiano Politowski</strong></p>
-            </div>
+      <div class="tl-row">
+        <div class="tl-date">JUN, SEP 2025</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3 class="tl-title">Network Research Assistant</h3>
+          <div class="tl-org">Ontario Tech University</div>
+          <p class="tl-desc">Engineered research infrastructure on P4 programmable switches. Developed custom P4 programs for packet analysis, including lab-first implementations of several behaviors.</p>
         </div>
+      </div>
 
-        <div class="lab-grid reveal">
-            <!-- Team Card -->
-            <div class="lab-card">
-                <div class="lab-img-wrapper">
-                    <!-- Replace with your actual image path: image_1e3a26.jpg -->
-                    <img src="assests/team.jpg" alt="Research Team Meeting" class="lab-img">
-                </div>
-                <div class="lab-content">
-                    <h3>The Research Core</h3>
-                    <p>
-                        Post-conference team sync. Collaborating on the intersection of Software Engineering and AI agents for game testing.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Whiteboard/Brainstorming Card -->
-            <div class="lab-card">
-                <div class="lab-img-wrapper">
-                     <!-- Replace with your actual image path: image_1e3a9b.jpg -->
-                    <img src="assests/white.jpg" alt="Whiteboard Brainstorming" class="lab-img">
-                </div>
-                <div class="lab-content">
-                    <h3>Architecting "PEAK"</h3>
-                    <p>
-                        Defining reward functions and state spaces for our custom Deep Reinforcement Learning environment. Mapping out agent behaviors.
-                    </p>
-                </div>
-            </div>
-
-             <!-- Prototype/HackHive Card -->
-             <div class="lab-card">
-                <div class="lab-img-wrapper">
-                     <!-- Replace with your actual image path: image_1e3e9f.jpg -->
-                    <img src="assests/proto.jpg" alt="Injury Painter Prototype" class="lab-img">
-                </div>
-                <div class="lab-content">
-                    <h3>Applied Computer Vision</h3>
-                    <p>
-                        Early prototyping of the 'Injury Painter' module. Translating physical gestures into digital coordinates for telehealth applications.
-                    </p>
-                </div>
-            </div>
+      <div class="tl-row">
+        <div class="tl-date">JUN, SEP 2025</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3 class="tl-title">Cyber Security Analyst</h3>
+          <div class="tl-org">YYC Beeswax Ltd · Remote</div>
+          <p class="tl-desc">Vulnerability assessments on e-commerce infrastructure. Audited 30+ plugins and produced a hardening checklist adopted by the engineering team.</p>
         </div>
-    </section>
+      </div>
 
-    <!-- Updates Section -->
-    <section id="updates">
-        <div class="section-header reveal">
-            <div>
-                <div class="section-subtitle">Social Feed</div>
-                <h2 class="section-title">Latest Updates</h2>
-            </div>
-            <a href="https://linkedin.com/in/al-mohamed-shifan" class="btn btn-secondary">
-                <i class="fab fa-linkedin-in"></i> Connect on LinkedIn
-            </a>
+      <div class="tl-row">
+        <div class="tl-date">SEP 2024, JUN 2025</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3 class="tl-title">Networking Lab Technician</h3>
+          <div class="tl-org">Ontario Tech University</div>
+          <p class="tl-desc">Optimized lab network performance, reducing downtime by roughly 20%. Managed server hardware and connectivity across 20+ lab systems.</p>
         </div>
+      </div>
 
-        <div class="feed-container">
-            <!-- Simulated Feed Item 1: NEW LINKEDIN POST -->
-            <div class="feed-item reveal">
-                <div class="feed-header">
-                    <img src="" class="feed-avatar github-avatar-target" alt="Profile">
-                    <div class="feed-meta">
-                        <h4>Al Muqshith Shifan</h4>
-                        <span>Future MSc Student • 1d ago</span>
-                    </div>
-                    <i class="fab fa-linkedin" style="margin-left: auto; color: #0077b5;"></i>
-                </div>
-                <p class="feed-content">
-                    Great chats, great tech, and a great community at OTU! 🎓🤖
-
-                    Excited to share that I got to demo our HackHive 2026 project, Gestura, today on campus! It was a fantastic opportunity to show how we’re using technology to help patients visualize and communicate pain more effectively.
-
-                    One of the highlights was chatting with fellow innovators like Nahl Farhan. Leaving today feeling energized by the connections made! 🚀
-                </p>
-                <span class="feed-tags">#OTU #TechCommunity #FutureOfTech #AI #Networking</span>
-            </div>
-
-            <!-- Simulated Feed Item 2 -->
-            <div class="feed-item reveal">
-                <div class="feed-header">
-                    <img src="" class="feed-avatar github-avatar-target" alt="Profile">
-                    <div class="feed-meta">
-                        <h4>Al Muqshith Shifan</h4>
-                        <span>Cybersecurity Student • 1w ago</span>
-                    </div>
-                    <i class="fab fa-linkedin" style="margin-left: auto; color: #0077b5;"></i>
-                </div>
-                <p class="feed-content">
-                    Proud to present our capstone project to Dean Professor Carolyn McGregor AM!
-                    
-                    Led the team in strengthening an e-commerce client’s website against card testing attacks. We audited 30+ plugins and designed long-term protection strategies.
-                </p>
-                <span class="feed-tags">#Capstone #CyberSecurity #TeamLead</span>
-            </div>
-
-            <!-- Simulated Feed Item 3 -->
-            <div class="feed-item reveal">
-                <div class="feed-header">
-                    <img src="" class="feed-avatar github-avatar-target" alt="Profile">
-                    <div class="feed-meta">
-                        <h4>Al Muqshith Shifan</h4>
-                        <span>Applied AI Developer • 2w ago</span>
-                    </div>
-                    <i class="fab fa-linkedin" style="margin-left: auto; color: #0077b5;"></i>
-                </div>
-                <p class="feed-content">
-                    Excited to share T.A.R.A. (Therapeutic AI for Reassurance and Assistance).
-
-                    I’ve been developing an intelligent, empathetic AI therapist designed to offer real-time emotional support using natural language processing.
-                </p>
-                <span class="feed-tags">#AIforGood #MentalHealthTech #NLP</span>
-            </div>
+      <div class="tl-row">
+        <div class="tl-date">2022, 2023</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3 class="tl-title">Programming Instructor</h3>
+          <div class="tl-org">Kids Great Minds · Whitby</div>
+          <p class="tl-desc">Taught digital technology through hands-on courses. Mentored students on personal projects.</p>
         </div>
-    </section>
+      </div>
 
-    <!-- Contact -->
-    <section id="contact">
-        <div class="contact-grid reveal">
-            <div class="contact-info">
-                <h3>Let's Collaborate</h3>
-                <p style="color: var(--text-muted); margin-bottom: 30px;">
-                    I'm actively seeking research roles and engineering opportunities.
-                </p>
-                
-                <div class="contact-detail">
-                    <i class="fas fa-envelope"></i>
-                    <span>mohamedshifan@ontariotechu.net</span>
-                </div>
-                <div class="contact-detail">
-                    <i class="fas fa-phone"></i>
-                    <span>+1 647-540-4866</span>
-                </div>
-                <div class="contact-detail">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Oshawa, Ontario, Canada</span>
-                </div>
-            </div>
-            
-            <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px;">
-                <a href="mailto:mohamealmusgi.mohamedshifan@ontariotechu.net" class="btn" style="width: 100%;">
-                    Send Message
-                </a>
-                <div style="display: flex; gap: 15px; width: 100%;">
-                    <a href="https://linkedin.com/in/al-mohamed-shifan" class="btn btn-secondary" style="flex: 1;"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/Al-Scripting" class="btn btn-secondary" style="flex: 1;"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
+      <div class="tl-row">
+        <div class="tl-date">2018</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3 class="tl-title">IT Field Service Staff</h3>
+          <div class="tl-org">TDSB · Scarborough</div>
+          <p class="tl-desc">Asset inventory across 2,000+ laptops. Factory-reset and QA workflows aligned with board compliance standards.</p>
         </div>
-    </section>
+      </div>
 
-    <footer>
-        <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; padding: 40px;">
-            &copy; 2026 Al Muqshith Shifan. <br>
-            Designed with Research & Code.
+    </div>
+  </section>
+
+  <!-- ============== WORK ============== -->
+  <section id="work">
+    <header class="section-head reveal">
+      <div>
+        <div class="section-eyebrow">Selected work / 03</div>
+        <h2 class="section-title">Research <em>&amp;</em> code.</h2>
+      </div>
+      <a href="https://github.com/Al-Scripting" target="_blank" rel="noopener" class="btn"><i class="fab fa-github"></i> All on GitHub</a>
+    </header>
+
+    <div class="proj-grid">
+
+      <article class="proj featured reveal">
+        <div class="proj-body">
+          <div class="proj-num">/ 001 · Featured</div>
+          <h3>PEAK Engine, a DRL <span class="em">benchmark</span> environment</h3>
+          <p>
+            A custom 2D game engine purpose-built for benchmarking Deep Reinforcement Learning agents. Implements PPO agents and modular reward functions to evaluate how policies adapt to environment shifts, built around a clean Python and PyTorch loop.
+          </p>
+          <div class="proj-tags">
+            <span class="tag">Python</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">DRL · PPO</span>
+            <span class="tag">Custom Engine</span>
+          </div>
+          <div class="proj-foot">
+            <span>RESEARCH · IN PROGRESS</span>
+            <div class="icons">
+              <a href="https://github.com/Al-Scripting" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#contact" aria-label="Contact"><i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
         </div>
-    </footer>
+        <div class="proj-img">
+          <img src="assets/white.jpg" alt="PEAK Engine whiteboarding">
+        </div>
+      </article>
 
-    <script>
-        // --- SCROLL REVEAL ---
-        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('active'); }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      <article class="proj half reveal">
+        <div class="proj-num">/ 002</div>
+        <h3>Gestura, medical AI</h3>
+        <p>Real-time AI body-mapping tool for telehealth. Translates patient gestures into structured clinical data using computer vision and a 3D digital twin. Built for HackHive 2026.</p>
+        <div class="proj-tags">
+          <span class="tag">Flask</span><span class="tag">CV</span><span class="tag">Three.js</span>
+        </div>
+        <div class="proj-foot">
+          <span>HACKHIVE 2026</span>
+          <div class="icons">
+            <a href="https://github.com/Al-Scripting/HackHive2026" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+            <a href="https://devpost.com/software/gestura-23czgh" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </article>
 
-        // --- MOBILE MENU ---
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-        }
+      <article class="proj half reveal">
+        <div class="proj-num">/ 003</div>
+        <h3>Local AI Dungeon</h3>
+        <p>An offline interactive-fiction engine powered by Ollama and Python. Limitless generated storytelling, zero API spend, full data privacy.</p>
+        <div class="proj-tags">
+          <span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">LLM</span>
+        </div>
+        <div class="proj-foot">
+          <span>OPEN SOURCE</span>
+          <a href="https://github.com/Al-Scripting/Local-AI-Dungeon-Ollama-Python" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+        </div>
+      </article>
 
-        // --- GITHUB API FETCH ---
-        async function fetchGitHubData() {
-            const username = 'Al-Scripting';
-            
-            // 1. Fetch Profile Data (Avatar)
-            try {
-                const userRes = await fetch(`https://api.github.com/users/${username}`);
-                if(userRes.ok) {
-                    const userData = await userRes.json();
-                    
-                    // Set Profile Image in About Section
-                    const profileImg = document.getElementById('github-profile-img');
-                    if(profileImg.getAttribute('src') === "") {
-                        profileImg.src = userData.avatar_url;
-                    }
-                    
-                    // Set Avatars in Feed
-                    document.querySelectorAll('.github-avatar-target').forEach(img => {
-                        img.src = userData.avatar_url;
-                    });
-                }
-            } catch (e) { console.log('GitHub User fetch failed', e); }
+      <article class="proj third reveal">
+        <div class="proj-num">/ 004</div>
+        <h3>ML Algorithms</h3>
+        <p>A collection of foundational ML algorithms implemented from scratch, built to internalize the math behind modern AI.</p>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">NumPy</span></div>
+        <div class="proj-foot">
+          <span>LEARNING</span>
+          <a href="https://github.com/Al-Scripting/Mechine-Learning-Alogrithms" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+        </div>
+      </article>
 
-            // 2. Fetch Latest Repo
-            try {
-                const repoRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&direction=desc&per_page=1`);
-                if(repoRes.ok) {
-                    const repos = await repoRes.json();
-                    if(repos.length > 0) {
-                        const repo = repos[0];
-                        document.getElementById('latest-repo').innerHTML = `
-                            <h4 style="margin:0;"><a href="${repo.html_url}" target="_blank" style="color:#fff;">${repo.name}</a></h4>
-                            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:5px;">${repo.description || 'No description available.'}</p>
-                            <span style="font-size:0.75rem; color:var(--primary); text-transform:uppercase;">Last updated: ${new Date(repo.updated_at).toLocaleDateString()}</span>
-                        `;
-                    }
-                }
-            } catch (e) { 
-                document.getElementById('latest-repo').innerText = "Check GitHub for updates.";
-            }
-        }
-        fetchGitHubData();
+      <article class="proj third reveal">
+        <div class="proj-num">/ 005</div>
+        <h3>Anime Wiki</h3>
+        <p>Documentation platform with extensive relational database modeling and a clean UI for browsing connected entities.</p>
+        <div class="proj-tags"><span class="tag">Web</span><span class="tag">SQL</span></div>
+        <div class="proj-foot">
+          <span>WEB · DB</span>
+          <a href="https://github.com/Al-Scripting/Anime-Wiki?tab=readme-ov-file" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+        </div>
+      </article>
 
-        // --- CANVAS PARTICLES ---
-        const canvas = document.getElementById('hero-canvas');
-        const ctx = canvas.getContext('2d');
-        let particlesArray;
+      <article class="proj third reveal" id="latest-repo-card">
+        <div class="proj-num">/ 006 · Live</div>
+        <div id="latest-repo">
+          <h3>Latest GitHub Push</h3>
+          <p>Fetching from <code>@Al-Scripting</code>&hellip;</p>
+        </div>
+      </article>
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    </div>
+  </section>
 
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            init();
-        });
+  <!-- ============== CODE & SORCERY ============== -->
+  <section id="sorcery">
+    <header class="section-head sorcery-head reveal">
+      <div>
+        <div class="section-eyebrow">Research lab / 04</div>
+        <h2 class="section-title">Code &amp; <em>sorcery</em>.</h2>
+        <div class="sup">
+          Supervised by <strong>Dr. Cristiano Politowski</strong> · Ontario Tech<br>
+          Lab on GitHub: <a href="https://github.com/Code-SorceryLab" target="_blank" rel="noopener">github.com/Code-SorceryLab</a><br>
+          <span style="color:var(--ink-4);">Status:</span> <span id="lab-source-indicator">loading&hellip;</span>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button id="toggle-sorc-src" class="btn btn-sm add-sorc-btn"><i class="fas fa-arrows-rotate"></i> GitHub / Manual</button>
+        <button id="add-sorc-btn" class="btn btn-sm add-sorc-btn"><i class="fas fa-plus"></i> Add</button>
+        <a href="https://github.com/Code-SorceryLab" target="_blank" rel="noopener" class="btn"><i class="fab fa-github"></i> Visit the lab</a>
+      </div>
+    </header>
 
-        class Particle {
-            constructor(x, y, size) {
-                this.x = x; this.y = y; this.size = size;
-                this.baseX = this.x; this.baseY = this.y;
-                this.speedX = (Math.random() * 1) - 0.5;
-                this.speedY = (Math.random() * 1) - 0.5;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = '#FF6B6B';
-                ctx.fill();
-            }
-            update() {
-                this.x += this.speedX; this.y += this.speedY;
-                if(this.x > canvas.width || this.x < 0) this.speedX *= -1;
-                if(this.y > canvas.height || this.y < 0) this.speedY *= -1;
-                this.draw();
-            }
-        }
+    <div class="sorcery-grid reveal" id="sorcery-grid"></div>
+  </section>
 
-        function init() {
-            particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 20000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 2) + 1;
-                let x = Math.random() * canvas.width;
-                let y = Math.random() * canvas.height;
-                particlesArray.push(new Particle(x, y, size));
-            }
-        }
+  <!-- ============== FEED ============== -->
+  <section id="updates">
+    <header class="feed-head reveal">
+      <div>
+        <div class="section-eyebrow">Social feed / 05</div>
+        <h2 class="section-title">Latest <em>updates</em>.</h2>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button id="add-post-btn" class="btn btn-sm add-post-btn"><i class="fas fa-plus"></i> New post</button>
+        <a href="https://linkedin.com/in/al-mohamed-shifan" target="_blank" rel="noopener" class="btn"><i class="fab fa-linkedin-in"></i> Follow on LinkedIn</a>
+      </div>
+    </header>
 
-        function connect() {
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
-                    if (distance < (canvas.width/9) * (canvas.height/9)) {
-                        let opacity = 1 - (distance / 20000);
-                        ctx.strokeStyle = `rgba(255, 107, 107, ${opacity * 0.4})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
+    <div class="feed-grid" id="feed-grid"></div>
+  </section>
 
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) { particlesArray[i].update(); }
-            connect();
-        }
+  <!-- ============== CONTACT ============== -->
+  <section id="contact">
+    <header class="section-head reveal">
+      <div>
+        <div class="section-eyebrow">Contact / 06</div>
+        <h2 class="section-title">Let&rsquo;s <em>collaborate</em>.</h2>
+      </div>
+      <div class="section-meta">Response within 24h</div>
+    </header>
 
-        init();
-        animate();
-    </script>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <h3>Get in touch</h3>
+        <p>
+          Actively seeking research collaborations and engineering opportunities, especially in programmable networks, applied ML, and security tooling.
+        </p>
+        <ul class="contact-list">
+          <li><i class="fas fa-envelope"></i> almuqshith.shifan@gmail.com</li>
+          <li><i class="fas fa-phone"></i> +1 647-540-4866</li>
+          <li><i class="fas fa-map-marker-alt"></i> Oshawa, Ontario, Canada</li>
+          <li><i class="fas fa-graduation-cap"></i> MSc, Computer Science</li>
+        </ul>
+      </div>
+      <div class="contact-card reveal" style="display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <h3>Reach out</h3>
+          <p style="margin-top:12px;">Pick the channel that suits you. Email for proposals, LinkedIn for chats, GitHub for code.</p>
+        </div>
+        <div>
+          <a href="mailto:almuqshith.shifan@gmail.com" class="btn btn-primary" style="width:100%; justify-content:center;">Send an email</a>
+          <div class="socials">
+            <a href="https://linkedin.com/in/al-mohamed-shifan" target="_blank" rel="noopener" class="btn" style="flex:1;"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="https://github.com/Al-Scripting" target="_blank" rel="noopener" class="btn" style="flex:1;"><i class="fab fa-github"></i> GitHub</a>
+            <a href="assets/Al-Shifan-Resume-2026.pdf" download class="btn" style="flex:1;"><i class="fas fa-arrow-down"></i> CV</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2026 Al Muqshith Shifan · Built with research and code
+</footer>
+
+<a href="#" id="login-link" class="login-link">/ Admin</a>
+
+<div class="admin-bar">
+  <span class="status">ADMIN MODE</span>
+  <button id="admin-change-pw" class="btn btn-sm">Change password</button>
+  <button id="admin-logout" class="btn btn-sm">Sign out</button>
+</div>
+
+<div class="admin-modal" id="login-modal">
+  <div class="admin-box">
+    <button class="admin-close" id="login-close" aria-label="Close"><i class="fas fa-times"></i></button>
+    <h3>Admin sign-in</h3>
+    <p class="sub">Enter your password to edit the feed and lab.</p>
+    <div class="admin-field">
+      <label>Password</label>
+      <input id="login-pw" type="password" autocomplete="current-password" placeholder="••••••••">
+    </div>
+    <div class="admin-err" id="login-err">Incorrect password.</div>
+    <div style="display:flex; gap:10px; margin-top:8px;">
+      <button id="login-submit" class="btn btn-primary" style="flex:1;">Sign in</button>
+    </div>
+    <p style="font-family:var(--mono); font-size:10.5px; color:var(--ink-3); margin-top:18px; letter-spacing:0.04em;">
+      First-time default: <code>password</code>. Once signed in, use <strong>Change password</strong> in the admin bar.
+    </p>
+  </div>
+</div>
+
+<div class="admin-modal" id="pw-modal">
+  <div class="admin-box">
+    <button class="admin-close" id="pw-close" aria-label="Close"><i class="fas fa-times"></i></button>
+    <h3>Change password</h3>
+    <p class="sub">Set a new admin password. Stored as a SHA-256 hash on this device.</p>
+    <div class="admin-field">
+      <label>Current password</label>
+      <input id="pw-current" type="password" autocomplete="current-password" placeholder="••••••••">
+    </div>
+    <div class="admin-field">
+      <label>New password</label>
+      <input id="pw-new" type="password" autocomplete="new-password" placeholder="At least 4 characters">
+    </div>
+    <div class="admin-field">
+      <label>Confirm new password</label>
+      <input id="pw-confirm" type="password" autocomplete="new-password" placeholder="Repeat new password">
+    </div>
+    <div class="admin-err" id="pw-err"></div>
+    <div class="admin-ok" id="pw-ok"></div>
+    <div style="display:flex; gap:10px; margin-top:8px;">
+      <button id="pw-submit" class="btn btn-primary" style="flex:1;">Update password</button>
+    </div>
+  </div>
+</div>
+
+<div class="admin-modal" id="edit-modal">
+  <div class="admin-box" style="max-width: 520px;">
+    <button class="admin-close" id="edit-close" aria-label="Close"><i class="fas fa-times"></i></button>
+    <h3 id="edit-title">Edit</h3>
+    <p class="sub">Changes persist on this device. Connect a backend to sync across devices.</p>
+    <div id="edit-fields"></div>
+    <div style="display:flex; gap:10px; margin-top:8px;">
+      <button id="edit-save" class="btn btn-primary" style="flex:1;">Save</button>
+      <button id="edit-cancel" class="btn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>

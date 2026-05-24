@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  
+  <rect x="1.5" y="1.5" width="61" height="61" rx="14" stroke="currentColor" stroke-width="1.2" opacity="0.35"></rect>
+  
+  <path d="M14 50 L26 14 L38 50" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="square"></path>
+  <path d="M19 38 L33 38" stroke="currentColor" stroke-width="3" stroke-linecap="square"></path>
+  
+  <path d="M40 14 L40 50 L54 50" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="square"></path>
+  
+  <circle cx="40" cy="14" r="2.5" fill="currentColor"></circle>
+  <circle cx="54" cy="50" r="2.5" fill="currentColor"></circle>
+</svg>
