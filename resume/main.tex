@@ -157,10 +157,9 @@
       \resumeProjectHeading
           {\textbf{RIDGE -- Reactive Inter-persona Dynamic Goal Engine} $|$ \emph{Python, PyTorch, Crafter, PPO}}{2026}
           \resumeItemListStart
-            \resumeItem{Second author on a five-author deep RL architecture for state-conditioned reward blending across four persona objectives (Explorer, Survivor, Craftsman, Warrior) on Crafter. \textbf{Accepted at IEEE Conference on Games (CoG) 2026}, Madrid, Spain. GitHub: \href{https://github.com/Code-SorceryLab/RIDGE}{Code-SorceryLab/RIDGE}.}
-            \resumeItem{Designed a \textbf{multi-head PPO critic} (shared CNN encoder, four persona-specific value heads) trained jointly with smooth sigmoid weight blending over a 6-dim game-state vector to address PPO non-stationarity under dynamic reward weighting.}
-            \resumeItem{Built the full training pipeline in PyTorch with TensorBoard logging and YAML configs; ran the 1M-step Crafter budget across four fixed-persona baselines and a five-point sharpness ablation, concentrating seeds ($n\!=\!3$) on the central conditions.}
-            \resumeItem{Result: a single agent acquires both branches of Crafter's wood-tier crafting/combat split (0.45 pickaxe, 0.51 sword) that no fixed-persona baseline solves jointly, with value loss held at $\approx$0.04 --- matching the most stable specialist. Accepted as a work-in-progress paper; full multi-seed validation planned.}
+            \resumeItem{Second author (of five) on a deep RL architecture for state-conditioned reward blending across four personas (Explorer, Survivor, Craftsman, Warrior) on Crafter. \textbf{Accepted at IEEE Conference on Games (CoG) 2026}, Madrid. GitHub: \href{https://github.com/Code-SorceryLab/RIDGE}{Code-SorceryLab/RIDGE}.}
+            \resumeItem{Built a \textbf{multi-head PPO critic} --- one value head per persona, each on its own stationary reward --- with a blender emitting softmax-normalized sigmoid weights from game state, addressing the switching-stability dilemma that breaks PPO under non-stationary rewards.}
+            \resumeItem{A single agent acquires both branches of the wood-tier crafting/combat split (0.45 pickaxe, 0.51 sword) that no fixed-persona baseline solves jointly, with value loss steady at $\approx$0.04. PyTorch pipeline, 1M-step Crafter budget.}
           \resumeItemListEnd
 
       \resumeProjectHeading
