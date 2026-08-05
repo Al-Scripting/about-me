@@ -1,0 +1,235 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Al Muqshith Shifan - MSc Resume
+% General / research-track resume - the full record.
+% For a targeted application, tailor a copy rather than trimming this one.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letterpaper,10pt]{article}
+
+%--------------------------------------------------
+%  PACKAGES
+%--------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault]{roboto}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+
+%--------------------------------------------------
+%  COLORS & SETTINGS
+%--------------------------------------------------
+\definecolor{primaryColor}{HTML}{B00000}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% MARGINS (Tightened for 1 Page)
+\addtolength{\oddsidemargin}{-0.65in}
+\addtolength{\evensidemargin}{-0.65in}
+\addtolength{\textwidth}{1.3in}
+\addtolength{\topmargin}{-0.75in}
+\addtolength{\textheight}{1.55in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting (compromise spacing - avoids rule/content overlap)
+\titleformat{\section}{
+  \vspace{-9pt}\color{primaryColor}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{primaryColor}\titlerule \vspace{-3pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.98\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%--------------------------------------------------
+%  RESUME CONTENT
+%--------------------------------------------------
+\begin{document}
+
+%----------HEADER----------
+\begin{center}
+    {\Huge \bfseries \color{primaryColor} Al Muqshith Shifan} \\ \vspace{2pt}
+    \small Applied ML / RL Developer \textbullet \ Systems Engineering \textbullet \ Research Assistant \\ \vspace{2pt}
+
+    \small
+    \faMobile \ +1 647-540-4866 \quad
+    \faEnvelope \ \href{mailto:mohamedshifan@ontariotechu.net}{mohamealmusqi.mohamedshifan@ontariotechu.net} \quad
+    \faLinkedin \ \href{https://www.linkedin.com/in/al-mohamed-shifan-5266b924b/}{linkedin.com/in/al-mohamed-shifan} \quad
+    \faGithub \ \href{https://github.com/Al-Scripting}{github.com/Al-Scripting}
+\end{center}
+
+%----------SUMMARY----------
+\vspace{-8pt}
+\section{Professional Summary}
+\small MSc Computer Science candidate specializing in \textbf{Software Design for AI/RL} with hands-on experience building DRL training infrastructure (multi-head PPO critics, custom PyTorch environments, persona-based reward systems) and programmable-network research systems on \textbf{Intel Tofino P4} silicon. CCNA-certified; comfortable in low-level Linux/Unix stacks. Looking to contribute to GPU-native ML tooling.
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Ontario Tech University}{Oshawa, ON}
+      {MSc in Computer Science -- Software Design (AI/RL Focus)}{May 2026 -- Present}
+    \resumeSubheading
+      {Ontario Tech University}{Oshawa, ON}
+      {Bachelor of IT -- Networking \& Cybersecurity (Dean's List 2026)}{Graduated Jun 2026}
+  \resumeSubHeadingListEnd
+
+%-----------PUBLICATIONS-----------
+\section{Publications}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{A. M. Shifan} and K. C. Chua, ``RIDGE: State-Conditioned Reward Blending for Behavioral Coverage in Deep RL Game Agents,'' \emph{IEEE Conference on Games (CoG)}, Madrid, Spain, Sept. 2026. \textbf{Accepted.}
+    }}
+ \end{itemize}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, C++, SQL, Bash, JavaScript (Node.js/Three.js), HTML/CSS, P4} \\
+     \textbf{ML / RL}{: PyTorch, Stable-Baselines3, Gymnasium, PPO, Crafter, TensorBoard, Hydra, NumPy, Pandas, Scikit-Learn} \\
+     \textbf{Research Methods}{: Experimental design, cross-validated tuning, permutation testing, bootstrap CIs, ablation studies, systematic mapping studies} \\
+     \textbf{AI Systems \& Web}{: Gemini API, Ollama, LLM prompt engineering, Computer Vision, Flask, REST APIs, Docker, Git} \\
+     \textbf{Networking \& Sec}{: Intel Tofino P4, Wireshark, Nmap, Cisco IOS, Linux (Kali/RedHat), Vulnerability Assessment}
+    }}
+ \end{itemize}
+
+%-----------EXPERIENCE-----------
+\section{Work Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Graduate Researcher -- SEGAL Lab}{May 2026 -- Present}
+      {Ontario Tech University}{Oshawa, ON}
+      \resumeItemListStart
+        \resumeItem{Research on deep RL for game agents and emotion-grounded memory for LLM-driven NPCs; first-author work accepted at \textbf{IEEE CoG 2026}.}
+        \resumeItem{Own the full research stack end to end: PyTorch training infrastructure, reproducible experiment sweeps, evaluation harnesses with cross-validated tuning and permutation-based significance testing, and the papers themselves.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Teaching Assistant -- Networking I \& Advanced Networking II}{Sep 2025 -- Present}
+      {Ontario Tech University}{Oshawa, ON}
+      \resumeItemListStart
+        \resumeItem{Led weekly lab sessions for $\sim$120 undergraduates across two networking courses, guiding hands-on Cisco IOS configuration of routers, switches, and stateful firewalls; mentored students through TCP/IP, VLSM subnetting, and routing protocol debugging in office hours.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Network Administrator -- Summer Research Assistant}{Jun 2025 -- Sep 2025}
+      {Ontario Tech University}{Oshawa, ON}
+      \resumeItemListStart
+        \resumeItem{Engineered programmable-network research infrastructure on \textbf{Intel Tofino silicon P4 switches}, supporting faculty research on in-network telemetry and traffic analysis.}
+        \resumeItem{Authored custom P4 data-plane programs extracting per-flow header and timing telemetry at line rate, delivering the lab's first working Tofino-deployed implementation.}
+        \resumeItem{Diagnosed and patched recurring Linux kernel and driver issues across P4 control-plane servers, reducing reported system crashes by $\sim$30\% over a 3-month window.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Cyber Security Analyst}{Jun 2025 -- Sep 2025}
+      {YYC Beeswax Ltd}{Remote}
+      \resumeItemListStart
+        \resumeItem{Performed vulnerability assessments on a WooCommerce + Stripe e-commerce stack, identifying 15 exploitable issues across customer-facing endpoints with prioritized remediation steps.}
+        \resumeItem{Audited 30+ WordPress/WooCommerce plugins against CVE databases and authored a hardening checklist adopted as the engineering team's pre-deploy review gate.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Networking Lab Technician}{Sep 2024 -- Jun 2025}
+      {Ontario Tech University}{Oshawa, ON}
+      \resumeItemListStart
+        \resumeItem{Cut lab network downtime by $\sim$20\% for 50+ daily users by isolating switching bottlenecks and reconfiguring VLAN trunking; maintained 20+ workstations and DHCP/DNS/NTP services, resolving Tier-2 tickets.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {\textbf{RIDGE -- Reactive Inter-persona Dynamic Goal Engine} $|$ \emph{Python, PyTorch, Crafter, PPO}}{2026}
+          \resumeItemListStart
+            \resumeItem{Co-developed (with faculty co-author) a deep RL architecture for state-conditioned reward blending across four persona objectives (Explorer, Survivor, Craftsman, Warrior) on Crafter. \textbf{Accepted at IEEE Conference on Games (CoG) 2026}, Madrid, Spain. GitHub: \href{https://github.com/Code-SorceryLab/RIDGE}{Code-SorceryLab/RIDGE}.}
+            \resumeItem{Designed a \textbf{multi-head PPO critic} (shared CNN encoder, four persona-specific value heads) trained jointly with smooth sigmoid weight blending over a 6-dim game-state vector, normalized to a simplex, to address PPO non-stationarity under dynamic reward weighting.}
+            \resumeItem{Built full training pipeline in PyTorch with TensorBoard logging, YAML configs, and a 4-condition $\times$ 5-seed $\times$ 1M-step experimental sweep against fixed-persona baselines.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Emotional Memory in LLM-Driven NPCs} $|$ \emph{Systematic mapping study; in preparation, IEEE ToG}}{2026}
+          \resumeItemListStart
+            \resumeItem{Sole-reviewer systematic mapping study of emotional memory in LLM-driven game characters: screened 66 records against pre-registered inclusion criteria, coded the 30 included studies across six dimensions, and executed formally verified search strings against Scopus, IEEE Xplore, and the ACM Digital Library.}
+            \resumeItem{Central finding is a \textbf{regression, not a gap}: pre-LLM architectures (FLAME, FAtiMA, Prom Week) coupled emotion to memory, but the field-standard memory stream dropped the emotion term and only 3 of 30 systems restored it.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{EMBR -- Emotional Memory for Believable Roleplay} $|$ \emph{Python, SQLite, BM25 + embeddings}}{2026}
+          \resumeItemListStart
+            \resumeItem{Middleware giving NPCs persistent, emotion-grounded memory: hybrid BM25 and embedding retrieval, an affect-appraisal layer over a valence--arousal circumplex, and SQLite persistence behind a dependency-light core.}
+            \resumeItem{Built the evaluation harness alongside it --- leave-one-query-out cross-validated weight tuning applied identically to every baseline, exact permutation tests with Holm-Bonferroni correction, a 20-probe adversarial memory-injection corpus, and 115 passing tests.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{TAST -- Trait Activation Steering} $|$ \emph{Python, PyTorch, LLM activation engineering}}{2025--2026}
+          \resumeItemListStart
+            \resumeItem{Per-trait activation steering for looped LLM-driven characters: steering personality expression through internal activations rather than prompt text, so persona holds across long conversations instead of drifting.}
+            \resumeItem{Under revision for resubmission following AIIDE 2026 review; currently adding a prompting baseline and an audit pass over the steering-hook measurement pipeline.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{PEAK -- Platformer Engine for RL Benchmarking} $|$ \emph{Python, Gymnasium, Stable-Baselines3, Hydra}}{2025--2026}
+          \resumeItemListStart
+            \resumeItem{Co-developed a deterministic high-performance DRL benchmarking engine with modular persona-based reward shaping, evaluating PPO agents across 11 custom 2D platformer stages with reproducible SMB1-style physics. GitHub: \href{https://github.com/Code-SorceryLab/PEAK-DRL-Tool}{Code-SorceryLab/PEAK-DRL-Tool}.}
+            \resumeItem{Built a \textbf{Dual Spatial Hashing} collision system (separate static/dynamic grids) achieving O(C) per-query cost and sustained \textbf{1000+ environment steps per second}, making 10M-step training runs practical on single-machine hardware.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Gestura -- Gesture-Based Medical Screening} $|$ \emph{Python, Flask, CV, Gemini API, Three.js}}{Jan 2026}
+          \resumeItemListStart
+            \resumeItem{Built at \textbf{HackHive 2026} a non-verbal patient intake tool: Flask backend streaming real-time hand-tracking state to a Three.js 3D ``digital twin'' frontend, with \textbf{Google Gemini} converting gestures into SOAP-style clinician summaries.}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+%-----------CERTIFICATIONS (compact footer)-----------
+\vspace{-6pt}
+\begin{center}
+\small \textbf{Certifications:} Cisco Certified Network Associate (CCNA) 2024--2027 \quad \textbullet \quad TryHackMe 200+ Hours (2023--Present) \quad \textbullet \quad Dean's List 2024-2026
+\end{center}
+
+\end{document}
