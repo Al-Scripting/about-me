@@ -33,13 +33,20 @@ directly, so edits here are not public until it is regenerated.
 - **Added a Publications section.** An accepted IEEE paper was previously only a bullet under
   Projects, which undersells it on a PhD-track resume.
 
-## Open question — the header email does not match itself
+## Resolved — the header email was broken
 
-`main.tex` line 95 links `mailto:mohamedshifan@ontariotechu.net` but displays
-`mohamealmusqi.mohamedshifan@ontariotechu.net`. Two different addresses in one field: a recruiter
-who clicks gets one, a recruiter who copies the text gets the other, and if the `mailto` is not a
-real alias the click silently fails. Not changed here because it is not obvious which is
-authoritative — AL to confirm, then make both sides identical.
+The header used to link `mailto:mohamedshifan@ontariotechu.net` while displaying
+`mohamealmusqi.mohamedshifan@ontariotechu.net`. AL confirmed on 2026-08-05 that he has exactly two
+addresses and the linked one was **neither** — every recruiter who clicked it reached nothing.
+
+Now split by audience, with link and display text identical in both:
+
+| File | Address | Why |
+|---|---|---|
+| `main.tex` | `almuqshith.shifan@gmail.com` | Industry-facing. Survives graduation; the `.net` address will not. |
+| `main_full.tex` | `mohamealmusqi.mohamedshifan@ontariotechu.net` | Research-facing. The institutional address signals the affiliation. |
+
+Swap either if you prefer one address everywhere — just keep `mailto:` and the visible text the same.
 
 ## Still to do
 
