@@ -113,14 +113,6 @@
       {Bachelor of IT -- Networking \& Cybersecurity (Dean's List 2026)}{Graduated Jun 2026}
   \resumeSubHeadingListEnd
 
-%-----------PUBLICATIONS-----------
-\section{Publications}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{A. M. Shifan} and K. C. Chua, ``RIDGE: State-Conditioned Reward Blending for Behavioral Coverage in Deep RL Game Agents,'' \emph{IEEE Conference on Games (CoG)}, Madrid, Spain, Sept. 2026. \textbf{Accepted.}
-    }}
- \end{itemize}
-
 %-----------TECHNICAL SKILLS-----------
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
@@ -177,7 +169,7 @@
           {\textbf{RIDGE -- Reactive Inter-persona Dynamic Goal Engine} $|$ \emph{Python, PyTorch, Crafter, PPO}}{2026}
           \resumeItemListStart
             \resumeItem{Co-developed (with faculty co-author) a deep RL architecture for state-conditioned reward blending across four persona objectives (Explorer, Survivor, Craftsman, Warrior) on Crafter. \textbf{Accepted at IEEE Conference on Games (CoG) 2026}, Madrid, Spain. GitHub: \href{https://github.com/Code-SorceryLab/RIDGE}{Code-SorceryLab/RIDGE}.}
-            \resumeItem{Designed a \textbf{multi-head PPO critic} (shared CNN encoder, four persona-specific value heads) trained jointly with smooth sigmoid weight blending over a 6-dim game-state vector, normalized to a simplex, to address PPO non-stationarity under dynamic reward weighting.}
+            \resumeItem{Designed a \textbf{multi-head PPO critic} (shared CNN encoder, four persona-specific value heads) trained jointly with smooth sigmoid weight blending over a 6-dim game-state vector to address PPO non-stationarity under dynamic reward weighting.}
             \resumeItem{Built full training pipeline in PyTorch with TensorBoard logging, YAML configs, and a 4-condition $\times$ 5-seed $\times$ 1M-step experimental sweep against fixed-persona baselines.}
           \resumeItemListEnd
 
