@@ -159,7 +159,8 @@
           \resumeItemListStart
             \resumeItem{Second author on a five-author deep RL architecture for state-conditioned reward blending across four persona objectives (Explorer, Survivor, Craftsman, Warrior) on Crafter. \textbf{Accepted at IEEE Conference on Games (CoG) 2026}, Madrid, Spain. GitHub: \href{https://github.com/Code-SorceryLab/RIDGE}{Code-SorceryLab/RIDGE}.}
             \resumeItem{Designed a \textbf{multi-head PPO critic} (shared CNN encoder, four persona-specific value heads) trained jointly with smooth sigmoid weight blending over a 6-dim game-state vector to address PPO non-stationarity under dynamic reward weighting.}
-            \resumeItem{Built full training pipeline in PyTorch with TensorBoard logging, YAML configs, and a 4-condition $\times$ 5-seed $\times$ 1M-step experimental sweep against fixed-persona baselines.}
+            \resumeItem{Built the full training pipeline in PyTorch with TensorBoard logging and YAML configs; ran the 1M-step Crafter budget across four fixed-persona baselines and a five-point sharpness ablation, concentrating seeds ($n\!=\!3$) on the central conditions.}
+            \resumeItem{Result: a single agent acquires both branches of Crafter's wood-tier crafting/combat split (0.45 pickaxe, 0.51 sword) that no fixed-persona baseline solves jointly, with value loss held at $\approx$0.04 --- matching the most stable specialist. Accepted as a work-in-progress paper; full multi-seed validation planned.}
           \resumeItemListEnd
 
       \resumeProjectHeading
