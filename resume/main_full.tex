@@ -135,7 +135,7 @@
 
     \resumeSubheading
       {Graduate Researcher -- Code\&SorceryLab}{2025 -- Present}
-      {Independent research collective}{Oshawa, ON}
+      {Research collective (with SEGAL Lab collaborators)}{Oshawa, ON}
       \resumeItemListStart
         \resumeItem{Maintain the group's public research codebase --- RIDGE, PEAK, RANGE, Procedural-Graph-Tools and the Steam patch-notes dataset --- with reproducible training pipelines, pinned configs and documented experiment protocols.}
         \resumeItem{Set the engineering standards the research runs on: deterministic seeding, versioned experiment sweeps, and evaluation harnesses written before results are claimed.}
@@ -182,8 +182,9 @@
           {\textbf{RIDGE -- Reactive Inter-persona Dynamic Goal Engine} $|$ \emph{Python, PyTorch, Crafter, PPO}}{2026}
           \resumeItemListStart
             \resumeItem{Second author on a five-author deep RL architecture for state-conditioned reward blending across four persona objectives (Explorer, Survivor, Craftsman, Warrior) on Crafter. \textbf{Accepted at IEEE Conference on Games (CoG) 2026}, Madrid, Spain. GitHub: \href{https://github.com/Code-SorceryLab/RIDGE}{Code-SorceryLab/RIDGE}.}
-            \resumeItem{Designed a \textbf{multi-head PPO critic} (shared CNN encoder, four persona-specific value heads) trained jointly with smooth sigmoid weight blending over a 6-dim game-state vector, normalized to a simplex, to address PPO non-stationarity under dynamic reward weighting.}
-            \resumeItem{Built full training pipeline in PyTorch with TensorBoard logging, YAML configs, and a 4-condition $\times$ 5-seed $\times$ 1M-step experimental sweep against fixed-persona baselines.}
+            \resumeItem{Designed a \textbf{multi-head PPO critic} --- one value head per persona on a shared encoder, each trained on its own stationary reward --- paired with a state-conditioned blender producing softmax-normalized sigmoid weights, addressing the switching-stability dilemma that breaks PPO under non-stationary rewards.}
+            \resumeItem{Result: a single agent acquires both branches of Crafter's wood-tier crafting/combat split (0.45 pickaxe, 0.51 sword) that no fixed-persona baseline solves jointly, with value loss held at $\approx$0.04 --- matching the most stable specialist. Accepted as a work-in-progress paper; full multi-seed validation planned.}
+            \resumeItem{Built the full training pipeline in PyTorch with TensorBoard logging and YAML configs; ran the 1M-step Crafter budget across four fixed-persona baselines and a five-point sharpness ablation, concentrating seeds ($n\!=\!3$) on the central conditions.}
           \resumeItemListEnd
 
       \resumeProjectHeading
