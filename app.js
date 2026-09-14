@@ -1,111 +1,86 @@
 /* =========================================================
-   AL SHIFAN — Portfolio app logic
-   - Scroll reveal + timeline in-view
-   - GitHub API: profile avatar, latest personal repo,
-     and lab repos from Code-SorceryLab organization
-   - LinkedIn feed: admin-curated, persisted to localStorage
-   - Admin mode: client-side password gate, in-app password
-     change, edit/add/remove LinkedIn posts and Code & Sorcery
-     cards inline
+   AL SHIFAN · Portfolio app logic
+   - Scroll reveal + scroll-spy nav + mobile menu
+   - GitHub API: profile avatar (feed), latest pushed repo
+   - README renderer (libs loaded on first open): raw README
+     -> marked -> DOMPurify -> highlight.js; images/links rebased
+     to the repo's raw.githubusercontent.com / github.com HEAD roots
+   - LinkedIn feed: curated posts, admin-editable, localStorage
+   - Admin mode: SHA-256 password gate (client-side)
    ========================================================= */
 
 // ----- CONFIG -----
 const CONFIG = {
   githubUser: 'Al-Scripting',
-  githubLabOrg: 'Code-SorceryLab',
   // SHA-256 of the admin password. Default = sha256("password").
-  // Generate a new one in DevTools:  crypto.subtle.digest('SHA-256', new TextEncoder().encode('YOUR_PW'))
   defaultHash: '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8',
 };
 
 // ----- STORAGE KEYS -----
 const STORE_KEYS = {
   posts: 'al.feed.posts',
-  sorcery: 'al.sorcery.items',
-  sorceryOverride: 'al.sorcery.useOverride', // when true, show admin-edited list instead of GitHub
   hash: 'al.adminHash',
   session: 'al.session',
 };
 
-// ----- DEFAULTS -----
+// ----- DEFAULT POSTS (research-facing, recruiter-friendly) -----
 const DEFAULT_POSTS = [
+  {
+    id: 'p0',
+    author: 'Al Muqshith Shifan',
+    role: 'Code & Sorcery Lab',
+    time: 'Sep 2026',
+    content: "Late night in the lab. We make a last-minute video for our CHI 2027 submission. Four people, one laptop, one deadline.",
+    image: 'assets/lab-chi27.webp',
+    imageAlt: 'Four members of Code & Sorcery Lab in the lab at night, one at a laptop with the video script open',
+    link: 'https://youtu.be/xPYE_X-sH0Q',
+    linkLabel: 'Watch the Video',
+    tags: '#CHI2027 #CodeAndSorceryLab #GameAI #Research',
+  },
   {
     id: 'p1',
     author: 'Al Muqshith Shifan',
-    role: 'PEAK · Research',
-    time: '2w ago',
-    content: "Our paper on PEAK has been submitted to IEEE CoG 2026 and is currently pending review. 🚀\n\nPEAK is a lightweight 2D platformer engine with a fully integrated DRL experimentation environment. What we built:\n\n🎮 A custom visual level editor from scratch\n🧠 Custom reward personas that shape how agents learn\n🔁 A branched CNN and MLP policy architecture we designed\n🐛 Real-time debug overlays so you can see what the agent perceives\n⚔️ A boss battle stage inspired by Mega Man\n\nThe evaluation ran 8 agent configurations across two Super Mario Bros levels, with win rates ranging from 0% to 41.6%, by changing only reward design, architecture, or training budget — zero changes to the engine itself.\n\nMassive thanks to Kevin Christopher Chua and Cristiano Politowski.",
-    tags: '#DeepReinforcementLearning #GameAI #IEEE #CoG2026 #PEAK #MachineLearning',
+    role: 'MSc CS · First author',
+    time: 'Summer 2026',
+    content: "I presented RIDGE at IEEE CoG 2026 in Madrid as a short paper. I am the main author. 🎓\n\nRIDGE (Reactive Inter-persona Dynamic Goal Engine) trains one PPO agent to blend four persona rewards: Explorer, Survivor, Craftsman, and Warrior. Smooth sigmoid functions over the game state set the blend. One agent changes its play style in one episode. There is no need to train one agent for each persona.\n\nHighlights:\n• A multi-head critic keeps each value head on a stable reward\n• RIDGE is the only condition that reaches both wood-tier crafting branches on Crafter\n• Value loss stays at about 0.04 across 1M steps\n\nWith Kevin Christopher Chua, Ali Neshati, Loutfouz Zaman, and Cristiano Politowski. Code and camera-ready paper: Code-SorceryLab/RIDGE",
+    tags: '#IEEE #CoG2026 #DeepRL #PPO #GameAI #MachineLearning',
   },
   {
     id: 'p2',
     author: 'Al Muqshith Shifan',
-    role: 'Re;coders · CTF Team',
-    time: '1mo ago',
-    content: "TAC Ops 2026 — proud to say Re;coders finished 2nd place. 🥈\n\nWe led the scoreboard through the entire first day and only fell short by a small margin in the end. The challenges this year were genuinely some of the hardest I've faced — every one demanded full focus and creativity.\n\nBig shoutout to my teammates Arshia Mortazavinezhad, Yousif Iskander, and Kevin Christopher Chua. The best teammates I could've had by my side. 2nd place isn't where Re;coders wants to stay, but we'll take it, smile about it, and come back stronger next year.",
-    tags: '#CTF #Cybersecurity #TACOps #InfoSec',
+    role: 'Systematic Mapping Study',
+    time: 'In progress',
+    content: "I am deep in a systematic mapping study: Emotional Memory in LLM-Driven Non-Player Characters.\n\nThe result so far: the standard memory stream ranks the past by recency, importance, and relevance. It does not use emotion. Psychology says that emotion is one of the forces that decides what we keep and what comes back.\n\nOf 30 primary studies (from 66 screened): fewer than half link emotion to memory, only 9 base that link on a psychological method, and only 3 do both. None evaluates inside a commercial game. None reports latency or token cost.\n\nThe map shows where the next build must go.",
+    tags: '#LLM #NPC #AffectiveComputing #SystematicReview #GameAI',
   },
   {
     id: 'p3',
     author: 'Al Muqshith Shifan',
-    role: 'Outreach · Ontario Tech',
-    time: '2mo ago',
-    content: "Had an incredible time hosting a Computer Science event for an awesome group of Grade 11 students alongside my partner Kevin Christopher Chua. 🎓\n\nA massive thank you to my professor Cristiano Politowski for arranging this opportunity. We walked through:\n\n• Level Design — the architecture and creativity behind game levels\n• AI in Game Testing — how AI is changing how developers find bugs\n• Live Model Training — real models training in real time\n\nThe next generation of computer scientists is sharp, curious, and ready to build.",
-    tags: '#ComputerScience #STEM #GameDev #TechEducation #Mentorship',
+    role: 'Code & Sorcery Lab',
+    time: '2026',
+    content: "I am building TAST (Trait Activation Steering).\n\nSmall local models drift. Twenty turns into a conversation, the dwarf blacksmith starts to explain that it is an AI assistant. TAST works at the activation level. It uses cartridges, capping, linear axes, and a rotational dial to keep authored persona traits stable. It does not fine-tune the model. It does not touch the prompt.\n\nI measure everything on a 20-turn adversarial benchmark. Three local LLMs through Ollama judge the results. Every number points to a session JSON on disk.",
+    tags: '#LLM #ActivationSteering #Interpretability #GameNPC #Research',
   },
   {
     id: 'p4',
     author: 'Al Muqshith Shifan',
-    role: 'Code & Sorcery Lab',
-    time: '3mo ago',
-    content: "Research is as much about people as it is about ideas. Grateful to be part of a group that values both.\n\nThanks again to my mentor Cristiano Politowski, and to my wonderful colleagues and friends Alex Lowe, Daniel Baba, and Kevin Christopher Chua.",
-    tags: '#Research #OntarioTech #GradLife',
+    role: 'PEAK · Research',
+    time: '2026',
+    content: "PEAK continues to grow. It is a deterministic, high-performance 2D platformer engine for benchmarks of Deep RL agents.\n\n• Custom SMB1-style physics, fully reproducible\n• Dual spatial hashing: O(C) collision queries, more than 1000 env steps per second\n• 11 progressive stages, ASCII level format\n• Modular 'persona' reward system for different play styles\n• Real-time debug overlays that show what the agent sees\n\nDesign a level and train an agent in the same tool.",
+    tags: '#ReinforcementLearning #GameEngine #Benchmarking #OpenSource',
   },
   {
     id: 'p5',
     author: 'Al Muqshith Shifan',
-    role: "Master's Student · Day One",
-    time: 'Sep 2025',
-    content: "Officially starting my Master's in Computer Science at Ontario Tech University. 🎓\n\nHonestly? This wasn't the path I mapped out. But here I am, and I think that's kind of the point. I've spent years building a foundation in Networking and IT — learning how the invisible architecture of the internet actually works. Now I get to layer Software Design on top of that, and suddenly a lot of doors I didn't even know existed are starting to open.\n\nGrateful to be working under Dr. Cristiano Politowski as my primary supervisor, alongside Dr. Loutfouz Zaman.\n\nTo future me: I hope you look back at this and smile. This was the beginning.",
-    tags: '#MastersStudent #ComputerScience #OntarioTech #GradSchool #ResearchLife',
+    role: 'HackHive 2026 · Team CSS',
+    time: 'Jan 2026',
+    content: "We built Gestura at HackHive 2026. It is a real-time, AI body-mapping tool for telehealth. No wearables, no special hardware, only a webcam.\n\nIt is hard to describe pain. Language barriers, physical limits, and the lack of touch in video calls cause wrong diagnoses. Gestura turns gestures into structured clinical data on a 3D digital twin. Gemini turns that data into SOAP-style summaries for the clinician.\n\nTechnology must make healthcare more human, not less.\n\nTeam CSS (Code & Sorcery Students): Kevin Christopher Chua, Alex Lowe, Adrian Fudge, and I.",
+    tags: '#Hackathon #ComputerVision #Telehealth #Gemini #ThreeJS',
   },
 ];
-
-// Fallback content if the GitHub fetch fails or the org is empty
-const DEFAULT_SORCERY = [
-  {
-    id: 's1',
-    cat: 'The Research Core',
-    title: 'Post-conference team sync',
-    desc: 'Collaborating on the intersection of Software Engineering and AI agents for game testing.',
-    img: 'assets/team.jpg',
-    href: 'https://github.com/Code-SorceryLab',
-  },
-  {
-    id: 's2',
-    cat: 'Architecting PEAK',
-    title: 'DRL benchmarking environment',
-    desc: 'Defining reward functions and state spaces for our custom Deep Reinforcement Learning environment.',
-    img: 'assets/white.jpg',
-    href: 'https://github.com/Code-SorceryLab',
-  },
-  {
-    id: 's3',
-    cat: 'Applied Computer Vision',
-    title: 'Injury Painter prototype',
-    desc: 'Translating physical gestures into digital coordinates for telehealth pain mapping.',
-    img: 'assets/proto.jpg',
-    href: 'https://github.com/Code-SorceryLab',
-  },
-];
-
-// Rotate through these local placeholders for repos without their own image
-const LAB_PLACEHOLDERS = ['assets/team.jpg', 'assets/white.jpg', 'assets/proto.jpg'];
 
 const State = {
   posts: load(STORE_KEYS.posts, DEFAULT_POSTS),
-  sorcery: load(STORE_KEYS.sorcery, DEFAULT_SORCERY),
-  sorceryFromGitHub: null, // populated by fetchLabRepos
 };
 
 function load(key, fallback) {
@@ -116,82 +91,62 @@ function load(key, fallback) {
 }
 function save(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
 
+// ponytail: sessionStorage cache keyed by URL; GitHub allows 60 unauthenticated req/hr per IP
+async function getJSON(url) {
+  const k = 'gh:' + url;
+  const hit = sessionStorage.getItem(k);
+  if (hit) return JSON.parse(hit);
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(String(r.status));
+  const j = await r.json();
+  sessionStorage.setItem(k, JSON.stringify(j));
+  return j;
+}
+
 // ----- HASH -----
 async function sha256(text) {
   const buf = new TextEncoder().encode(text);
   const hash = await crypto.subtle.digest('SHA-256', buf);
-  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2,'0')).join('');
+  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
 // ----- ESCAPE -----
 function escapeHtml(str) {
-  return String(str ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  return String(str ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 const escapeAttr = escapeHtml;
 
-// ----- RENDER: feed -----
+// ================= RENDER: feed =================
 function renderPosts() {
   const grid = document.getElementById('feed-grid');
   if (!grid) return;
-  const avatar = sessionStorage.getItem('githubAvatar') || 'assets/profile.png';
+  const avatar = sessionStorage.getItem('githubAvatar') || 'assets/profile.webp';
+  if (!State.posts.length) { grid.innerHTML = '<p class="feed-empty">No updates yet.</p>'; return; }
   grid.innerHTML = State.posts.map(p => `
-    <article class="feed-card" data-id="${p.id}">
+    <article class="feed-card" data-id="${escapeAttr(p.id)}">
       <div class="feed-card-inner">
         <div class="feed-head-row">
-          <div class="feed-avatar"><img src="${escapeAttr(avatar)}" alt=""></div>
+          <div class="feed-avatar"><img src="${escapeAttr(avatar)}" width="36" height="36" alt="" loading="lazy"></div>
           <div class="feed-id">
-            <h4>${escapeHtml(p.author)}</h4>
+            <h3>${escapeHtml(p.author)}</h3>
             <span>${escapeHtml(p.role)} · ${escapeHtml(p.time)}</span>
           </div>
-          <i class="fab fa-linkedin feed-li"></i>
+          <i class="fab fa-linkedin feed-li" aria-hidden="true"></i>
         </div>
+        ${p.image ? `<img class="feed-img" src="${escapeAttr(p.image)}" width="1000" height="750" alt="${escapeAttr(p.imageAlt || '')}" loading="lazy">` : ''}
         <p class="feed-content">${escapeHtml(p.content)}</p>
+        ${p.link ? `<a class="btn btn-sm feed-link" href="${escapeAttr(p.link)}" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i> ${escapeHtml(p.linkLabel || 'Open Link')}</a>` : ''}
         <div class="feed-tags">${escapeHtml(p.tags)}</div>
       </div>
       <div class="admin-row">
-        <button class="btn btn-sm" data-act="edit-post" data-id="${p.id}"><i class="fas fa-pen"></i> Edit</button>
-        <button class="btn btn-sm" data-act="del-post" data-id="${p.id}"><i class="fas fa-trash"></i> Remove</button>
+        <button type="button" class="btn btn-sm" data-act="edit-post" data-id="${escapeAttr(p.id)}"><i class="fas fa-pen" aria-hidden="true"></i> Edit Post</button>
+        <button type="button" class="btn btn-sm" data-act="del-post" data-id="${escapeAttr(p.id)}"><i class="fas fa-trash" aria-hidden="true"></i> Remove Post</button>
       </div>
     </article>
   `).join('');
 }
 
-// ----- RENDER: Code & Sorcery -----
-function renderSorcery() {
-  const grid = document.getElementById('sorcery-grid');
-  if (!grid) return;
-
-  const useOverride = localStorage.getItem(STORE_KEYS.sorceryOverride) === '1';
-  const list = (!useOverride && State.sorceryFromGitHub) ? State.sorceryFromGitHub : State.sorcery;
-  const source = (!useOverride && State.sorceryFromGitHub) ? 'github' : 'manual';
-
-  // Update lab data source indicator (if present)
-  const indicator = document.getElementById('lab-source-indicator');
-  if (indicator) {
-    indicator.textContent = source === 'github'
-      ? `live · ${list.length} repos from @Code-SorceryLab`
-      : `manual · ${list.length} entries`;
-  }
-
-  grid.innerHTML = list.map(s => `
-    <article class="sorc-card" data-id="${s.id}">
-      <a href="${escapeAttr(s.href || '#')}" target="_blank" rel="noopener" style="display:block;">
-        <div class="sorc-img"><img src="${escapeAttr(s.img)}" alt="${escapeAttr(s.title)}" onerror="this.src='assets/team.jpg'"></div>
-        <div class="sorc-body">
-          <div class="sorc-cat">${escapeHtml(s.cat)}${s.stars != null ? ` · ★ ${s.stars}` : ''}</div>
-          <h3>${escapeHtml(s.title)}</h3>
-          <p>${escapeHtml(s.desc)}</p>
-        </div>
-      </a>
-      <div class="admin-row">
-        <button class="btn btn-sm" data-act="edit-sorc" data-id="${s.id}"><i class="fas fa-pen"></i> Edit</button>
-        <button class="btn btn-sm" data-act="del-sorc" data-id="${s.id}"><i class="fas fa-trash"></i> Remove</button>
-      </div>
-    </article>
-  `).join('');
-}
-
-// ----- ADMIN -----
+// ================= ADMIN =================
 function isLoggedIn() { return sessionStorage.getItem(STORE_KEYS.session) === '1'; }
 function setLoggedIn(v) {
   if (v) sessionStorage.setItem(STORE_KEYS.session, '1');
@@ -199,165 +154,99 @@ function setLoggedIn(v) {
   document.body.classList.toggle('admin-on', v);
 }
 
-function openLogin() {
-  document.getElementById('login-modal').classList.add('open');
-  setTimeout(() => document.getElementById('login-pw').focus(), 100);
-}
-function closeLogin() {
-  document.getElementById('login-modal').classList.remove('open');
-  document.getElementById('login-pw').value = '';
-  document.getElementById('login-err').classList.remove('show');
-}
+// Native <dialog>: focus trap, Esc, focus return and inert page come for free.
+function openModal(id) { const d = document.getElementById(id); if (!d.open) d.showModal(); }
+function closeModal(id) { const d = document.getElementById(id); if (d.open) d.close(); }
+const setMsg = (id, text) => { document.getElementById(id).textContent = text; };
+
+function openLogin() { openModal('login-modal'); }
+function closeLogin() { closeModal('login-modal'); }
 async function attemptLogin() {
-  const pw = document.getElementById('login-pw').value;
+  const pw = document.getElementById('login-pw');
   const want = localStorage.getItem(STORE_KEYS.hash) || CONFIG.defaultHash;
-  const got = await sha256(pw);
+  const got = await sha256(pw.value);
   if (got === want) { setLoggedIn(true); closeLogin(); }
-  else { document.getElementById('login-err').classList.add('show'); }
+  else { setMsg('login-err', 'Incorrect password. Try again.'); pw.select(); }
 }
 
-// ----- Change password -----
 function openChangePw() {
-  document.getElementById('pw-modal').classList.add('open');
-  ['pw-current','pw-new','pw-confirm'].forEach(id => { document.getElementById(id).value = ''; });
-  document.getElementById('pw-err').classList.remove('show');
-  document.getElementById('pw-ok').classList.remove('show');
-  setTimeout(() => document.getElementById('pw-current').focus(), 100);
+  ['pw-current', 'pw-new', 'pw-confirm'].forEach(id => document.getElementById(id).value = '');
+  setMsg('pw-err', ''); setMsg('pw-ok', '');
+  openModal('pw-modal');
 }
-function closeChangePw() {
-  document.getElementById('pw-modal').classList.remove('open');
-}
+function closeChangePw() { closeModal('pw-modal'); }
+
 async function submitChangePw() {
-  const cur = document.getElementById('pw-current').value;
-  const nw  = document.getElementById('pw-new').value;
-  const cf  = document.getElementById('pw-confirm').value;
-  const err = document.getElementById('pw-err');
-  const ok  = document.getElementById('pw-ok');
-  err.classList.remove('show');
-  ok.classList.remove('show');
+  const cur = document.getElementById('pw-current');
+  const nw = document.getElementById('pw-new');
+  const cf = document.getElementById('pw-confirm');
+  setMsg('pw-err', ''); setMsg('pw-ok', '');
+  const fail = (msg, field) => { setMsg('pw-err', msg); field.focus(); };
 
   const want = localStorage.getItem(STORE_KEYS.hash) || CONFIG.defaultHash;
-  const got  = await sha256(cur);
-  if (got !== want) {
-    err.textContent = 'Current password is incorrect.';
-    err.classList.add('show'); return;
-  }
-  if (nw.length < 4) {
-    err.textContent = 'New password must be at least 4 characters.';
-    err.classList.add('show'); return;
-  }
-  if (nw !== cf) {
-    err.textContent = 'New passwords do not match.';
-    err.classList.add('show'); return;
-  }
+  const got = await sha256(cur.value);
+  if (got !== want) return fail('Current password is incorrect. Try again.', cur);
+  if (nw.value.length < 4) return fail('New password must be at least 4 characters. Choose a longer one.', nw);
+  if (nw.value !== cf.value) return fail('New passwords do not match. Type the same password in both fields.', cf);
 
-  const newHash = await sha256(nw);
-  localStorage.setItem(STORE_KEYS.hash, newHash);
-  ['pw-current','pw-new','pw-confirm'].forEach(id => { document.getElementById(id).value = ''; });
-  ok.textContent = 'Password updated.';
-  ok.classList.add('show');
+  localStorage.setItem(STORE_KEYS.hash, await sha256(nw.value));
+  [cur, nw, cf].forEach(f => f.value = '');
+  setMsg('pw-ok', 'Password updated.');
   setTimeout(closeChangePw, 1200);
 }
 
 function openEdit(kind, item) {
   const modal = document.getElementById('edit-modal');
-  modal.classList.add('open');
   modal.dataset.kind = kind;
   modal.dataset.id = item ? item.id : '';
-  const titleEl = document.getElementById('edit-title');
-  const fields = document.getElementById('edit-fields');
-
-  if (kind === 'post') {
-    titleEl.textContent = item ? 'Edit Post' : 'New LinkedIn Post';
-    fields.innerHTML = `
-      <div class="admin-field"><label>Role / Headline</label>
-        <input id="f-role" value="${escapeAttr(item?.role || 'MSc Student')}"></div>
-      <div class="admin-field"><label>Time</label>
-        <input id="f-time" value="${escapeAttr(item?.time || 'just now')}"></div>
-      <div class="admin-field"><label>Content</label>
-        <textarea id="f-content">${escapeHtml(item?.content || '')}</textarea></div>
-      <div class="admin-field"><label>Hashtags</label>
-        <input id="f-tags" value="${escapeAttr(item?.tags || '#AI')}"></div>
-    `;
-  } else if (kind === 'sorc') {
-    titleEl.textContent = item ? 'Edit Lab Entry' : 'New Lab Entry';
-    fields.innerHTML = `
-      <p style="font-family:var(--mono); font-size:11px; color:var(--ink-3); margin-bottom:14px;">
-        Editing switches the lab view to manual override. Toggle back via the GitHub button in the bar.
-      </p>
-      <div class="admin-field"><label>Category / Caption</label>
-        <input id="f-cat" value="${escapeAttr(item?.cat || 'Research')}"></div>
-      <div class="admin-field"><label>Title</label>
-        <input id="f-title" value="${escapeAttr(item?.title || '')}"></div>
-      <div class="admin-field"><label>Description</label>
-        <textarea id="f-desc">${escapeHtml(item?.desc || '')}</textarea></div>
-      <div class="admin-field"><label>Link URL</label>
-        <input id="f-href" value="${escapeAttr(item?.href || 'https://github.com/Code-SorceryLab')}"></div>
-      <div class="admin-field"><label>Image URL</label>
-        <input id="f-img" value="${escapeAttr(item?.img || 'assets/team.jpg')}"></div>
-    `;
-  }
+  document.getElementById('edit-title').textContent = item ? 'Edit Post' : 'New Post';
+  document.getElementById('edit-fields').innerHTML = `
+    <div class="modal-field"><label for="f-role">Role / Headline</label>
+      <input id="f-role" name="role" autocomplete="off" autofocus value="${escapeAttr(item?.role || 'MSc Student')}"></div>
+    <div class="modal-field"><label for="f-time">Time</label>
+      <input id="f-time" name="time" autocomplete="off" value="${escapeAttr(item?.time || 'just now')}"></div>
+    <div class="modal-field"><label for="f-content">Content</label>
+      <textarea id="f-content" name="content">${escapeHtml(item?.content || '')}</textarea></div>
+    <div class="modal-field"><label for="f-tags">Hashtags</label>
+      <input id="f-tags" name="tags" autocomplete="off" value="${escapeAttr(item?.tags || '#AI')}"></div>
+  `;
+  openModal('edit-modal');
 }
-function closeEdit() { document.getElementById('edit-modal').classList.remove('open'); }
+function closeEdit() { closeModal('edit-modal'); }
+function editIsDirty() {
+  return [...document.querySelectorAll('#edit-fields input, #edit-fields textarea')].some(f => f.value !== f.defaultValue);
+}
 
 function saveEdit() {
   const modal = document.getElementById('edit-modal');
-  const kind = modal.dataset.kind;
+  if (modal.dataset.kind !== 'post') return closeEdit();
   const id = modal.dataset.id;
-
-  if (kind === 'post') {
-    const data = {
-      id: id || 'p' + Date.now(),
-      author: 'Al Muqshith Shifan',
-      role: document.getElementById('f-role').value,
-      time: document.getElementById('f-time').value,
-      content: document.getElementById('f-content').value,
-      tags: document.getElementById('f-tags').value,
-    };
-    if (id) {
-      const i = State.posts.findIndex(p => p.id === id);
-      if (i >= 0) State.posts[i] = data;
-    } else { State.posts.unshift(data); }
-    save(STORE_KEYS.posts, State.posts);
-    renderPosts();
-  } else if (kind === 'sorc') {
-    const data = {
-      id: id || 's' + Date.now(),
-      cat: document.getElementById('f-cat').value,
-      title: document.getElementById('f-title').value,
-      desc: document.getElementById('f-desc').value,
-      href: document.getElementById('f-href').value,
-      img: document.getElementById('f-img').value,
-    };
-    // Editing forces manual override mode
-    localStorage.setItem(STORE_KEYS.sorceryOverride, '1');
-    if (id) {
-      const i = State.sorcery.findIndex(s => s.id === id);
-      if (i >= 0) State.sorcery[i] = data;
-      else State.sorcery.push(data);
-    } else { State.sorcery.push(data); }
-    save(STORE_KEYS.sorcery, State.sorcery);
-    renderSorcery();
-  }
+  const data = {
+    ...(State.posts.find(p => p.id === id) || {}), // keep image/link fields the form does not edit
+    id: id || 'p' + Date.now(),
+    author: 'Al Muqshith Shifan',
+    role: document.getElementById('f-role').value,
+    time: document.getElementById('f-time').value,
+    content: document.getElementById('f-content').value,
+    tags: document.getElementById('f-tags').value,
+  };
+  if (id) {
+    const i = State.posts.findIndex(p => p.id === id);
+    if (i >= 0) State.posts[i] = data;
+  } else { State.posts.unshift(data); }
+  save(STORE_KEYS.posts, State.posts);
+  renderPosts();
   closeEdit();
 }
 
-function toggleSorcerySource() {
-  const cur = localStorage.getItem(STORE_KEYS.sorceryOverride) === '1';
-  localStorage.setItem(STORE_KEYS.sorceryOverride, cur ? '0' : '1');
-  renderSorcery();
-}
-
-// ----- GitHub fetch -----
+// ================= GitHub =================
 async function fetchProfile() {
   try {
-    const r = await fetch(`https://api.github.com/users/${CONFIG.githubUser}`);
-    if (!r.ok) return;
-    const j = await r.json();
+    const j = await getJSON(`https://api.github.com/users/${CONFIG.githubUser}`);
+    if (sessionStorage.getItem('githubAvatar') === j.avatar_url) return;
     sessionStorage.setItem('githubAvatar', j.avatar_url);
-    // Hero portrait stays as the local asset; only feed avatars use the GitHub one.
     renderPosts();
-  } catch (e) { /* network/offline — keep local defaults */ }
+  } catch (e) { /* offline: keep local defaults */ }
 }
 
 async function fetchLatestRepo() {
@@ -365,77 +254,222 @@ async function fetchLatestRepo() {
   const showFallback = () => {
     if (el) el.innerHTML = `
       <h3>Latest GitHub Push</h3>
-      <p>Couldn&rsquo;t reach GitHub right now. <a href="https://github.com/${escapeAttr(CONFIG.githubUser)}" target="_blank" rel="noopener">View profile &rarr;</a></p>
+      <p>GitHub is not available now. <a class="link-verm" href="https://github.com/${escapeAttr(CONFIG.githubUser)}" target="_blank" rel="noopener">View the profile</a></p>
     `;
   };
   try {
-    const r = await fetch(`https://api.github.com/users/${CONFIG.githubUser}/repos?sort=pushed&per_page=1`);
-    if (!r.ok) { showFallback(); return; }
-    const list = await r.json();
+    const list = await getJSON(`https://api.github.com/users/${CONFIG.githubUser}/repos?sort=pushed&per_page=1`);
     if (!Array.isArray(list) || !list.length) { showFallback(); return; }
     const repo = list[0];
     if (!el) return;
     el.innerHTML = `
-      <div class="proj-tags">
+      <div class="proj-tags" style="margin-bottom:12px;">
         <span class="tag">${escapeHtml(repo.language || 'CODE')}</span>
         <span class="tag">Just pushed</span>
       </div>
-      <h3><a href="${escapeAttr(repo.html_url)}" target="_blank" rel="noopener">${escapeHtml(repo.name)}</a></h3>
+      <h3>${escapeHtml(repo.name)}</h3>
       <p>${escapeHtml(repo.description || 'No description.')}</p>
       <div class="proj-foot">
         <span>UPDATED ${new Date(repo.pushed_at).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase()}</span>
-        <a href="${escapeAttr(repo.html_url)}" target="_blank" rel="noopener" class="icons"><i class="fas fa-arrow-right"></i></a>
+        <div class="proj-icons"><a href="${escapeAttr(repo.html_url)}" target="_blank" rel="noopener" aria-label="Open ${escapeAttr(repo.name)} on GitHub"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>
       </div>
     `;
-  } catch (e) {
-    showFallback();
-  }
+  } catch (e) { showFallback(); }
 }
 
-// Fetch Code-SorceryLab organization repos for the lab section
-async function fetchLabRepos() {
+// ================= README renderer =================
+let libsReady = null;
+function loadReadmeLibs() {
+  const add = (tag, attrs) => new Promise((res, rej) => {
+    const el = Object.assign(document.createElement(tag), attrs);
+    el.onload = res; el.onerror = rej;
+    document.head.appendChild(el);
+  });
+  return libsReady ||= Promise.all([
+    add('link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github.min.css' }),
+    add('script', { src: 'https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js' }),
+    add('script', { src: 'https://cdn.jsdelivr.net/npm/dompurify@3.1.5/dist/purify.min.js' }),
+    add('script', { src: 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js' }),
+  ]).catch(() => { libsReady = null; }); // renderMarkdown falls back to <pre> if libs are missing
+}
+
+async function fetchReadme(repo) {
+  // API first (raw body); raw CDN second. HEAD = default branch, so no lookup request.
   try {
-    const r = await fetch(`https://api.github.com/orgs/${CONFIG.githubLabOrg}/repos?sort=pushed&per_page=12`);
-    if (!r.ok) throw new Error('Org fetch failed');
-    const repos = await r.json();
-    if (!Array.isArray(repos) || !repos.length) throw new Error('No repos');
-
-    // Sort: not-fork, then by stars desc then pushed desc
-    repos.sort((a, b) => {
-      if (a.fork !== b.fork) return a.fork ? 1 : -1;
-      if ((b.stargazers_count || 0) !== (a.stargazers_count || 0))
-        return (b.stargazers_count || 0) - (a.stargazers_count || 0);
-      return new Date(b.pushed_at) - new Date(a.pushed_at);
+    const r = await fetch(`https://api.github.com/repos/${repo}/readme`, {
+      headers: { Accept: 'application/vnd.github.raw+json' },
     });
+    if (r.ok) return r.text();
+  } catch (e) { /* continue to raw */ }
+  const r = await fetch(`https://raw.githubusercontent.com/${repo}/HEAD/README.md`);
+  if (!r.ok) throw new Error(`${r.status} fetching README`);
+  return r.text();
+}
 
-    State.sorceryFromGitHub = repos.slice(0, 6).map((repo, i) => ({
-      id: 'gh-' + repo.id,
-      cat: `${(repo.language || 'CODE').toUpperCase()} · ${repo.fork ? 'FORK' : 'SOURCE'}`,
-      title: repo.name.replace(/[-_]/g, ' '),
-      desc: repo.description || 'No description provided yet.',
-      href: repo.html_url,
-      img: LAB_PLACEHOLDERS[i % LAB_PLACEHOLDERS.length],
-      stars: repo.stargazers_count || 0,
-    }));
-    renderSorcery();
+function renderMarkdown(md, repo) {
+  if (typeof marked === 'undefined' || typeof DOMPurify === 'undefined') {
+    const pre = document.createElement('pre');
+    pre.textContent = md;
+    return pre.outerHTML;
+  }
+  marked.setOptions({
+    gfm: true,
+    breaks: false,
+    highlight(code, lang) {
+      try {
+        if (window.hljs && lang && hljs.getLanguage(lang)) {
+          return hljs.highlight(code, { language: lang }).value;
+        }
+        return window.hljs ? hljs.highlightAuto(code).value : escapeHtml(code);
+      } catch (e) { return escapeHtml(code); }
+    },
+  });
+  const dirty = marked.parse(md);
+  const clean = DOMPurify.sanitize(dirty, {
+    USE_PROFILES: { html: true },
+    ADD_ATTR: ['target', 'align'],
+  });
+
+  // Rebase relative image/link URLs against the repo root.
+  const wrap = document.createElement('div');
+  wrap.innerHTML = clean;
+  const rawBase = `https://raw.githubusercontent.com/${repo}/HEAD/`;
+  const blobBase = `https://github.com/${repo}/blob/HEAD/`;
+  wrap.querySelectorAll('img').forEach(img => {
+    const src = img.getAttribute('src') || '';
+    if (!/^(https?:|data:|blob:)/i.test(src) && src && !src.startsWith('#')) {
+      img.src = rawBase + src.replace(/^\.?\//, '');
+    }
+    img.setAttribute('loading', 'lazy');
+  });
+  wrap.querySelectorAll('a').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    if (href && !/^(https?:|mailto:|#)/i.test(href) && !href.startsWith('#')) {
+      a.href = blobBase + href.replace(/^\.?\//, '');
+    }
+    if (/^https?:/i.test(a.getAttribute('href') || '')) {
+      a.target = '_blank';
+      a.rel = 'noopener';
+    }
+  });
+  return wrap.innerHTML;
+}
+
+async function openReadme(repo) {
+  const modal = document.getElementById('readme-modal');
+  const title = document.getElementById('readme-title');
+  const content = document.getElementById('readme-content');
+  title.textContent = repo + ' · README';
+  content.innerHTML = '<p class="md-loading">Fetching README…</p>';
+  history.replaceState(null, '', '#readme/' + repo); // deep link
+  openModal('readme-modal');
+  try {
+    const [text] = await Promise.all([fetchReadme(repo), loadReadmeLibs()]);
+    content.innerHTML = renderMarkdown(text, repo);
   } catch (e) {
-    // fall back to manual list silently
-    console.warn('Lab repo fetch failed, using manual list', e);
-    State.sorceryFromGitHub = null;
-    renderSorcery();
+    content.innerHTML = `<p class="md-loading">The README did not load. <a class="link-verm" href="https://github.com/${escapeAttr(repo)}" target="_blank" rel="noopener">Open it on GitHub</a></p>`;
   }
 }
 
-// ----- Reveal -----
+// ================= Reveal =================
 function initReveal() {
-  const opts = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+  const opts = { threshold: 0.1, rootMargin: '0px 0px -32px 0px' };
+  const still = () => matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('still');
   const io = new IntersectionObserver((ents) => {
-    ents.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+    ents.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in-view');
+      // demo loops load only when their card scrolls in; reduced-motion users get controls instead of autoplay
+      e.target.querySelectorAll('video[data-src]').forEach(v => { v.src = v.dataset.src; if (still()) v.controls = true; else v.play(); });
+      io.unobserve(e.target);
+    });
   }, opts);
-  document.querySelectorAll('.reveal, .tl-row').forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  document.addEventListener('click', (e) => { const v = e.target.closest('video'); if (v && !v.controls) v.paused ? v.play() : v.pause(); });
 }
 
-// ----- Nav scroll spy + mobile menu -----
+// ================= Terminal =================
+function initTerminal() {
+  const out = document.getElementById('term-out');
+  const input = document.getElementById('term-in');
+  if (!out || !input) return;
+  const SECTIONS = ['research', 'about', 'networks', 'projects', 'sorcery', 'experience', 'updates', 'contact'];
+  const REPOS = { ridge: 'Code-SorceryLab/RIDGE', peak: 'Code-SorceryLab/PEAK-DRL-Tool', embr: 'Code-SorceryLab/EMBR', fathom: 'Al-Scripting/FATHOM' };
+  const CMDS = {
+    help: () => 'Commands: whoami, ls, cd <section>, cat skills, readme <ridge|peak|embr|fathom>, ping github, neofetch, contact, motion <on|off>, clear',
+    whoami: () => 'Al Muqshith Shifan. MSc Computer Science (Software Design), Ontario Tech.\nNetworking and security by training. Software design and AI by research.',
+    ls: () => SECTIONS.map(s => s + '/').join('  '),
+    cd: (a) => { if (!SECTIONS.includes(a)) return `cd: no such section: ${a || ''}. Try: ls`; document.getElementById(a).scrollIntoView(); return '-> ' + a; },
+    cat: (a) => a === 'skills'
+      ? [...document.querySelectorAll('.stack-col')].map(c => c.querySelector('h4').textContent + ': ' + [...c.querySelectorAll('li')].map(l => l.textContent).join(', ')).join('\n')
+      : `cat: ${a || ''}: no such file. Try: cat skills`,
+    readme: (a) => { const r = REPOS[(a || '').toLowerCase()]; if (!r) return 'readme: which one? ridge, peak, embr, or fathom'; openReadme(r); return 'Opening ' + r + '…'; },
+    ping: () => 'PING github.com: 64 bytes from Code-SorceryLab: time=1 ms\n--- 1 packet sent, 0% loss. The lab is up.',
+    neofetch: () => 'al@sorcery\n----------\nOS: Ontario Tech University\nShell: Code & Sorcery Lab\nUptime: since 2016\nPackages: PEAK, RIDGE, TAST, EMBR, FATHOM\nNetwork: P4 · Tofino · CCNA\nCPU: PPO, 4 persona heads',
+    contact: () => 'Email: almuqshith.shifan@gmail.com\nLinkedIn: /in/al-mohamed-shifan-5266b924b\nGitHub: Al-Scripting',
+    motion: (a) => { const still = document.documentElement.classList.contains('still'); if ((a === 'off') !== still) document.getElementById('motion-toggle').click(); return a === 'off' ? 'Motion paused.' : 'Motion playing.'; },
+    clear: () => { out.textContent = ''; return null; },
+    sudo: () => 'Permission denied. Nice try.',
+  };
+  const print = (s) => { out.textContent += s + '\n'; out.scrollTop = out.scrollHeight; };
+  const history = []; let hi = 0;
+  print('Type help to start.');
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+      hi = Math.max(0, Math.min(history.length, hi + (e.key === 'ArrowUp' ? -1 : 1)));
+      input.value = history[hi] || ''; e.preventDefault(); return;
+    }
+    if (e.key !== 'Enter') return;
+    const line = input.value.trim(); input.value = '';
+    if (!line) return;
+    history.push(line); hi = history.length;
+    print('al@sorcery:~$ ' + line);
+    const [cmd, ...args] = line.split(/\s+/);
+    const fn = CMDS[cmd.toLowerCase()];
+    const res = fn ? fn(args.join(' ')) : cmd + ': command not found. Type help.';
+    if (res !== null) print(res);
+  });
+  document.getElementById('terminal').addEventListener('click', () => input.focus());
+}
+
+// ================= Motion toggle (WCAG 2.2.2: pause for the orbs, ensō, and demo loops) =================
+function initMotionToggle() {
+  const btn = document.getElementById('motion-toggle');
+  const apply = (still) => {
+    document.documentElement.classList.toggle('still', still);
+    btn.setAttribute('aria-pressed', String(still));
+    btn.querySelector('span').textContent = still ? 'Play Motion' : 'Pause Motion';
+    document.querySelectorAll('video').forEach(v => { if (still) v.pause(); else if (v.src && !v.controls) v.play().catch(() => {}); });
+  };
+  let still = false;
+  try { still = localStorage.getItem('al.still') === '1'; } catch (e) { /* storage blocked */ }
+  apply(still);
+  btn.addEventListener('click', () => {
+    still = !still;
+    try { localStorage.setItem('al.still', still ? '1' : '0'); } catch (e) { /* storage blocked */ }
+    apply(still);
+  });
+}
+
+// ================= Parallax =================
+function initParallax() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const orbs = [...document.querySelectorAll('.orb, .hero-kanji, .float-win')];
+  let mx = 0, my = 0, sy = 0, raf = 0;
+  const paint = () => {
+    raf = 0;
+    orbs.forEach((o, i) => {
+      const d = (i % 3 + 1) * 0.35; // three depth layers
+      o.style.setProperty('--px', (mx * 26 * d).toFixed(1) + 'px');
+      o.style.setProperty('--py', (my * 26 * d + Math.sin(sy / 700) * 34 * d).toFixed(1) + 'px');
+    });
+  };
+  const queue = () => { if (!raf) raf = requestAnimationFrame(paint); };
+  addEventListener('pointermove', (e) => { mx = e.clientX / innerWidth - 0.5; my = e.clientY / innerHeight - 0.5; queue(); }, { passive: true });
+  addEventListener('scroll', () => { sy = scrollY; queue(); }, { passive: true });
+}
+
+// ================= Nav =================
 function initNav() {
   const links = document.querySelectorAll('.nav-links a');
   const sections = [...document.querySelectorAll('section[id]')];
@@ -445,74 +479,74 @@ function initNav() {
         links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
       }
     });
-  }, { threshold: 0.35 });
+  }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => io.observe(s));
 
-  document.getElementById('menu-btn').addEventListener('click', () => {
-    document.getElementById('nav-links').classList.toggle('open');
-  });
-  links.forEach(l => l.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open')));
+  const menuBtn = document.getElementById('menu-btn');
+  const navLinks = document.getElementById('nav-links');
+  if (menuBtn && navLinks) {
+    const setMenu = (open) => { navLinks.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', String(open)); };
+    menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+    links.forEach(l => l.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && navLinks.classList.contains('open')) { setMenu(false); menuBtn.focus(); } });
+  }
 }
 
-// ----- Wire -----
+// ================= Wire =================
 function wire() {
-  document.getElementById('login-link').addEventListener('click', (e) => { e.preventDefault(); openLogin(); });
-  document.getElementById('login-close').addEventListener('click', closeLogin);
-  document.getElementById('login-submit').addEventListener('click', attemptLogin);
-  document.getElementById('login-pw').addEventListener('keydown', (e) => { if (e.key === 'Enter') attemptLogin(); });
-  document.getElementById('login-modal').addEventListener('click', (e) => { if (e.target.id === 'login-modal') closeLogin(); });
+  const $ = (id) => document.getElementById(id);
+  $('login-link').addEventListener('click', openLogin);
+  $('login-close').addEventListener('click', closeLogin);
+  $('login-form').addEventListener('submit', (e) => { e.preventDefault(); attemptLogin(); }); // Enter submits
+  $('login-modal').addEventListener('click', (e) => { if (e.target.id === 'login-modal') closeLogin(); });
+  $('login-modal').addEventListener('close', () => { $('login-pw').value = ''; setMsg('login-err', ''); });
 
-  document.getElementById('admin-logout').addEventListener('click', () => setLoggedIn(false));
-  document.getElementById('admin-change-pw').addEventListener('click', openChangePw);
-  document.getElementById('pw-close').addEventListener('click', closeChangePw);
-  document.getElementById('pw-submit').addEventListener('click', submitChangePw);
-  document.getElementById('pw-confirm').addEventListener('keydown', (e) => { if (e.key === 'Enter') submitChangePw(); });
-  document.getElementById('pw-modal').addEventListener('click', (e) => { if (e.target.id === 'pw-modal') closeChangePw(); });
-  const toggleBtn = document.getElementById('toggle-sorc-src');
-  if (toggleBtn) toggleBtn.addEventListener('click', toggleSorcerySource);
+  $('admin-logout').addEventListener('click', () => setLoggedIn(false));
+  $('admin-change-pw').addEventListener('click', openChangePw);
+  $('pw-close').addEventListener('click', closeChangePw);
+  $('pw-form').addEventListener('submit', (e) => { e.preventDefault(); submitChangePw(); });
+  $('pw-modal').addEventListener('click', (e) => { if (e.target.id === 'pw-modal') closeChangePw(); });
 
-  document.getElementById('edit-close').addEventListener('click', closeEdit);
-  document.getElementById('edit-cancel').addEventListener('click', closeEdit);
-  document.getElementById('edit-save').addEventListener('click', saveEdit);
-  document.getElementById('edit-modal').addEventListener('click', (e) => { if (e.target.id === 'edit-modal') closeEdit(); });
+  $('edit-close').addEventListener('click', closeEdit);
+  $('edit-cancel').addEventListener('click', closeEdit);
+  $('edit-form').addEventListener('submit', (e) => { e.preventDefault(); saveEdit(); });
+  // unsaved changes: backdrop clicks are ignored, Esc asks first
+  $('edit-modal').addEventListener('cancel', (e) => { if (editIsDirty() && !confirm('Discard your changes?')) e.preventDefault(); });
 
-  document.getElementById('add-post-btn').addEventListener('click', () => openEdit('post', null));
-  document.getElementById('add-sorc-btn').addEventListener('click', () => openEdit('sorc', null));
+  $('readme-close').addEventListener('click', () => closeModal('readme-modal'));
+  $('readme-modal').addEventListener('click', (e) => { if (e.target.id === 'readme-modal') closeModal('readme-modal'); });
+  $('readme-modal').addEventListener('close', () => { if (location.hash.startsWith('#readme/')) history.replaceState(null, '', location.pathname + location.search); });
 
+  // README buttons + admin card actions (delegated)
   document.addEventListener('click', (e) => {
+    const readmeBtn = e.target.closest('.readme-btn');
+    if (readmeBtn && readmeBtn.dataset.repo) { openReadme(readmeBtn.dataset.repo); return; }
+
     const btn = e.target.closest('[data-act]');
     if (!btn) return;
     const id = btn.dataset.id;
     const act = btn.dataset.act;
     if (act === 'edit-post') openEdit('post', State.posts.find(p => p.id === id));
-    if (act === 'del-post') { State.posts = State.posts.filter(p => p.id !== id); save(STORE_KEYS.posts, State.posts); renderPosts(); }
-    if (act === 'edit-sorc') {
-      const useOverride = localStorage.getItem(STORE_KEYS.sorceryOverride) === '1';
-      const src = (!useOverride && State.sorceryFromGitHub) ? State.sorceryFromGitHub : State.sorcery;
-      openEdit('sorc', src.find(s => s.id === id));
+    if (act === 'del-post' && confirm('Remove this post?')) {
+      State.posts = State.posts.filter(p => p.id !== id);
+      save(STORE_KEYS.posts, State.posts);
+      renderPosts();
     }
-    if (act === 'del-sorc') {
-      localStorage.setItem(STORE_KEYS.sorceryOverride, '1');
-      State.sorcery = State.sorcery.filter(s => s.id !== id);
-      save(STORE_KEYS.sorcery, State.sorcery);
-      renderSorcery();
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { closeLogin(); closeEdit(); closeChangePw(); }
   });
 }
 
-// ----- Init -----
+// ================= Init =================
 document.addEventListener('DOMContentLoaded', () => {
-  setLoggedIn(isLoggedIn());
+  if (isLoggedIn()) document.body.classList.add('admin-on');
   renderPosts();
-  renderSorcery();        // shows manual defaults immediately
-  fetchProfile();
-  fetchLatestRepo();
-  fetchLabRepos();        // upgrades sorcery to live GitHub data
+  initMotionToggle();
+  initTerminal();
   initReveal();
+  initParallax();
   initNav();
   wire();
+  fetchProfile();
+  fetchLatestRepo();
+  const deep = location.hash.match(/^#readme\/([\w.-]+\/[\w.-]+)$/);
+  if (deep) openReadme(deep[1]);
 });

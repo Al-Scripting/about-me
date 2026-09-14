@@ -3,111 +3,241 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Al Muqshith Shifan · Portfolio</title>
-<meta name="description" content="Al Muqshith Shifan, Master's student in Computer Science at Ontario Tech. Builder of network research tools and applied AI prototypes.">
+<meta name="theme-color" content="#f7f3ec">
+<script>document.documentElement.classList.add('js')</script>
+<title>Al Muqshith Shifan · Networks, Security, Software and AI</title>
+<meta name="description" content="Networking and IT security by training, software design and AI by research. MSc student at Ontario Tech. Deep RL agents, LLM game characters, P4 data planes, and security assessments.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="%23241f1c" stroke-width="5"/><circle cx="50" cy="50" r="46" fill="none" stroke="%23a63d2a" stroke-width="5" stroke-dasharray="72 217" stroke-linecap="round" transform="rotate(-55 50 50)"/></svg>'>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<a class="skip" href="#top">Skip to Content</a>
+
 <!-- ============== NAV ============== -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="#top" class="brand" aria-label="Al Shifan, home">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 64 64" fill="none">
-          <path d="M14 50 L26 14 L38 50" stroke="currentColor" stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="square"/>
-          <path d="M19 38 L33 38" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/>
-          <path d="M40 14 L40 50 L54 50" stroke="currentColor" stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="square"/>
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-crest" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="17.5" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M12 27 L20 11 L28 27" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" fill="none"/>
+          <path d="M15.5 22 H24.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/>
         </svg>
       </span>
-      <span class="brand-text">
-        <span class="brand-name">Al Muqshith Shifan</span>
-        <span class="brand-role">MSc · Network &amp; AI</span>
+      <span class="brand-word">
+        <span class="brand-name" translate="no">Al Muqshith Shifan</span>
+        <span class="brand-kanji" lang="ja">コードと魔術の研究室</span>
       </span>
     </a>
 
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Journey</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#sorcery">Code &amp; Sorcery</a></li>
-      <li><a href="#updates">Feed</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-links" id="nav-links">
+      <a href="#research"><span lang="ja">研究</span> <small>Research</small></a>
+      <a href="#networks"><span lang="ja">通信</span> <small>Networks</small></a>
+      <a href="#projects"><span lang="ja">作品</span> <small>Projects</small></a>
+      <a href="#sorcery"><span lang="ja">魔術</span> <small>Lab</small></a>
+      <a href="#experience"><span lang="ja">道</span> <small>Journey</small></a>
+      <a href="#updates"><span lang="ja">便り</span> <small>Notes</small></a>
+      <a href="#contact"><span lang="ja">連絡</span> <small>Contact</small></a>
+    </div>
 
     <div class="nav-cta">
-      <a href="assets/Al-Shifan-Resume-2026.pdf" download class="btn btn-sm"><i class="fas fa-arrow-down"></i> CV</a>
-      <a href="#contact" class="btn btn-primary btn-sm">Get in touch</a>
-      <button class="menu-btn" id="menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <a href="assets/Al-Shifan-Resume-2026.pdf" download class="btn btn-ink btn-sm"><i class="fas fa-arrow-down" aria-hidden="true"></i> CV</a>
+      <a href="#contact" class="btn btn-vermilion btn-sm">Get in Touch</a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
     </div>
   </div>
 </nav>
 
-<main class="shell" id="top">
+<!-- Hero backdrop: ink circle + kanji -->
+<div class="hero-ensō" aria-hidden="true">
+  <svg viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="88" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-dasharray="470 84" stroke-linecap="round" transform="rotate(-60 100 100)"/>
+  </svg>
+</div>
+<div class="hero-kanji" aria-hidden="true"><span lang="ja">道</span><span lang="ja">道</span><span lang="ja">道</span></div>
+<!-- Floating orbs: the depth the glass panels refract -->
+<div class="orbs" aria-hidden="true">
+  <i class="orb orb-glass"></i><i class="orb orb-ink"></i><i class="orb orb-verm"></i><i class="orb orb-ink"></i><i class="orb orb-glass"></i>
+</div>
+
+<main class="wrap" id="top">
 
   <!-- ============== HERO ============== -->
   <section class="hero" id="hero">
     <div class="hero-grid">
       <div class="hero-left reveal">
-        <div class="hero-tag"><span class="dot"></span> Currently a Master&rsquo;s Student · Ontario Tech</div>
-        <h1>
-          Network engineer<br>
-          by trade.<br>
-          <span class="em">Developer</span> by passion.
+        <div class="hero-tag"><span class="seal-dot"></span> B.IT Networking &amp; IT Security · MSc Computer Science · Ontario Tech</div>
+        <h1 class="hero-title">
+          <span lang="ja" class="title-kanji">ソフトウェア設計</span>
+          I Do <span class="rotator"><span class="sr-only">software design, networking, cybersecurity, game development, and AI research.</span><ul aria-hidden="true"><li><em>Software Design</em>.</li><li><em>Networking</em>.</li><li><em>Cybersecurity</em>.</li><li><em>Game Development</em>.</li><li><em>AI Research</em>.</li><li><em>Software Design</em>.</li></ul></span>
         </h1>
         <p class="hero-sub">
-          I bridge robust network infrastructure with creative software, from P4 programmable switches and DRL traffic optimization to full-stack research tools and applied AI prototypes.
+          Jack of all trades, master of none, but better than most. Networking and security by training, software design and AI by research. I use games as a tool to test new ideas, from reinforcement learning agents to LLM characters.
         </p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Hire me <i class="fas fa-arrow-right"></i></a>
-          <a href="assets/Al-Shifan-Resume-2026.pdf" download class="btn"><i class="fas fa-arrow-down"></i> Download CV</a>
-          <a href="https://github.com/Al-Scripting" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fab fa-github"></i> GitHub</a>
+          <a href="#research" class="btn btn-ink">Research <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="assets/Al-Shifan-Resume-2026.pdf" download class="btn"><i class="fas fa-arrow-down" aria-hidden="true"></i> CV</a>
+          <a href="https://github.com/Al-Scripting" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
         </div>
-
-        <div class="hero-stats">
-          <div><div class="stat-num">2026</div><div class="stat-label">MSc Start</div></div>
-          <div><div class="stat-num">6+</div><div class="stat-label">Yrs in Tech</div></div>
-          <div><div class="stat-num">15+</div><div class="stat-label">Projects Shipped</div></div>
-          <div><div class="stat-num">3.9<span>/4</span></div><div class="stat-label">Dean&rsquo;s List &rsquo;24</div></div>
-        </div>
+        <dl class="hero-stats">
+          <div><dt>IEEE&nbsp;CoG&nbsp;2026</dt><dd>Short paper · Madrid</dd></div>
+          <div><dt>P4 · Tofino</dt><dd>Line-rate telemetry</dd></div>
+          <div><dt>30+</dt><dd>Plugins audited</dd></div>
+          <div><dt>2</dt><dd>RL engines</dd></div>
+        </dl>
       </div>
 
-      <div class="hero-visual reveal">
-        <img id="profile-img" src="assets/hero.png" alt="Al Muqshith Shifan portrait">
-        <div class="hero-visual-meta">
-          <span>AL · 001</span>
-          <span>OSHAWA, ON</span>
+      <figure class="hero-visual">
+        <img src="assets/hero.webp" width="720" height="720" fetchpriority="high" alt="Al Muqshith Shifan portrait">
+        <figcaption>
+          <span>AL · Muqshith</span>
+          <span lang="ja">オシャワ、オンタリオ</span>
+        </figcaption>
+        <!-- floating windows: live-looking slices of the work, decorative -->
+        <div class="float-win win-chip" aria-hidden="true"><span class="seal-dot"></span> IEEE CoG 2026 · Presented</div>
+        <div class="float-win win-weights" aria-hidden="true">
+          <div class="win-title">RIDGE · persona weights</div>
+          <div class="win-bar"><span>Explorer</span><i style="--w:51%"></i><b>0.51</b></div>
+          <div class="win-bar"><span>Craftsman</span><i style="--w:22%"></i><b>0.22</b></div>
+          <div class="win-bar"><span>Warrior</span><i style="--w:20%"></i><b>0.20</b></div>
+          <div class="win-bar"><span>Survivor</span><i style="--w:6%"></i><b>0.06</b></div>
         </div>
+        <div class="float-win win-pda" aria-hidden="true">
+          <div class="win-title">FATHOM · PDA</div>
+          <p>Contact. Below, behind you. Do not move.</p>
+          <small>0:02 · threat_contact · survivor · 20 m</small>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- console on a glass tray -->
+  <div class="term-shell">
+    <!-- a small shell: help, whoami, ls, cd, cat skills, readme, ping, neofetch, contact, motion, clear -->
+    <div class="term" id="terminal">
+      <div class="term-bar" aria-hidden="true"><span></span><span></span><span></span><b>al@sorcery:~</b></div>
+      <pre class="term-out" id="term-out" role="log" aria-live="polite" aria-label="Terminal output"></pre>
+      <div class="term-in">
+        <label for="term-in" class="term-prompt">al@sorcery:~$</label>
+        <input id="term-in" name="command" type="text" autocomplete="off" spellcheck="false" autocapitalize="off" placeholder="help">
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== RESEARCH ============== -->
+  <section id="research">
+    <div class="float-win sec-win  " aria-hidden="true"><div class="win-title">RIDGE · results</div><ul class="win-lines"><li>Value loss ≈ 0.04</li><li>Pickaxe 0.32 · Sword 0.26</li><li>α = 0 is 30 to 50% worse</li></ul></div>
+    <header class="sec-head reveal">
+      <div class="sec-left">
+        <div class="sec-eyebrow"><span lang="ja">研究</span> <small>Research</small> / 01</div>
+        <h2 class="sec-title">Where the <em>Work</em> Is.</h2>
+      </div>
+      <div class="sec-meta">Code &amp; Sorcery Lab · Ontario Tech</div>
+    </header>
+
+    <div class="pub-grid">
+      <!-- Publication: RIDGE -->
+      <article class="pub-card reveal">
+        <div class="pub-left">
+          <div class="pub-num"><span lang="ja">論文</span> / 001</div>
+          <div class="pub-badge pub-badge-accepted"><i class="fas fa-circle-check" aria-hidden="true"></i> Presented · IEEE CoG 2026 · Madrid</div>
+        </div>
+        <div class="pub-body">
+          <h3>RIDGE: State-Conditioned Reward Blending for Behavioral Coverage in Deep RL Game Agents</h3>
+          <p class="pub-authors">AL Muqshith Mohammed Shifan · Kevin Christopher Chua · Ali Neshati · Loutfouz Zaman · Cristiano Politowski</p>
+          <p class="pub-desc">
+            One PPO agent blends four persona rewards: Explorer, Survivor, Craftsman, and Warrior. The game state sets the blend. The agent changes its play style in one episode. This removes the need to train one agent for each persona. A multi-head critic keeps each value function stable while the blend changes. RIDGE is the only condition that reaches both wood-tier crafting branches on Crafter.
+          </p>
+          <div class="pub-links">
+            <a href="https://github.com/Code-SorceryLab/RIDGE" target="_blank" rel="noopener" class="btn btn-sm"><i class="fas fa-book-open" aria-hidden="true"></i> README</a>
+            <a href="https://github.com/Code-SorceryLab/RIDGE/blob/main/paper/RIDGE_CoG2026_camera-ready.pdf" target="_blank" rel="noopener" class="btn btn-sm btn-ghost"><i class="fas fa-file-lines" aria-hidden="true"></i> Camera-ready</a>
+            <a href="https://github.com/Code-SorceryLab/RIDGE" target="_blank" rel="noopener" class="btn btn-sm btn-ghost"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+          </div>
+        </div>
+        <figure class="pub-photos">
+          <img src="assets/cog26-1.webp" width="1000" height="990" loading="lazy" alt="Collage of Al Shifan on stage at IEEE CoG 2026 with slides on cross-branch coverage, the blend method, and related work">
+          <img src="assets/cog26-2.webp" width="1000" height="563" loading="lazy" alt="Al Shifan presents the RIDGE method slide: four activations in, four normalised weights out">
+          <img src="assets/cog26-3.webp" width="1000" height="563" loading="lazy" alt="Al Shifan presents the RIDGE results slide with the cross-branch coverage numbers">
+          <img src="assets/cog26-4.webp" width="750" height="1000" loading="lazy" alt="Al Shifan at the podium on the last slide, with a QR code to the GitHub repository">
+          <figcaption>IEEE CoG 2026 · Madrid · RIDGE short paper</figcaption>
+        </figure>
+      </article>
+
+      <!-- Publication: SLR -->
+      <article class="pub-card reveal">
+        <div class="pub-left">
+          <div class="pub-num"><span lang="ja">論文</span> / 002</div>
+          <div class="pub-badge"><i class="fas fa-rotate" aria-hidden="true"></i> Draft · Systematic Mapping Study</div>
+        </div>
+        <div class="pub-body">
+          <h3>Emotional Memory in LLM-Driven Non-Player Characters: A Systematic Mapping Study</h3>
+          <p class="pub-authors">In progress · 66 records screened · 30 primary studies</p>
+          <p class="pub-desc">
+            The standard memory stream for LLM agents ranks past events by recency, importance, and relevance. It does not use emotion. Psychology shows that emotion controls what we keep and what we recall. This study asks two questions. Do LLM NPCs link a stored emotion to a memory? Is that link based on a psychological method? Only 3 of 30 studies do both.
+          </p>
+          <div class="pub-links">
+            <a href="#contact" class="btn btn-sm btn-ghost"><i class="fas fa-envelope" aria-hidden="true"></i> Request Preprint</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Research directions -->
+    <div class="dir-grid">
+      <div class="dir reveal"><span class="dir-num">01</span><h4>Persona Stability Inside the Model</h4><p>Keep authored traits stable at the activation level, not in the prompt. Small models that can run inside a game.</p></div>
+      <div class="dir reveal"><span class="dir-num">02</span><h4>Emotion-Grounded NPC Memory</h4><p>A believable NPC must recall the past across a full game. Emotion is the index that decides when a memory is available. Emotion is also a value that the game can write.</p></div>
+      <div class="dir reveal"><span class="dir-num">03</span><h4>Playtesting Agents With Range</h4><p>One agent, many play styles. One policy gives behavioural coverage. There is no need for one agent for each persona.</p></div>
+    </div>
+
+    <!-- Supervisors -->
+    <div class="sup-grid reveal">
+      <div class="sup-line"><span class="sup-label">Supervised by</span>
+        <strong>Dr. Cristiano Politowski</strong> <span class="sup-role">· primary · Empirical Games / Code &amp; Sorcery Lab</span>
+      </div>
+      <div class="sup-line"><span class="sup-label"></span>
+        <strong>Dr. Loutfouz Zaman</strong> <span class="sup-role">· Game Development &amp; Games User Research</span> · <strong>Dr. Ali Neshati</strong> <span class="sup-role">· Human‑Computer Interaction / UXID Lab</span>
       </div>
     </div>
   </section>
 
   <!-- ============== ABOUT ============== -->
   <section id="about">
-    <header class="section-head reveal">
-      <div>
-        <div class="section-eyebrow">Profile / 01</div>
-        <h2 class="section-title">A short <em>introduction</em>.</h2>
+    <div class="float-win win-chip sec-chip d1" aria-hidden="true"><span class="seal-dot"></span> Dean’s List 2026 · Open to roles</div>
+    <header class="sec-head reveal">
+      <div class="sec-left">
+        <div class="sec-eyebrow"><span lang="ja">私について</span> <small>About</small> / 02</div>
+        <h2 class="sec-title">A Short <em>Introduction</em>.</h2>
       </div>
-      <div class="section-meta">B.IT &rsaquo; MSc · Ontario Tech</div>
+      <div class="sec-meta">B.IT › MSc · Ontario Tech</div>
     </header>
 
     <div class="about-grid">
       <div class="about-card reveal">
-        <h3>Who I am</h3>
+        <h3>Who I Am</h3>
         <p>
-          I&rsquo;m a <strong>Master&rsquo;s student in Computer Science at Ontario Tech University</strong>, continuing research with Dr. Cristiano Politowski on AI agents and software engineering.
+          I am a <strong>Master’s student in Computer Science at Ontario Tech University</strong>. My work spans networking, security, software design, game development, and AI. I build reinforcement learning agents that play games. I build LLM characters that remember and stay in character. I also build and secure the networks that research runs on.
         </p>
         <p>
-          My day-to-day shifts between Cisco labs, P4 programmable switches, and Python. My favorite work sits at the intersection: software that automates, analyzes, and optimizes the networks I run. I&rsquo;ve built deep reinforcement learning environments for traffic optimization, a custom 2D engine for benchmarking DRL agents, and a real-time computer vision tool for telehealth.
+          My bachelor’s degree is in <strong>Networking and IT Security</strong>. I moved to Computer Science to branch out. I want to learn the current work in AI and LLMs in depth. This improves my skills in software design and in AI.
+        </p>
+        <p>
+          I am not a game developer. I am a <strong>software designer who uses games as a tool</strong>. Games are a harness to test and develop new ideas and concepts.
+        </p>
+        <p>
+          With <strong>Dr. Cristiano Politowski</strong> I build research tools: PEAK, RIDGE, TAST, and EMBR. With <strong>Dr. Loutfouz Zaman and Dr. Ali Neshati</strong> I study the human side: how agents show behaviour and how people interact with them. My background in networking and security is why I prefer reproducible systems and adversarial benchmarks.
         </p>
         <div class="about-meta">
-          Dean&rsquo;s List 2024 · TA, Networking II &amp; III · Research Assistant, P4 Programmable Networks
+          IEEE CoG 2026 first author · Dean’s List 2026 · TA: Web Development, Advanced Networking I, Networking I &amp; II · P4 Programmable Networks RA
         </div>
       </div>
 
@@ -115,255 +245,262 @@
         <div class="aside-block">
           <div class="aside-label">STATUS</div>
           <div class="aside-value">Open to research &amp; engineering roles</div>
-          <div class="aside-meta">Summer / Fall 2026</div>
+          <div class="aside-meta">Summer / Fall 2026 · remote or relocation</div>
         </div>
         <div class="aside-block">
           <div class="aside-label">CURRENTLY</div>
-          <div class="aside-value">PEAK Engine, DRL benchmarks</div>
-          <div class="aside-meta">Custom 2D engine for evaluating PPO agents</div>
+          <ul class="aside-list">
+            <li><strong>TAST</strong><span>Activation steering</span></li>
+            <li><strong>EMBR</strong><span>Emotion-grounded memory</span></li>
+            <li><strong>FATHOM</strong><span>PDA companion AI</span></li>
+            <li><strong>PEAK</strong><span>DRL benchmark engine</span></li>
+            <li><strong>SLR</strong><span>Systematic mapping study</span></li>
+            <li><strong>Teaching</strong><span>Web Dev · Adv. Networking I</span></li>
+          </ul>
         </div>
         <div class="aside-block">
           <div class="aside-label">BASED IN</div>
           <div class="aside-value">Oshawa, Ontario</div>
-          <div class="aside-meta">Open to relocation &amp; remote</div>
+          <div class="aside-meta" lang="ja">オシャワ</div>
         </div>
       </aside>
     </div>
 
-    <div class="stack reveal">
-      <div class="stack-head">/ Technical<br>arsenal</div>
-      <div class="stack-col">
-        <h4>Networking</h4>
+    <ul class="skill-icons reveal" aria-label="Skills">
+      <li><i class="fab fa-python" aria-hidden="true"></i>Python</li>
+      <li><i class="fas fa-fire" aria-hidden="true"></i>PyTorch</li>
+      <li><i class="fas fa-robot" aria-hidden="true"></i>Gymnasium · PPO</li>
+      <li><i class="fas fa-brain" aria-hidden="true"></i>LLMs · Ollama</li>
+      <li><i class="fas fa-code" aria-hidden="true"></i>C / C++</li>
+      <li><i class="fab fa-js" aria-hidden="true"></i>JavaScript</li>
+      <li><i class="fab fa-react" aria-hidden="true"></i>React</li>
+      <li><i class="fab fa-node-js" aria-hidden="true"></i>Node.js</li>
+      <li><i class="fas fa-flask" aria-hidden="true"></i>Flask</li>
+      <li><i class="fas fa-cube" aria-hidden="true"></i>Three.js</li>
+      <li><i class="fas fa-database" aria-hidden="true"></i>SQL · MySQL</li>
+      <li><i class="fab fa-docker" aria-hidden="true"></i>Docker</li>
+      <li><i class="fab fa-github" aria-hidden="true"></i>GitHub Actions</li>
+      <li><i class="fab fa-linux" aria-hidden="true"></i>Linux / Unix</li>
+      <li><i class="fas fa-network-wired" aria-hidden="true"></i>Cisco IOS · CCNA</li>
+      <li><i class="fas fa-microchip" aria-hidden="true"></i>P4 · Tofino</li>
+      <li><i class="fas fa-magnifying-glass" aria-hidden="true"></i>Wireshark</li>
+      <li><i class="fas fa-shield-halved" aria-hidden="true"></i>Nmap · Hardening</li>
+      <li><i class="fas fa-gamepad" aria-hidden="true"></i>Game engines</li>
+    </ul>
+
+    <div class="stack">
+      <div class="stack-head reveal">/ Technical<br>Palette</div>
+      <div class="stack-col reveal">
+        <h4>AI &amp; RL</h4>
         <ul>
-          <li>Cisco IOS / CCNA</li>
-          <li>P4 Programmable Switches</li>
-          <li>Linux / Unix Admin</li>
-          <li>TCP/IP &amp; Subnetting</li>
-          <li>Enterprise Firewalls</li>
+          <li>PyTorch, Gymnasium</li>
+          <li>Stable-Baselines3 · PPO</li>
+          <li>LLMs · Ollama, Gemini</li>
+          <li>Activation steering</li>
+          <li>Hydra experiment mgmt</li>
         </ul>
       </div>
-      <div class="stack-col">
-        <h4>Development</h4>
+      <div class="stack-col reveal">
+        <h4>Games</h4>
         <ul>
-          <li>Python (Advanced)</li>
-          <li>C / C++</li>
-          <li>React / Node.js</li>
-          <li>Flask, REST APIs</li>
-          <li>PyTorch, Ollama, Gemini</li>
+          <li>Crafter env</li>
+          <li>Custom 2D engines</li>
+          <li>Procedural gen (graphs)</li>
+          <li>Persona architectures</li>
+          <li>Playtesting agents</li>
         </ul>
       </div>
-      <div class="stack-col">
-        <h4>Security</h4>
+      <div class="stack-col reveal">
+        <h4>Software</h4>
         <ul>
-          <li>Vulnerability Assessment</li>
-          <li>Wireshark &amp; Nmap</li>
-          <li>Kali / Pen Testing</li>
-          <li>Hardening &amp; Auditing</li>
-          <li>Cryptography Basics</li>
-        </ul>
-      </div>
-      <div class="stack-col">
-        <h4>Tools / DevOps</h4>
-        <ul>
-          <li>Docker / Containers</li>
-          <li>Git, GitHub Actions</li>
-          <li>CI/CD Pipelines</li>
-          <li>Bash Scripting</li>
+          <li>Python · C / C++</li>
+          <li>Flask · REST · Three.js</li>
+          <li>React · Node.js</li>
           <li>SQL / MySQL</li>
+          <li>Docker · GitHub Actions</li>
+        </ul>
+      </div>
+      <div class="stack-col reveal">
+        <h4>Systems &amp; Sec</h4>
+        <ul>
+          <li>Intel Tofino P4</li>
+          <li>Cisco IOS · CCNA</li>
+          <li>Linux / Unix admin</li>
+          <li>Wireshark · Nmap</li>
+          <li>Adversarial benchmarks</li>
         </ul>
       </div>
     </div>
+
   </section>
 
-  <!-- ============== TIMELINE ============== -->
-  <section id="experience">
-    <header class="section-head reveal">
-      <div>
-        <div class="section-eyebrow">Experience / 02</div>
-        <h2 class="section-title">The <em>journey</em> so far.</h2>
+  <!-- ============== NETWORKS & SECURITY ============== -->
+  <section id="networks">
+    <div class="float-win sec-win d2" aria-hidden="true"><div class="win-title">Toolbelt</div><ul class="win-lines"><li>Cisco IOS · CCNA</li><li>Wireshark · Nmap · Linux</li><li>Intel Tofino · P4</li></ul></div>
+    <header class="sec-head reveal">
+      <div class="sec-left">
+        <div class="sec-eyebrow"><span lang="ja">通信</span> <small>Networks &amp; Security</small> / 03</div>
+        <h2 class="sec-title">Wires <em>&amp;</em> Firewalls.</h2>
       </div>
-      <div class="section-meta">2018 &rsaquo; Present</div>
+      <div class="sec-meta">B.IT Networking &amp; IT Security · CCNA</div>
     </header>
 
-    <div class="timeline">
-
-      <div class="tl-row current">
-        <div class="tl-date">SEP 2025, PRESENT</div>
-        <div class="tl-node"></div>
-        <div class="tl-content">
-          <h3 class="tl-title">MSc Student, Computer Science</h3>
-          <div class="tl-org">Ontario Tech University</div>
-          <p class="tl-desc">Continuing research on programmable networks and AI agents in software engineering. Supervised by Dr. Cristiano Politowski.</p>
-        </div>
-      </div>
-
-      <div class="tl-row">
-        <div class="tl-date">JAN, MAY 2026</div>
-        <div class="tl-node"></div>
-        <div class="tl-content">
-          <h3 class="tl-title">Teaching Assistant, Networking III</h3>
-          <div class="tl-org">Ontario Tech University</div>
-          <p class="tl-desc">Facilitated advanced labs on routing protocols, OSPF / BGP fundamentals, and inter-VLAN routing.</p>
-        </div>
-      </div>
-
-      <div class="tl-row">
-        <div class="tl-date">SEP 2025, DEC 2025</div>
-        <div class="tl-node"></div>
-        <div class="tl-content">
-          <h3 class="tl-title">Teaching Assistant, Networking II</h3>
-          <div class="tl-org">Ontario Tech University</div>
-          <p class="tl-desc">Facilitated labs on TCP/IP, subnetting, and enterprise firewall configurations. Mentored undergraduates through Cisco Packet Tracer assignments.</p>
-        </div>
-      </div>
-
-      <div class="tl-row">
-        <div class="tl-date">JUN, SEP 2025</div>
-        <div class="tl-node"></div>
-        <div class="tl-content">
-          <h3 class="tl-title">Network Research Assistant</h3>
-          <div class="tl-org">Ontario Tech University</div>
-          <p class="tl-desc">Engineered research infrastructure on P4 programmable switches. Developed custom P4 programs for packet analysis, including lab-first implementations of several behaviors.</p>
-        </div>
-      </div>
-
-      <div class="tl-row">
-        <div class="tl-date">JUN, SEP 2025</div>
-        <div class="tl-node"></div>
-        <div class="tl-content">
-          <h3 class="tl-title">Cyber Security Analyst</h3>
-          <div class="tl-org">YYC Beeswax Ltd · Remote</div>
-          <p class="tl-desc">Vulnerability assessments on e-commerce infrastructure. Audited 30+ plugins and produced a hardening checklist adopted by the engineering team.</p>
-        </div>
-      </div>
-
-      <div class="tl-row">
-        <div class="tl-date">SEP 2024, JUN 2025</div>
-        <div class="tl-node"></div>
-        <div class="tl-content">
-          <h3 class="tl-title">Networking Lab Technician</h3>
-          <div class="tl-org">Ontario Tech University</div>
-          <p class="tl-desc">Optimized lab network performance, reducing downtime by roughly 20%. Managed server hardware and connectivity across 20+ lab systems.</p>
-        </div>
-      </div>
-
-      <div class="tl-row">
-        <div class="tl-date">2022, 2023</div>
-        <div class="tl-node"></div>
-        <div class="tl-content">
-          <h3 class="tl-title">Programming Instructor</h3>
-          <div class="tl-org">Kids Great Minds · Whitby</div>
-          <p class="tl-desc">Taught digital technology through hands-on courses. Mentored students on personal projects.</p>
-        </div>
-      </div>
-
-      <div class="tl-row">
-        <div class="tl-date">2018</div>
-        <div class="tl-node"></div>
-        <div class="tl-content">
-          <h3 class="tl-title">IT Field Service Staff</h3>
-          <div class="tl-org">TDSB · Scarborough</div>
-          <p class="tl-desc">Asset inventory across 2,000+ laptops. Factory-reset and QA workflows aligned with board compliance standards.</p>
-        </div>
-      </div>
-
+    <div class="net-grid">
+      <article class="net reveal">
+        <div class="dir-num">01 · Data planes</div>
+        <h3>P4 on Intel Tofino</h3>
+        <p>Built research infrastructure on Intel Tofino programmable switches. Wrote P4 data-plane programs that extract per-flow telemetry at line rate.</p>
+        <div class="net-tags">P4 · Tofino · Telemetry</div>
+      </article>
+      <article class="net reveal">
+        <div class="dir-num">02 · Security</div>
+        <h3>Vulnerability Assessment</h3>
+        <p>Assessed a WooCommerce and Stripe stack for YYC Beeswax. Audited more than 30&nbsp;plugins. Wrote the hardening checklist the team uses as its pre-deploy gate.</p>
+        <div class="net-tags">WooCommerce · Stripe · Hardening</div>
+      </article>
+      <article class="net reveal">
+        <div class="dir-num">03 · Operations</div>
+        <h3>Lab Network Operations</h3>
+        <p>Ran a teaching lab network for more than 50&nbsp;daily users. Cut downtime by about&nbsp;20%. Maintained the DHCP, DNS, and NTP services and more than 20&nbsp;workstations.</p>
+        <div class="net-tags">DHCP · DNS · NTP · Linux</div>
+      </article>
+      <article class="net reveal">
+        <div class="dir-num">04 · Teaching</div>
+        <h3>Networking I, II, and Advanced I</h3>
+        <p>Teaching assistant for three networking courses. Labs on TCP/IP, subnetting, routing protocols, and enterprise firewalls for about&nbsp;120 undergraduates a term.</p>
+        <div class="net-tags">TCP/IP · Routing · Firewalls</div>
+      </article>
     </div>
   </section>
 
-  <!-- ============== WORK ============== -->
-  <section id="work">
-    <header class="section-head reveal">
-      <div>
-        <div class="section-eyebrow">Selected work / 03</div>
-        <h2 class="section-title">Research <em>&amp;</em> code.</h2>
+  <!-- ============== PROJECTS ============== -->
+  <section id="projects">
+    <div class="float-win sec-win  d2" aria-hidden="true"><div class="win-title">PEAK · engine</div><ul class="win-lines"><li>1000 env steps per second</li><li>11 stages · ASCII levels</li><li>Deterministic physics</li></ul></div>
+    <header class="sec-head reveal">
+      <div class="sec-left">
+        <div class="sec-eyebrow"><span lang="ja">作品</span> <small>Projects</small> / 04</div>
+        <h2 class="sec-title">Research <em>&amp;</em> Code.</h2>
       </div>
-      <a href="https://github.com/Al-Scripting" target="_blank" rel="noopener" class="btn"><i class="fab fa-github"></i> All on GitHub</a>
+      <a href="https://github.com/Code-SorceryLab" target="_blank" rel="noopener" class="btn"><i class="fab fa-github" aria-hidden="true"></i> Code &amp; Sorcery Lab</a>
     </header>
 
     <div class="proj-grid">
 
-      <article class="proj featured reveal">
+      <article class="proj featured reveal" data-repo="Code-SorceryLab/PEAK-DRL-Tool">
         <div class="proj-body">
-          <div class="proj-num">/ 001 · Featured</div>
-          <h3>PEAK Engine, a DRL <span class="em">benchmark</span> environment</h3>
+          <div class="proj-num">/ 001 · Engine</div>
+          <h3>PEAK · <em>Platform Engine</em></h3>
           <p>
-            A custom 2D game engine purpose-built for benchmarking Deep Reinforcement Learning agents. Implements PPO agents and modular reward functions to evaluate how policies adapt to environment shifts, built around a clean Python and PyTorch loop.
+            A deterministic, high-performance DRL benchmark engine for 2D platformers. It has SMB1-style physics, dual spatial hashing (about 1000&nbsp;steps per second), and a modular persona reward system. Design a level and train an agent in the same tool.
           </p>
           <div class="proj-tags">
-            <span class="tag">Python</span>
-            <span class="tag">PyTorch</span>
-            <span class="tag">DRL · PPO</span>
-            <span class="tag">Custom Engine</span>
+            <span class="tag">Python</span><span class="tag">Gymnasium</span><span class="tag">PPO</span><span class="tag">Hydra</span>
           </div>
           <div class="proj-foot">
-            <span>RESEARCH · IN PROGRESS</span>
-            <div class="icons">
-              <a href="https://github.com/Al-Scripting" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              <a href="#contact" aria-label="Contact"><i class="fas fa-arrow-right"></i></a>
+            <span>RESEARCH · ACTIVE</span>
+            <div class="proj-icons">
+              <button type="button" class="readme-btn" data-repo="Code-SorceryLab/PEAK-DRL-Tool"><i class="fas fa-book-open" aria-hidden="true"></i> README</button>
+              <a href="https://github.com/Code-SorceryLab/PEAK-DRL-Tool" target="_blank" rel="noopener" aria-label="PEAK on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
-        <div class="proj-img">
-          <img src="assets/white.jpg" alt="PEAK Engine whiteboarding">
+        <div class="proj-img proj-gallery">
+          <img class="wide" src="assets/peak-logo.webp" width="1000" height="545" loading="lazy" alt="PEAK logo: a pixel-art mountain of controller buttons above the words PEAK 2D Platformer Engine">
+          <img src="assets/peak-play.webp" width="1200" height="750" loading="lazy" alt="PEAK Mega Man-style stage with the debug overlay: hit boxes, ray casts, and a boss health bar">
+          <video data-src="assets/peak-win.mp4" poster="assets/peak-win-poster.webp" width="400" height="300" muted loop playsinline preload="none" aria-label="A PEAK agent completes a Mario-style stage for the first time"></video>
         </div>
       </article>
-
-      <article class="proj half reveal">
-        <div class="proj-num">/ 002</div>
-        <h3>Gestura, medical AI</h3>
-        <p>Real-time AI body-mapping tool for telehealth. Translates patient gestures into structured clinical data using computer vision and a 3D digital twin. Built for HackHive 2026.</p>
-        <div class="proj-tags">
-          <span class="tag">Flask</span><span class="tag">CV</span><span class="tag">Three.js</span>
+      <article class="proj featured peek reveal" data-repo="Al-Scripting/FATHOM">
+        <div class="proj-body">
+          <div class="proj-num">/ 002 · Companion AI · Sneak peek</div>
+          <h3>FATHOM · <em>Helpful, Not Omniscient</em></h3>
+          <p>
+            An AI companion that lives in the Subnautica PDA and is built to stay quiet. It watches oxygen, depth, the dark, and what circles the player. It speaks only when a line changes what the player does, in the original PDA voice. The research question: can an adaptive AI guide a lost diver and keep the fear of survival horror?
+          </p>
+          <div class="proj-tags">
+            <span class="tag">Unreal 5.6</span><span class="tag">UE4SS Lua</span><span class="tag">Ollama</span><span class="tag">Persona steering</span>
+          </div>
+          <div class="proj-foot">
+            <span>CSER 2026 FALL · SNEAK PEEK</span>
+            <div class="proj-icons">
+              <button type="button" class="readme-btn" data-repo="Al-Scripting/FATHOM"><i class="fas fa-book-open" aria-hidden="true"></i> README</button>
+              <a href="https://github.com/Al-Scripting/FATHOM" target="_blank" rel="noopener" aria-label="FATHOM on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+            </div>
+          </div>
         </div>
+        <div class="proj-img"><img src="assets/fathom-dashboard.webp" width="1400" height="875" loading="lazy" alt="FATHOM dashboard: vitals, situation vector, persona, range rings, oxygen and depth charts, and PDA transmissions"></div>
+      </article>
+
+      <article class="proj half tall reveal" data-repo="Code-SorceryLab/RIDGE">
+        <video class="proj-shot" data-src="assets/ridge-demo.mp4" poster="assets/ridge-demo-poster.webp" width="720" height="463" muted loop playsinline preload="none" aria-label="RIDGE live viewer on Crafter: the agent moves while the four persona weights change"></video>
+        <div class="proj-num">/ 003 · Paper</div>
+        <h3>RIDGE · <em>Reward Blending</em></h3>
+        <p>One PPO agent blends four persona rewards from the game state with smooth sigmoids. It is the only condition that reaches both wood-tier branches on Crafter. Presented at IEEE CoG 2026.</p>
+        <div class="proj-tags"><span class="tag">PyTorch</span><span class="tag">Crafter</span><span class="tag">Multi-head critic</span></div>
         <div class="proj-foot">
-          <span>HACKHIVE 2026</span>
-          <div class="icons">
-            <a href="https://github.com/Al-Scripting/HackHive2026" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-            <a href="https://devpost.com/software/gestura-23czgh" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i></a>
+          <span>IEEE COG 2026</span>
+          <div class="proj-icons">
+            <button type="button" class="readme-btn" data-repo="Code-SorceryLab/RIDGE" aria-label="Open the RIDGE README"><i class="fas fa-book-open" aria-hidden="true"></i></button>
+            <a href="https://github.com/Code-SorceryLab/RIDGE" target="_blank" rel="noopener" aria-label="RIDGE on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
           </div>
         </div>
       </article>
 
       <article class="proj half reveal">
-        <div class="proj-num">/ 003</div>
-        <h3>Local AI Dungeon</h3>
-        <p>An offline interactive-fiction engine powered by Ollama and Python. Limitless generated storytelling, zero API spend, full data privacy.</p>
-        <div class="proj-tags">
-          <span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">LLM</span>
-        </div>
+        <div class="proj-num">/ 004 · Tool</div>
+        <h3>TAST · <em>Trait Activation Steering</em></h3>
+        <p>Keep small language models in character across long adversarial conversations, without fine-tuning. It uses cartridges, capping, linear axes, and a rotational dial. Three local LLMs judge the results.</p>
+        <div class="proj-tags"><span class="tag">PyTorch</span><span class="tag">Activation steering</span><span class="tag">LLMs</span></div>
         <div class="proj-foot">
-          <span>OPEN SOURCE</span>
-          <a href="https://github.com/Al-Scripting/Local-AI-Dungeon-Ollama-Python" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+          <span>RESEARCH · LOCAL · REPO SOON</span>
         </div>
       </article>
 
-      <article class="proj third reveal">
-        <div class="proj-num">/ 004</div>
-        <h3>ML Algorithms</h3>
-        <p>A collection of foundational ML algorithms implemented from scratch, built to internalize the math behind modern AI.</p>
-        <div class="proj-tags"><span class="tag">Python</span><span class="tag">NumPy</span></div>
+      <article class="proj half reveal" data-repo="Code-SorceryLab/EMBR">
+        <div class="proj-num">/ 005 · Middleware</div>
+        <h3>EMBR</h3>
+        <p>Emotional Memory for Believable Roleplay. NPCs remember what you did and how they feel about it. They give a different answer to a gift and to a betrayal. Emotion is the recall index.</p>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">Affect</span><span class="tag">Agentic memory</span></div>
         <div class="proj-foot">
-          <span>LEARNING</span>
-          <a href="https://github.com/Al-Scripting/Mechine-Learning-Alogrithms" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+          <span>ACTIVE</span>
+          <div class="proj-icons">
+            <button type="button" class="readme-btn" data-repo="Code-SorceryLab/EMBR" aria-label="Open the EMBR README"><i class="fas fa-book-open" aria-hidden="true"></i></button>
+            <a href="https://github.com/Code-SorceryLab/EMBR" target="_blank" rel="noopener" aria-label="EMBR on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+          </div>
         </div>
       </article>
 
-      <article class="proj third reveal">
-        <div class="proj-num">/ 005</div>
-        <h3>Anime Wiki</h3>
-        <p>Documentation platform with extensive relational database modeling and a clean UI for browsing connected entities.</p>
-        <div class="proj-tags"><span class="tag">Web</span><span class="tag">SQL</span></div>
+      <article class="proj half reveal">
+        <div class="proj-num">/ 006 · Hackathon</div>
+        <h3>Gestura</h3>
+        <p>Real-time AI body mapping for telehealth. Computer vision and a 3D digital twin turn gestures into structured clinical data. HackHive 2026 · Code &amp; Sorcery Students.</p>
+        <div class="proj-tags"><span class="tag">Flask</span><span class="tag">CV</span><span class="tag">Three.js</span></div>
         <div class="proj-foot">
-          <span>WEB · DB</span>
-          <a href="https://github.com/Al-Scripting/Anime-Wiki?tab=readme-ov-file" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+          <span>HACKHIVE 2026</span>
+          <div class="proj-icons">
+            <a href="https://github.com/Al-Scripting/HackHive2026" target="_blank" rel="noopener" aria-label="Gestura on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+            <a href="https://devpost.com/software/gestura-23czgh" target="_blank" rel="noopener" aria-label="Gestura on Devpost"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </div>
         </div>
       </article>
 
-      <article class="proj third reveal" id="latest-repo-card">
-        <div class="proj-num">/ 006 · Live</div>
+      <article class="proj half reveal" id="latest-repo-card">
+        <div class="proj-num">/ 007 · Live</div>
         <div id="latest-repo">
           <h3>Latest GitHub Push</h3>
-          <p>Fetching from <code>@Al-Scripting</code>&hellip;</p>
+          <p>Fetching <code translate="no">@Al-Scripting</code>…</p>
+        </div>
+      </article>
+
+      <article class="proj teaser reveal">
+        <div class="teaser-text">
+          <div class="proj-num">/ 008 · Sneak peek</div>
+          <h3>Something New Is in the Lab</h3>
+          <p>A new project is in development at Code &amp; Sorcery Lab. It is not public yet. Ask me about it.</p>
+        </div>
+        <div class="proj-foot">
+          <span>IN THE LAB · 2026</span>
+          <a href="#contact" class="btn btn-sm">Ask Me</a>
         </div>
       </article>
 
@@ -372,76 +509,201 @@
 
   <!-- ============== CODE & SORCERY ============== -->
   <section id="sorcery">
-    <header class="section-head sorcery-head reveal">
-      <div>
-        <div class="section-eyebrow">Research lab / 04</div>
-        <h2 class="section-title">Code &amp; <em>sorcery</em>.</h2>
-        <div class="sup">
-          Supervised by <strong>Dr. Cristiano Politowski</strong> · Ontario Tech<br>
-          Lab on GitHub: <a href="https://github.com/Code-SorceryLab" target="_blank" rel="noopener">github.com/Code-SorceryLab</a><br>
-          <span style="color:var(--ink-4);">Status:</span> <span id="lab-source-indicator">loading&hellip;</span>
-        </div>
+    <div class="float-win win-chip sec-chip d3" aria-hidden="true"><span class="seal-dot"></span> 6 tracks · cpoli.live/projects</div>
+    <header class="sec-head reveal">
+      <div class="sec-left">
+        <div class="sec-eyebrow"><span lang="ja">コードと魔術</span> <small>Code &amp; Sorcery</small> / 05</div>
+        <h2 class="sec-title">The <em>Lab</em>.</h2>
       </div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <button id="toggle-sorc-src" class="btn btn-sm add-sorc-btn"><i class="fas fa-arrows-rotate"></i> GitHub / Manual</button>
-        <button id="add-sorc-btn" class="btn btn-sm add-sorc-btn"><i class="fas fa-plus"></i> Add</button>
-        <a href="https://github.com/Code-SorceryLab" target="_blank" rel="noopener" class="btn"><i class="fab fa-github"></i> Visit the lab</a>
+      <a href="https://github.com/Code-SorceryLab" target="_blank" rel="noopener" class="btn"><i class="fab fa-github" aria-hidden="true"></i> Code-SorceryLab</a>
+    </header>
+    <p class="sorcery-sub reveal">Game development, software engineering, and AI meet here. These are the 6 tracks I work in, from <a href="https://cpoli.live/projects/" target="_blank" rel="noopener">cpoli.live/projects</a>.</p>
+
+    <div class="sorc-grid">
+      <a class="sorc-card reveal" href="https://cpoli.live/projects/llm-npc-landscape/" target="_blank" rel="noopener">
+        <div class="sorc-cat">LLM · Landscape</div>
+        <h3>The LLM-NPC Landscape</h3>
+        <p>A systematic map of how large language models drive non-player characters, and where the gaps are.</p>
+      </a>
+      <a class="sorc-card reveal" href="https://cpoli.live/projects/emotional-memory-npcs/" target="_blank" rel="noopener">
+        <div class="sorc-cat">LLM · Memory</div>
+        <h3>Emotional Memory in Generative Characters</h3>
+        <p>Do LLM characters remember what was important to them? Is that memory based on psychology?</p>
+      </a>
+      <a class="sorc-card reveal" href="https://cpoli.live/projects/persona-stability/" target="_blank" rel="noopener">
+        <div class="sorc-cat">LLM · Stability</div>
+        <h3>Staying in Character</h3>
+        <p>Keep a character consistent over a long conversation. Work inside the model, not in the prompt.</p>
+      </a>
+      <a class="sorc-card reveal" href="https://cpoli.live/projects/behavioural-coverage-rl/" target="_blank" rel="noopener">
+        <div class="sorc-cat">RL · Coverage</div>
+        <h3>One Agent, Many Play Styles</h3>
+        <p>Get many play styles from one playtesting agent. Do not train one agent for each style.</p>
+      </a>
+      <a class="sorc-card reveal" href="https://cpoli.live/projects/peak-engine/" target="_blank" rel="noopener">
+        <div class="sorc-cat">RL · Engine</div>
+        <h3>PEAK: Authoring and Training in One Loop</h3>
+        <p>An open-source 2D platformer engine. Design a level and train an agent on it in the same tool.</p>
+      </a>
+      <a class="sorc-card reveal" href="https://cpoli.live/blog/2026/hackathon-css/" target="_blank" rel="noopener">
+        <div class="sorc-cat">Lab · Hackathon</div>
+        <h3>Code &amp; Sorcery Students at HackHive 2026</h3>
+        <p>Team CSS built Gestura. It identifies body parts and helps a medic and a patient communicate, also across languages.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============== EXPERIENCE ============== -->
+  <section id="experience">
+    <div class="float-win sec-win  d1" aria-hidden="true"><div class="win-title">Teaching · 2026</div><ul class="win-lines"><li>Web Development</li><li>Advanced Networking I</li><li>Networking I &amp; II</li></ul></div>
+    <header class="sec-head reveal">
+      <div class="sec-left">
+        <div class="sec-eyebrow"><span lang="ja">道</span> <small>Journey</small> / 06</div>
+        <h2 class="sec-title">The <em>Path</em> So Far.</h2>
       </div>
+      <div class="sec-meta">2016 › Present</div>
     </header>
 
-    <div class="sorcery-grid reveal" id="sorcery-grid"></div>
+    <div class="timeline">
+      <div class="tl-row current reveal">
+        <div class="tl-date">SEP - DEC 2026</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3>Teaching Assistant · Web Development and Advanced Networking I</h3>
+          <div class="tl-org">Ontario Tech University</div>
+          <p>Web Development with Randy and Dr. Cristiano Politowski. Advanced Networking I with Brent and Josh.</p>
+        </div>
+      </div>
+      <div class="tl-row current reveal">
+        <div class="tl-date">SINCE SEP 2025</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3>Graduate Research Assistant</h3>
+          <div class="tl-org">Ontario Tech University · Code &amp; Sorcery Lab</div>
+          <p>Research on LLM game characters, reinforcement learning playtesting agents, and the tools behind them. Supervisors: <strong>Dr. Cristiano Politowski</strong> (primary), <strong>Dr. Loutfouz Zaman</strong> (Games User Research), and <strong>Dr. Ali Neshati</strong> (Human-Computer Interaction, UXID Lab).</p>
+        </div>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-date">SEP 2025 - MAY 2028</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3>MSc Student, Computer Science (Software Design)</h3>
+          <div class="tl-org">Ontario Tech University · expected graduation May 2028</div>
+          <p>First author on RIDGE (IEEE CoG 2026). I build TAST and EMBR. I do a systematic mapping study on emotional memory in LLM NPCs.</p>
+        </div>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-date">2024 - 2026</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3>Teaching Assistant · Networking I &amp; II</h3>
+          <div class="tl-org">Ontario Tech University</div>
+          <p>Ran labs on TCP/IP, subnetting, routing protocols, and enterprise firewalls for about&nbsp;120 undergraduates.</p>
+        </div>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-date">JUN - SEP 2025</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3>Network Research Assistant</h3>
+          <div class="tl-org">Ontario Tech University</div>
+          <p>Built research infrastructure on Intel Tofino P4 programmable switches. Wrote data-plane programs that extract per-flow telemetry at line rate.</p>
+        </div>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-date">JUN - SEP 2025</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3>Cyber Security Analyst</h3>
+          <div class="tl-org">YYC Beeswax Ltd · Remote</div>
+          <p>Did vulnerability assessments on a WooCommerce and Stripe stack. Audited more than 30&nbsp;plugins. Wrote a hardening checklist that the engineering team uses as its pre-deploy gate.</p>
+        </div>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-date">2025</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3>Bachelor of IT, Networking and IT Security</h3>
+          <div class="tl-org">Ontario Tech University</div>
+          <p>Networking, systems, and security. This is the base for my move to Computer Science and AI.</p>
+        </div>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-date">SEP 2024 - JUN 2025</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3>Networking Lab Technician</h3>
+          <div class="tl-org">Ontario Tech University</div>
+          <p>Cut lab network downtime by about&nbsp;20% for more than 50&nbsp;daily users. Maintained more than 20&nbsp;workstations and the DHCP, DNS, and NTP services.</p>
+        </div>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-date">2022 - 2023</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3>Programming Instructor</h3>
+          <div class="tl-org">Kids Great Minds · Whitby</div>
+          <p>Taught digital technology in hands-on courses. Mentored students on personal projects.</p>
+        </div>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-date">2018</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3>IT Field Service Staff</h3>
+          <div class="tl-org">TDSB · Scarborough</div>
+          <p>Kept the asset inventory for more than 2,000&nbsp;laptops. Ran factory-reset and QA workflows that follow the board compliance standards.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ============== FEED ============== -->
   <section id="updates">
-    <header class="feed-head reveal">
-      <div>
-        <div class="section-eyebrow">Social feed / 05</div>
-        <h2 class="section-title">Latest <em>updates</em>.</h2>
+    <div class="float-win win-chip sec-chip d2" aria-hidden="true"><span class="seal-dot"></span> CHI 2027 · video in progress</div>
+    <header class="sec-head reveal">
+      <div class="sec-left">
+        <div class="sec-eyebrow"><span lang="ja">便り</span> <small>Notes</small> / 07</div>
+        <h2 class="sec-title">Latest <em>Updates</em>.</h2>
       </div>
-      <div style="display:flex; gap:10px;">
-        <button id="add-post-btn" class="btn btn-sm add-post-btn"><i class="fas fa-plus"></i> New post</button>
-        <a href="https://www.linkedin.com/in/al-mohamed-shifan-5266b924b/" target="_blank" rel="noopener" class="btn"><i class="fab fa-linkedin-in"></i> Follow on LinkedIn</a>
-      </div>
+      <a href="https://www.linkedin.com/in/al-mohamed-shifan-5266b924b/" target="_blank" rel="noopener" class="btn"><i class="fab fa-linkedin-in" aria-hidden="true"></i> Follow on LinkedIn</a>
     </header>
-
     <div class="feed-grid" id="feed-grid"></div>
   </section>
 
   <!-- ============== CONTACT ============== -->
   <section id="contact">
-    <header class="section-head reveal">
-      <div>
-        <div class="section-eyebrow">Contact / 06</div>
-        <h2 class="section-title">Let&rsquo;s <em>collaborate</em>.</h2>
+    <div class="float-win sec-win  d3" aria-hidden="true"><div class="win-title">Oshawa, Ontario</div><ul class="win-lines"><li>Summer / Fall 2026</li><li>Remote or relocation</li><li>Reply within 24&nbsp;hours</li></ul></div>
+    <header class="sec-head reveal">
+      <div class="sec-left">
+        <div class="sec-eyebrow"><span lang="ja">連絡</span> <small>Contact</small> / 08</div>
+        <h2 class="sec-title">Work <em>With Me</em>.</h2>
       </div>
-      <div class="section-meta">Response within 24h</div>
+      <div class="sec-meta">Reply within 24&nbsp;hours</div>
     </header>
 
     <div class="contact-grid">
       <div class="contact-card reveal">
-        <h3>Get in touch</h3>
-        <p>
-          Actively seeking research collaborations and engineering opportunities, especially in programmable networks, applied ML, and security tooling.
-        </p>
+        <h3>Get in Touch</h3>
+        <p>I look for research collaborations and engineering roles in software design, network engineering, security, game AI, and LLM systems.</p>
         <ul class="contact-list">
-          <li><i class="fas fa-envelope"></i> almuqshith.shifan@gmail.com</li>
-          <li><i class="fas fa-phone"></i> +1 647-540-4866</li>
-          <li><i class="fas fa-map-marker-alt"></i> Oshawa, Ontario, Canada</li>
-          <li><i class="fas fa-graduation-cap"></i> MSc, Computer Science</li>
+          <li><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:almuqshith.shifan@gmail.com">almuqshith.shifan@gmail.com</a></li>
+          <li><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+16475404866">+1&nbsp;647‑540‑4866</a></li>
+          <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Oshawa, Ontario, Canada</li>
+          <li><i class="fas fa-graduation-cap" aria-hidden="true"></i> MSc, Computer Science · Software Design</li>
         </ul>
       </div>
-      <div class="contact-card reveal" style="display:flex; flex-direction:column; justify-content:space-between;">
+      <div class="contact-card reveal contact-cta">
         <div>
-          <h3>Reach out</h3>
-          <p style="margin-top:12px;">Pick the channel that suits you. Email for proposals, LinkedIn for chats, GitHub for code.</p>
+          <h3>Reach Out</h3>
+          <p>Email for proposals, LinkedIn for chats, GitHub for code.</p>
         </div>
         <div>
-          <a href="mailto:almuqshith.shifan@gmail.com" class="btn btn-primary" style="width:100%; justify-content:center;">Send an email</a>
+          <a href="mailto:almuqshith.shifan@gmail.com" class="btn btn-ink contact-mail"><i class="fas fa-envelope" aria-hidden="true"></i> Send an Email</a>
           <div class="socials">
-            <a href="https://www.linkedin.com/in/al-mohamed-shifan-5266b924b/" target="_blank" rel="noopener" class="btn" style="flex:1;"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-            <a href="https://github.com/Al-Scripting" target="_blank" rel="noopener" class="btn" style="flex:1;"><i class="fab fa-github"></i> GitHub</a>
-            <a href="assets/Al-Shifan-Resume-2026.pdf" download class="btn" style="flex:1;"><i class="fas fa-arrow-down"></i> CV</a>
+            <a href="https://www.linkedin.com/in/al-mohamed-shifan-5266b924b/" target="_blank" rel="noopener" class="btn"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a>
+            <a href="https://github.com/Al-Scripting" target="_blank" rel="noopener" class="btn"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+            <a href="assets/Al-Shifan-Resume-2026.pdf" download class="btn"><i class="fas fa-arrow-down" aria-hidden="true"></i> CV</a>
           </div>
         </div>
       </div>
@@ -450,74 +712,81 @@
 
 </main>
 
-<footer>
-  &copy; 2026 Al Muqshith Shifan · Built with research and code
+<!-- Vertical kanji strip -->
+<div class="side-kanji" aria-hidden="true"><span lang="ja">コードと魔術・研究と実装</span></div>
+
+<footer class="wrap">
+  <span>© 2026 Al Muqshith Shifan · <span lang="ja">コードと魔術の研究室</span></span>
+  <button type="button" id="motion-toggle" class="btn btn-sm btn-ghost" aria-pressed="false"><i class="fas fa-circle-pause" aria-hidden="true"></i> <span>Pause Motion</span></button>
+  <span class="foot-note">Built with research &amp; code</span>
 </footer>
 
-<a href="#" id="login-link" class="login-link">/ Admin</a>
+<!-- Admin link -->
+<button type="button" id="login-link" class="login-link" aria-label="Admin Sign-In"><i class="fas fa-circle-half-stroke" aria-hidden="true"></i></button>
 
+<!-- Admin bar -->
 <div class="admin-bar">
   <span class="status">ADMIN MODE</span>
-  <button id="admin-change-pw" class="btn btn-sm">Change password</button>
-  <button id="admin-logout" class="btn btn-sm">Sign out</button>
+  <button type="button" id="admin-change-pw" class="btn btn-sm">Change Password</button>
+  <button type="button" id="admin-logout" class="btn btn-sm">Sign Out</button>
 </div>
 
-<div class="admin-modal" id="login-modal">
-  <div class="admin-box">
-    <button class="admin-close" id="login-close" aria-label="Close"><i class="fas fa-times"></i></button>
-    <h3>Admin sign-in</h3>
-    <p class="sub">Enter your password to edit the feed and lab.</p>
-    <div class="admin-field">
-      <label>Password</label>
-      <input id="login-pw" type="password" autocomplete="current-password" placeholder="••••••••">
+<!-- Login modal -->
+<dialog class="modal" id="login-modal" aria-labelledby="login-title">
+  <form class="modal-box" id="login-form">
+    <button type="button" class="modal-close" id="login-close" aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></button>
+    <h3 id="login-title">Admin Sign-In</h3>
+    <p class="modal-sub">Enter your password to edit the feed.</p>
+    <div class="modal-field">
+      <label for="login-pw">Password</label>
+      <input id="login-pw" name="password" type="password" autocomplete="current-password" placeholder="••••••••" autofocus>
     </div>
-    <div class="admin-err" id="login-err">Incorrect password.</div>
-    <div style="display:flex; gap:10px; margin-top:8px;">
-      <button id="login-submit" class="btn btn-primary" style="flex:1;">Sign in</button>
-    </div>
-    <p style="font-family:var(--mono); font-size:10.5px; color:var(--ink-3); margin-top:18px; letter-spacing:0.04em;">
-      First-time default: <code>password</code>. Once signed in, use <strong>Change password</strong> in the admin bar.
-    </p>
-  </div>
-</div>
+    <div class="modal-err" id="login-err" aria-live="polite"></div>
+    <button type="submit" id="login-submit" class="btn btn-ink modal-submit">Sign In</button>
+    <p class="modal-note">First-time default: <code translate="no">password</code></p>
+  </form>
+</dialog>
 
-<div class="admin-modal" id="pw-modal">
-  <div class="admin-box">
-    <button class="admin-close" id="pw-close" aria-label="Close"><i class="fas fa-times"></i></button>
-    <h3>Change password</h3>
-    <p class="sub">Set a new admin password. Stored as a SHA-256 hash on this device.</p>
-    <div class="admin-field">
-      <label>Current password</label>
-      <input id="pw-current" type="password" autocomplete="current-password" placeholder="••••••••">
-    </div>
-    <div class="admin-field">
-      <label>New password</label>
-      <input id="pw-new" type="password" autocomplete="new-password" placeholder="At least 4 characters">
-    </div>
-    <div class="admin-field">
-      <label>Confirm new password</label>
-      <input id="pw-confirm" type="password" autocomplete="new-password" placeholder="Repeat new password">
-    </div>
-    <div class="admin-err" id="pw-err"></div>
-    <div class="admin-ok" id="pw-ok"></div>
-    <div style="display:flex; gap:10px; margin-top:8px;">
-      <button id="pw-submit" class="btn btn-primary" style="flex:1;">Update password</button>
-    </div>
-  </div>
-</div>
+<!-- Change-password modal -->
+<dialog class="modal" id="pw-modal" aria-labelledby="pw-title">
+  <form class="modal-box" id="pw-form">
+    <button type="button" class="modal-close" id="pw-close" aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></button>
+    <h3 id="pw-title">Change Password</h3>
+    <p class="modal-sub">Stored as a SHA-256 hash on this device.</p>
+    <div class="modal-field"><label for="pw-current">Current password</label><input id="pw-current" name="current-password" type="password" autocomplete="current-password" autofocus></div>
+    <div class="modal-field"><label for="pw-new">New password</label><input id="pw-new" name="new-password" type="password" autocomplete="new-password"></div>
+    <div class="modal-field"><label for="pw-confirm">Confirm new password</label><input id="pw-confirm" name="confirm-password" type="password" autocomplete="new-password"></div>
+    <div class="modal-err" id="pw-err" aria-live="polite"></div>
+    <div class="modal-ok" id="pw-ok" aria-live="polite"></div>
+    <button type="submit" id="pw-submit" class="btn btn-ink modal-submit">Update Password</button>
+  </form>
+</dialog>
 
-<div class="admin-modal" id="edit-modal">
-  <div class="admin-box" style="max-width: 520px;">
-    <button class="admin-close" id="edit-close" aria-label="Close"><i class="fas fa-times"></i></button>
+<!-- Edit modal -->
+<dialog class="modal" id="edit-modal" aria-labelledby="edit-title">
+  <form class="modal-box modal-box-wide" id="edit-form">
+    <button type="button" class="modal-close" id="edit-close" aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></button>
     <h3 id="edit-title">Edit</h3>
-    <p class="sub">Changes persist on this device. Connect a backend to sync across devices.</p>
+    <p class="modal-sub">Changes stay on this device.</p>
     <div id="edit-fields"></div>
-    <div style="display:flex; gap:10px; margin-top:8px;">
-      <button id="edit-save" class="btn btn-primary" style="flex:1;">Save</button>
-      <button id="edit-cancel" class="btn">Cancel</button>
+    <div class="modal-actions">
+      <button type="submit" id="edit-save" class="btn btn-ink">Save Post</button>
+      <button type="button" id="edit-cancel" class="btn">Cancel</button>
     </div>
+  </form>
+</dialog>
+
+<!-- README modal -->
+<dialog class="modal" id="readme-modal" aria-labelledby="readme-title">
+  <div class="modal-box modal-box-readme">
+    <button type="button" class="modal-close" id="readme-close" aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></button>
+    <div class="readme-head">
+      <span class="readme-kanji" lang="ja">読み物</span>
+      <span id="readme-title">README</span>
+    </div>
+    <div id="readme-content" class="md-body" aria-live="polite"><p class="md-loading">Fetching README…</p></div>
   </div>
-</div>
+</dialog>
 
 <script src="app.js"></script>
 </body>
