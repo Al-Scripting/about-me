@@ -26,6 +26,18 @@ const STORE_KEYS = {
 // ----- DEFAULT POSTS (research-facing, recruiter-friendly) -----
 const DEFAULT_POSTS = [
   {
+    id: 'p6',
+    author: 'Al Muqshith Shifan',
+    role: 'High School Science Day',
+    time: 'Oct 2026',
+    content: "Can AI really play video games properly?\n\nThat was the title of our session at Ontario Tech University's High School Science Day. Kevin Christopher Chua and I spent it trying to answer that question in front of a room of high school students.\n\nOur honest answer: sort of. The \"sort of\" is the interesting part.\n\nPEAK (Platformer Engine by AL & Kevin, yes, we named it after ourselves) does not run a big model. Each player is a tiny neural network, 291 numbers in total. Nobody teaches it with examples. We breed it: the players that get furthest through a level are copied with small random changes, and the rest are dropped. It does not need a GPU.\n\nThen we give the players personalities. On a Mario-style first level, our \"experienced\" player wins 91% of the time. Our \"clumsy\" one wins 3%. On the third level, almost none of them win at all.\n\nThat gap is what a game designer wants to see. If the clumsy player dies on the same jump every time, that jump is where real players will quit. The failures are the useful output.\nThanks to Cristiano Politowski, Ali Neshati, Usamn Mohammad for putting us in front of that room.\n\nI also gave the students a first look at my thesis, AFTERSTATE. It is about the characters you meet in games and what they get wrong about you. That is all I will say until the paper is out.",
+    image: 'assets/science-day.webp',
+    imageAlt: 'AL Shifan and Kevin Christopher Chua at the lecture hall podium for their High School Science Day session',
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7520548166019006464/',
+    linkLabel: 'Read on LinkedIn',
+    tags: '#PEAK #AFTERSTATE #OntarioTech #GameAI #Outreach',
+  },
+  {
     id: 'p0',
     author: 'Al Muqshith Shifan',
     role: 'Code & Sorcery Lab',
@@ -135,7 +147,7 @@ function renderPosts() {
         </div>
         ${p.image ? `<img class="feed-img" src="${escapeAttr(p.image)}" width="1000" height="750" alt="${escapeAttr(p.imageAlt || '')}" loading="lazy">` : ''}
         <p class="feed-content">${escapeHtml(p.content)}</p>
-        ${p.link ? `<a class="btn btn-sm feed-link" href="${escapeAttr(p.link)}" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i> ${escapeHtml(p.linkLabel || 'Open Link')}</a>` : ''}
+        ${p.link ? `<a class="btn btn-sm feed-link" href="${escapeAttr(p.link)}" target="_blank" rel="noopener"><i class="fab ${/linkedin\.com/.test(p.link) ? 'fa-linkedin-in' : 'fa-youtube'}" aria-hidden="true"></i> ${escapeHtml(p.linkLabel || 'Open Link')}</a>` : ''}
         <div class="feed-tags">${escapeHtml(p.tags)}</div>
       </div>
       <div class="admin-row">
