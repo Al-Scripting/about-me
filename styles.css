@@ -343,8 +343,6 @@ section:first-of-type{border-top:none}
 /* ---------- projects ---------- */
 .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;grid-auto-flow:dense}
 .proj.featured,.proj.teaser{grid-column:1/-1}
-.proj.tall{grid-row:span 2} /* the video card spans two rows; the two cards beside it stack */
-.proj.tall .proj-shot{flex:1 1 auto;min-height:0} /* the loop grows to fill whatever height the stacked pair sets */
 .proj{
   border:1px solid var(--line);background:var(--card);
   padding:24px 26px;display:flex;flex-direction:column;
@@ -375,12 +373,13 @@ section:first-of-type{border-top:none}
 .proj.featured h3{font-size:28px}
 .proj.featured p{font-size:15px}
 .proj-img{min-height:280px;border-left:1px solid var(--glass-line)}
-.proj-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.85)}
+.proj-img img,.proj-img video{width:100%;height:100%;object-fit:cover;filter:saturate(.85)}
 .proj-gallery{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:6px;align-content:start;min-height:0}
 .proj-gallery img,.proj-gallery video{width:100%;height:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;display:block;filter:none;cursor:pointer}
 .proj-gallery img{cursor:default}
 .proj-gallery .wide{grid-column:1/-1;aspect-ratio:1000/545}
-.proj-shot{width:calc(100% + 52px);margin:-24px -26px 18px;aspect-ratio:21/9;object-fit:cover;display:block;border-bottom:1px solid var(--glass-line);cursor:pointer}
+.proj-shot{width:calc(100% + 52px);max-width:none;height:auto;margin:-24px -26px 18px;aspect-ratio:21/9;object-fit:cover;display:block;border-bottom:1px solid var(--glass-line);cursor:pointer}
+img.proj-shot{cursor:auto} /* only the videos pause on click */
 .proj.peek{border-style:dashed}
 .proj.teaser{flex-direction:row;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border-style:dashed}
 .proj.teaser h3{margin-bottom:6px}
@@ -688,7 +687,6 @@ body.admin-on .admin-bar{display:flex}
   .proj.featured{grid-template-columns:1fr}
   .proj-img{border-left:none;border-top:1px solid var(--line)}
   .proj-grid{grid-template-columns:1fr}
-  .proj.tall{grid-row:auto}
   .feed-grid{columns:1}
 }
 @media (max-width:480px){.nav-cta .btn-vermilion{display:none}}

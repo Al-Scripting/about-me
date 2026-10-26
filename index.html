@@ -93,7 +93,7 @@
           <div><dt>IEEE&nbsp;CoG&nbsp;2026</dt><dd>Short paper · Madrid</dd></div>
           <div><dt>P4 · Tofino</dt><dd>Line-rate telemetry</dd></div>
           <div><dt>30+</dt><dd>Plugins audited</dd></div>
-          <div><dt>2</dt><dd>RL engines</dd></div>
+          <div><dt>#1 of 69</dt><dd>TinyBrains Ants</dd></div>
         </dl>
       </div>
 
@@ -181,9 +181,9 @@
         </div>
         <div class="pub-body">
           <h3>Emotional Memory in LLM-Driven Non-Player Characters: A Systematic Mapping Study</h3>
-          <p class="pub-authors">In progress · 66 records screened · 30 primary studies</p>
+          <p class="pub-authors">In progress · 87 records screened · 29 primary studies</p>
           <p class="pub-desc">
-            The standard memory stream for LLM agents ranks past events by recency, importance, and relevance. It does not use emotion. Psychology shows that emotion controls what we keep and what we recall. This study asks two questions. Do LLM NPCs link a stored emotion to a memory? Is that link based on a psychological method? Only 3 of 30 studies do both.
+            The standard memory stream for LLM agents ranks past events by recency, importance, and relevance. It does not use emotion. Psychology shows that emotion controls what we keep and what we recall. This study asks two questions. Do LLM NPCs link a stored emotion to a memory? Is that link based on a psychological method? Only 3 of 29 studies do both.
           </p>
           <div class="pub-links">
             <a href="#contact" class="btn btn-sm btn-ghost"><i class="fas fa-envelope" aria-hidden="true"></i> Request Preprint</a>
@@ -195,7 +195,7 @@
     <!-- Research directions -->
     <div class="dir-grid">
       <div class="dir reveal"><span class="dir-num">01</span><h4>Persona Stability Inside the Model</h4><p>Keep authored traits stable at the activation level, not in the prompt. Small models that can run inside a game.</p></div>
-      <div class="dir reveal"><span class="dir-num">02</span><h4>Emotion-Grounded NPC Memory</h4><p>A believable NPC must recall the past across a full game. Emotion is the index that decides when a memory is available. Emotion is also a value that the game can write.</p></div>
+      <div class="dir reveal"><span class="dir-num">02</span><h4>Emotion-Grounded NPC Memory</h4><p>A believable NPC must recall the past across a full game. Its memory must also shrink to fit the context window. My thesis measures what each rewrite keeps: the facts, the feelings, or both.</p></div>
       <div class="dir reveal"><span class="dir-num">03</span><h4>Playtesting Agents With Range</h4><p>One agent, many play styles. One policy gives behavioural coverage. There is no need for one agent for each persona.</p></div>
     </div>
 
@@ -234,7 +234,7 @@
           I am not a game developer. I am a <strong>software designer who uses games as a tool</strong>. Games are a harness to test and develop new ideas and concepts.
         </p>
         <p>
-          With <strong>Dr. Cristiano Politowski</strong> I build research tools: PEAK, RIDGE, TAST, and EMBR. With <strong>Dr. Loutfouz Zaman and Dr. Ali Neshati</strong> I study the human side: how agents show behaviour and how people interact with them. My background in networking and security is why I prefer reproducible systems and adversarial benchmarks.
+          With <strong>Dr. Cristiano Politowski</strong> I build research tools: PEAK, RIDGE, ROGUE, and TAST. My thesis, AFTERSTATE, is a benchmark for the emotional memory of game characters. With <strong>Dr. Loutfouz Zaman and Dr. Ali Neshati</strong> I study the human side: how agents show behaviour and how people interact with them. My background in networking and security is why I prefer reproducible systems and adversarial benchmarks.
         </p>
         <div class="about-meta">
           IEEE CoG 2026 first author · Dean’s List 2026 · TA: Web Development, Advanced Networking I, Networking I &amp; II · P4 Programmable Networks RA
@@ -250,10 +250,11 @@
         <div class="aside-block">
           <div class="aside-label">CURRENTLY</div>
           <ul class="aside-list">
+            <li><strong>AFTERSTATE</strong><span>Thesis · emotional memory</span></li>
+            <li><strong>RAVEN</strong><span>VR sound alerts</span></li>
+            <li><strong>ROGUE</strong><span>Portable persona agents</span></li>
+            <li><strong>PEAK</strong><span>Game-balancing engine</span></li>
             <li><strong>TAST</strong><span>Activation steering</span></li>
-            <li><strong>EMBR</strong><span>Emotion-grounded memory</span></li>
-            <li><strong>FATHOM</strong><span>PDA companion AI</span></li>
-            <li><strong>PEAK</strong><span>DRL benchmark engine</span></li>
             <li><strong>SLR</strong><span>Systematic mapping study</span></li>
             <li><strong>Teaching</strong><span>Web Dev · Adv. Networking I</span></li>
           </ul>
@@ -375,7 +376,7 @@
 
   <!-- ============== PROJECTS ============== -->
   <section id="projects">
-    <div class="float-win sec-win  d2" aria-hidden="true"><div class="win-title">PEAK · engine</div><ul class="win-lines"><li>1000 env steps per second</li><li>11 stages · ASCII levels</li><li>Deterministic physics</li></ul></div>
+    <div class="float-win sec-win  d2" aria-hidden="true"><div class="win-title">PEAK · probe</div><ul class="win-lines"><li>291 weights per agent</li><li>7 personas · 5 games</li><li>Same seed, same result</li></ul></div>
     <header class="sec-head reveal">
       <div class="sec-left">
         <div class="sec-eyebrow"><span lang="ja">作品</span> <small>Projects</small> / 04</div>
@@ -386,18 +387,35 @@
 
     <div class="proj-grid">
 
-      <article class="proj featured reveal" data-repo="Code-SorceryLab/PEAK-DRL-Tool">
+      <article class="proj featured reveal">
         <div class="proj-body">
-          <div class="proj-num">/ 001 · Engine</div>
-          <h3>PEAK · <em>Platform Engine</em></h3>
+          <div class="proj-num">/ 001 · Thesis</div>
+          <h3>AFTERSTATE · <em>Does the Feeling Fade?</em></h3>
           <p>
-            A deterministic, high-performance DRL benchmark engine for 2D platformers. It has SMB1-style physics, dual spatial hashing (about 1000&nbsp;steps per second), and a modular persona reward system. Design a level and train an agent in the same tool.
+            A game companion rewrites its memory shorter again and again to fit the context window. Does it forget how you felt before it forgets what happened? AFTERSTATE is a benchmark and an NPC dataset that measure this. It scores the facts and the feelings that stay after every rewrite.
           </p>
           <div class="proj-tags">
-            <span class="tag">Python</span><span class="tag">Gymnasium</span><span class="tag">PPO</span><span class="tag">Hydra</span>
+            <span class="tag">Python</span><span class="tag">LLM memory</span><span class="tag">Affective computing</span><span class="tag">Benchmark</span>
           </div>
           <div class="proj-foot">
-            <span>RESEARCH · ACTIVE</span>
+            <span>MSC THESIS · IN PROGRESS</span>
+          </div>
+        </div>
+        <div class="proj-img"><img src="assets/afterstate.webp" width="900" height="732" loading="lazy" alt="AFTERSTATE explainer title card: the question 'When a game companion rewrites its memory, what is left of how you felt?' next to Temi, the project mascot"></div>
+      </article>
+
+      <article class="proj featured reveal" data-repo="Code-SorceryLab/PEAK-DRL-Tool">
+        <div class="proj-body">
+          <div class="proj-num">/ 002 · Engine</div>
+          <h3>PEAK · <em>Platform Engine</em></h3>
+          <p>
+            A game-balancing engine with five deterministic 2D games. Small evolved neural agents play each level as cheap, repeatable playtesters. They report the win rate, the deaths, and the routes for each of 7&nbsp;player personas. After a level edit, the seed and the search stay the same, so any change comes from the level.
+          </p>
+          <div class="proj-tags">
+            <span class="tag">Python</span><span class="tag">Pygame</span><span class="tag">NumPy</span><span class="tag">Neuroevolution</span>
+          </div>
+          <div class="proj-foot">
+            <span>CSER 2026 FALL · POSTER</span>
             <div class="proj-icons">
               <button type="button" class="readme-btn" data-repo="Code-SorceryLab/PEAK-DRL-Tool"><i class="fas fa-book-open" aria-hidden="true"></i> README</button>
               <a href="https://github.com/Code-SorceryLab/PEAK-DRL-Tool" target="_blank" rel="noopener" aria-label="PEAK on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
@@ -412,7 +430,7 @@
       </article>
       <article class="proj featured peek reveal" data-repo="Al-Scripting/FATHOM">
         <div class="proj-body">
-          <div class="proj-num">/ 002 · Companion AI · Sneak peek</div>
+          <div class="proj-num">/ 003 · Companion AI · Sneak peek</div>
           <h3>FATHOM · <em>Helpful, Not Omniscient</em></h3>
           <p>
             An AI companion that lives in the Subnautica PDA and is built to stay quiet. It watches oxygen, depth, the dark, and what circles the player. It speaks only when a line changes what the player does, in the original PDA voice. The research question: can an adaptive AI guide a lost diver and keep the fear of survival horror?
@@ -431,23 +449,26 @@
         <div class="proj-img"><img src="assets/fathom-dashboard.webp" width="1400" height="875" loading="lazy" alt="FATHOM dashboard: vitals, situation vector, persona, range rings, oxygen and depth charts, and PDA transmissions"></div>
       </article>
 
-      <article class="proj half tall reveal" data-repo="Code-SorceryLab/RIDGE">
-        <video class="proj-shot" data-src="assets/ridge-demo.mp4" poster="assets/ridge-demo-poster.webp" width="720" height="463" muted loop playsinline preload="none" aria-label="RIDGE live viewer on Crafter: the agent moves while the four persona weights change"></video>
-        <div class="proj-num">/ 003 · Paper</div>
-        <h3>RIDGE · <em>Reward Blending</em></h3>
-        <p>One PPO agent blends four persona rewards from the game state with smooth sigmoids. It is the only condition that reaches both wood-tier branches on Crafter. Presented at IEEE CoG 2026.</p>
-        <div class="proj-tags"><span class="tag">PyTorch</span><span class="tag">Crafter</span><span class="tag">Multi-head critic</span></div>
-        <div class="proj-foot">
-          <span>IEEE COG 2026</span>
-          <div class="proj-icons">
-            <button type="button" class="readme-btn" data-repo="Code-SorceryLab/RIDGE" aria-label="Open the RIDGE README"><i class="fas fa-book-open" aria-hidden="true"></i></button>
-            <a href="https://github.com/Code-SorceryLab/RIDGE" target="_blank" rel="noopener" aria-label="RIDGE on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+      <article class="proj featured reveal" data-repo="Code-SorceryLab/RIDGE">
+        <div class="proj-body">
+          <div class="proj-num">/ 004 · Paper</div>
+          <h3>RIDGE · <em>Reward Blending</em></h3>
+          <p>One PPO agent blends four persona rewards from the game state with smooth sigmoids. It is the only condition that reaches both wood-tier branches on Crafter. Presented at IEEE CoG 2026.</p>
+          <div class="proj-tags"><span class="tag">PyTorch</span><span class="tag">Crafter</span><span class="tag">Multi-head critic</span></div>
+          <div class="proj-foot">
+            <span>IEEE COG 2026</span>
+            <div class="proj-icons">
+              <button type="button" class="readme-btn" data-repo="Code-SorceryLab/RIDGE"><i class="fas fa-book-open" aria-hidden="true"></i> README</button>
+              <a href="https://github.com/Code-SorceryLab/RIDGE" target="_blank" rel="noopener" aria-label="RIDGE on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+            </div>
           </div>
         </div>
+        <div class="proj-img"><video data-src="assets/ridge-demo.mp4" poster="assets/ridge-demo-poster.webp" width="720" height="463" muted loop playsinline preload="none" aria-label="RIDGE live viewer on Crafter: the agent moves while the four persona weights change"></video></div>
       </article>
 
       <article class="proj half reveal">
-        <div class="proj-num">/ 004 · Tool</div>
+        <img class="proj-shot" src="assets/tast-demo.webp" width="880" height="396" loading="lazy" alt="TAST Dungeon demo: a pixel-art dungeon map with the NPC the player talks to and the active quest">
+        <div class="proj-num">/ 005 · Tool</div>
         <h3>TAST · <em>Trait Activation Steering</em></h3>
         <p>Keep small language models in character across long adversarial conversations, without fine-tuning. It uses cartridges, capping, linear axes, and a rotational dial. Three local LLMs judge the results.</p>
         <div class="proj-tags"><span class="tag">PyTorch</span><span class="tag">Activation steering</span><span class="tag">LLMs</span></div>
@@ -456,22 +477,45 @@
         </div>
       </article>
 
-      <article class="proj half reveal" data-repo="Code-SorceryLab/EMBR">
-        <div class="proj-num">/ 005 · Middleware</div>
-        <h3>EMBR</h3>
-        <p>Emotional Memory for Believable Roleplay. NPCs remember what you did and how they feel about it. They give a different answer to a gift and to a betrayal. Emotion is the recall index.</p>
-        <div class="proj-tags"><span class="tag">Python</span><span class="tag">Affect</span><span class="tag">Agentic memory</span></div>
+      <article class="proj half reveal">
+        <video class="proj-shot" style="object-position:50% 0" data-src="assets/rogue-tower.mp4" poster="assets/rogue-tower-poster.webp" width="640" height="360" muted loop playsinline preload="none" aria-label="ROGUE plays Obstacle Tower while its live panel shows the persona blend change from step to step"></video>
+        <div class="proj-num">/ 006 · Sequel to RIDGE</div>
+        <h3>ROGUE · <em>Portable Personas</em></h3>
+        <p>RIDGE for any Unity ML-Agents game. The game reports named events and state values through one C# file. Each persona is a YAML block that prices those events. One PPO agent trains on a new game with no new agent code.</p>
+        <div class="proj-tags"><span class="tag">Unity ML-Agents</span><span class="tag">PyTorch</span><span class="tag">C#</span></div>
         <div class="proj-foot">
-          <span>ACTIVE</span>
+          <span>RESEARCH · PAPER IN PROGRESS</span>
+        </div>
+      </article>
+
+      <article class="proj half reveal">
+        <img class="proj-shot" src="assets/raven-alarm.webp" width="1000" height="750" loading="lazy" alt="RAVEN packing game: a critical fire-alarm alert tells the player to take off the headset and check around">
+        <div class="proj-num">/ 007 · VR</div>
+        <h3>RAVEN · <em>Reality-Aware Alerts</em></h3>
+        <p>In a VR headset you stop hearing the room. RAVEN listens for real-world sounds, such as a fire alarm, a door, or a dog. It tells the player in a way that matches the risk. A door gets a short chime. A fire alarm lowers the game audio and repeats a spoken warning until the player confirms.</p>
+        <div class="proj-tags"><span class="tag">Unity 6</span><span class="tag">Meta Quest 3</span><span class="tag">YAMNet</span><span class="tag">ONNX</span></div>
+        <div class="proj-foot">
+          <span>VR · IN DEVELOPMENT</span>
+        </div>
+      </article>
+
+      <article class="proj half reveal">
+        <video class="proj-shot" data-src="assets/raze-match.mp4" poster="assets/raze-match-poster.webp" width="1116" height="1152" muted loop playsinline preload="none" aria-label="A TinyBrains Ants match: two colonies of pixel ants race for food across the map"></video>
+        <div class="proj-num">/ 008 · Competition</div>
+        <h3>RAZE · <em>Hand-Built Brains</em></h3>
+        <p>Entries for the TinyBrains Ants ladder, where size in bytes sets the weight class. RAZE has no learned weights. I wrote a flood fill straight into ONNX convolution layers, then added hand-designed tactics one at a time. My entry Perfectionism finished #1 of 69 on the Open ladder.</p>
+        <div class="proj-tags"><span class="tag">ONNX</span><span class="tag">NumPy</span><span class="tag">Python</span></div>
+        <div class="proj-foot">
+          <span>TINYBRAINS · #1 OF 69</span>
           <div class="proj-icons">
-            <button type="button" class="readme-btn" data-repo="Code-SorceryLab/EMBR" aria-label="Open the EMBR README"><i class="fas fa-book-open" aria-hidden="true"></i></button>
-            <a href="https://github.com/Code-SorceryLab/EMBR" target="_blank" rel="noopener" aria-label="EMBR on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+            <a href="https://tinybrains.dev/leaderboard" target="_blank" rel="noopener" aria-label="TinyBrains leaderboard"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           </div>
         </div>
       </article>
 
       <article class="proj half reveal">
-        <div class="proj-num">/ 006 · Hackathon</div>
+        <img class="proj-shot" src="assets/gestura.webp" width="1200" height="554" loading="lazy" alt="Gestura clinician view: a 3D body with marked pain areas, a pain list sorted by severity, and AI clinical notes">
+        <div class="proj-num">/ 009 · Hackathon</div>
         <h3>Gestura</h3>
         <p>Real-time AI body mapping for telehealth. Computer vision and a 3D digital twin turn gestures into structured clinical data. HackHive 2026 · Code &amp; Sorcery Students.</p>
         <div class="proj-tags"><span class="tag">Flask</span><span class="tag">CV</span><span class="tag">Three.js</span></div>
@@ -485,7 +529,7 @@
       </article>
 
       <article class="proj half reveal" id="latest-repo-card">
-        <div class="proj-num">/ 007 · Live</div>
+        <div class="proj-num">/ 010 · Live</div>
         <div id="latest-repo">
           <h3>Latest GitHub Push</h3>
           <p>Fetching <code translate="no">@Al-Scripting</code>…</p>
@@ -494,7 +538,7 @@
 
       <article class="proj teaser reveal">
         <div class="teaser-text">
-          <div class="proj-num">/ 008 · Sneak peek</div>
+          <div class="proj-num">/ 011 · Sneak peek</div>
           <h3>Something New Is in the Lab</h3>
           <p>A new project is in development at Code &amp; Sorcery Lab. It is not public yet. Ask me about it.</p>
         </div>
@@ -589,7 +633,7 @@
         <div class="tl-content">
           <h3>MSc Student, Computer Science (Software Design)</h3>
           <div class="tl-org">Ontario Tech University · expected graduation May 2028</div>
-          <p>First author on RIDGE (IEEE CoG 2026). I build TAST and EMBR. I do a systematic mapping study on emotional memory in LLM NPCs.</p>
+          <p>First author on RIDGE (IEEE CoG 2026). My thesis, AFTERSTATE, measures what game characters keep of a feeling when an LLM rewrites their memory. I also do a systematic mapping study on emotional memory in LLM NPCs.</p>
         </div>
       </div>
       <div class="tl-row reveal">

@@ -50,7 +50,7 @@ const DEFAULT_POSTS = [
     author: 'Al Muqshith Shifan',
     role: 'Systematic Mapping Study',
     time: 'In progress',
-    content: "I am deep in a systematic mapping study: Emotional Memory in LLM-Driven Non-Player Characters.\n\nThe result so far: the standard memory stream ranks the past by recency, importance, and relevance. It does not use emotion. Psychology says that emotion is one of the forces that decides what we keep and what comes back.\n\nOf 30 primary studies (from 66 screened): fewer than half link emotion to memory, only 9 base that link on a psychological method, and only 3 do both. None evaluates inside a commercial game. None reports latency or token cost.\n\nThe map shows where the next build must go.",
+    content: "I am deep in a systematic mapping study: Emotional Memory in LLM-Driven Non-Player Characters.\n\nThe result so far: the standard memory stream ranks the past by recency, importance, and relevance. It does not use emotion. Psychology says that emotion is one of the forces that decides what we keep and what comes back.\n\nOf 29 primary studies (from 87 screened): fewer than half link emotion to memory, only 9 base that link on a psychological method, and only 3 do both. None evaluates inside a commercial game. Only 2 measure latency, and none reports token cost.\n\nThe map shows where the next build must go.",
     tags: '#LLM #NPC #AffectiveComputing #SystematicReview #GameAI',
   },
   {
@@ -66,8 +66,8 @@ const DEFAULT_POSTS = [
     author: 'Al Muqshith Shifan',
     role: 'PEAK · Research',
     time: '2026',
-    content: "PEAK continues to grow. It is a deterministic, high-performance 2D platformer engine for benchmarks of Deep RL agents.\n\n• Custom SMB1-style physics, fully reproducible\n• Dual spatial hashing: O(C) collision queries, more than 1000 env steps per second\n• 11 progressive stages, ASCII level format\n• Modular 'persona' reward system for different play styles\n• Real-time debug overlays that show what the agent sees\n\nDesign a level and train an agent in the same tool.",
-    tags: '#ReinforcementLearning #GameEngine #Benchmarking #OpenSource',
+    content: "PEAK continues to grow. It is now a game-balancing engine. Small evolved neural agents play every level as cheap, repeatable playtesters.\n\n• Five deterministic 2D games: Mario-style, Meat Boy, Bomberman, and more\n• Agents with 291 weights, evolved by a genetic algorithm, no GPU needed\n• 7 player personas, from novice to speedrunner\n• Win rate with 95% confidence intervals, death causes, and routes for each level\n• Same seed and same search: after a level edit, any change comes from the level\n\nA regression test for game feel.",
+    tags: '#Neuroevolution #GameBalancing #Playtesting #OpenSource',
   },
   {
     id: 'p5',
@@ -394,18 +394,18 @@ function initTerminal() {
   const input = document.getElementById('term-in');
   if (!out || !input) return;
   const SECTIONS = ['research', 'about', 'networks', 'projects', 'sorcery', 'experience', 'updates', 'contact'];
-  const REPOS = { ridge: 'Code-SorceryLab/RIDGE', peak: 'Code-SorceryLab/PEAK-DRL-Tool', embr: 'Code-SorceryLab/EMBR', fathom: 'Al-Scripting/FATHOM' };
+  const REPOS = { ridge: 'Code-SorceryLab/RIDGE', peak: 'Code-SorceryLab/PEAK-DRL-Tool', fathom: 'Al-Scripting/FATHOM' };
   const CMDS = {
-    help: () => 'Commands: whoami, ls, cd <section>, cat skills, readme <ridge|peak|embr|fathom>, ping github, neofetch, contact, motion <on|off>, clear',
+    help: () => 'Commands: whoami, ls, cd <section>, cat skills, readme <ridge|peak|fathom>, ping github, neofetch, contact, motion <on|off>, clear',
     whoami: () => 'Al Muqshith Shifan. MSc Computer Science (Software Design), Ontario Tech.\nNetworking and security by training. Software design and AI by research.',
     ls: () => SECTIONS.map(s => s + '/').join('  '),
     cd: (a) => { if (!SECTIONS.includes(a)) return `cd: no such section: ${a || ''}. Try: ls`; document.getElementById(a).scrollIntoView(); return '-> ' + a; },
     cat: (a) => a === 'skills'
       ? [...document.querySelectorAll('.stack-col')].map(c => c.querySelector('h4').textContent + ': ' + [...c.querySelectorAll('li')].map(l => l.textContent).join(', ')).join('\n')
       : `cat: ${a || ''}: no such file. Try: cat skills`,
-    readme: (a) => { const r = REPOS[(a || '').toLowerCase()]; if (!r) return 'readme: which one? ridge, peak, embr, or fathom'; openReadme(r); return 'Opening ' + r + '…'; },
+    readme: (a) => { const r = REPOS[(a || '').toLowerCase()]; if (!r) return 'readme: which one? ridge, peak, or fathom'; openReadme(r); return 'Opening ' + r + '…'; },
     ping: () => 'PING github.com: 64 bytes from Code-SorceryLab: time=1 ms\n--- 1 packet sent, 0% loss. The lab is up.',
-    neofetch: () => 'al@sorcery\n----------\nOS: Ontario Tech University\nShell: Code & Sorcery Lab\nUptime: since 2016\nPackages: PEAK, RIDGE, TAST, EMBR, FATHOM\nNetwork: P4 · Tofino · CCNA\nCPU: PPO, 4 persona heads',
+    neofetch: () => 'al@sorcery\n----------\nOS: Ontario Tech University\nShell: Code & Sorcery Lab\nUptime: since 2016\nPackages: AFTERSTATE, PEAK, RIDGE, ROGUE, TAST, RAVEN, FATHOM, RAZE\nNetwork: P4 · Tofino · CCNA\nCPU: PPO, 4 persona heads',
     contact: () => 'Email: almuqshith.shifan@gmail.com\nLinkedIn: /in/al-mohamed-shifan-5266b924b\nGitHub: Al-Scripting',
     motion: (a) => { const still = document.documentElement.classList.contains('still'); if ((a === 'off') !== still) document.getElementById('motion-toggle').click(); return a === 'off' ? 'Motion paused.' : 'Motion playing.'; },
     clear: () => { out.textContent = ''; return null; },
