@@ -367,12 +367,17 @@ function renderMarkdown(md, repo) {
   return wrap.innerHTML;
 }
 
+// Ring of 12 ticks. Adapted from Uiverse.io by elijahgummer (MIT)
+const LOADER = '<svg class="loader" viewBox="0 0 48 48" aria-hidden="true">'
+  + Array.from({ length: 12 }, (_, i) => `<line x1="24" y1="2" x2="24" y2="6" transform="rotate(${i * 30} 24 24)"/>`).join('')
+  + '</svg>';
+
 async function openReadme(repo) {
   const modal = document.getElementById('readme-modal');
   const title = document.getElementById('readme-title');
   const content = document.getElementById('readme-content');
   title.textContent = repo + ' · README';
-  content.innerHTML = '<p class="md-loading">Fetching README…</p>';
+  content.innerHTML = `<p class="md-loading">${LOADER}Fetching README…</p>`;
   history.replaceState(null, '', '#readme/' + repo); // deep link
   openModal('readme-modal');
   try {
@@ -449,8 +454,7 @@ function initMotionToggle() {
   const btn = document.getElementById('motion-toggle');
   const apply = (still) => {
     document.documentElement.classList.toggle('still', still);
-    btn.setAttribute('aria-pressed', String(still));
-    btn.querySelector('span').textContent = still ? 'Play Motion' : 'Pause Motion';
+    btn.setAttribute('aria-checked', String(!still));
     document.querySelectorAll('video').forEach(v => { if (still) v.pause(); else if (v.src && !v.controls) v.play().catch(() => {}); });
   };
   let still = false;
