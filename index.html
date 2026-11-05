@@ -101,7 +101,7 @@
         <img src="assets/hero.webp" width="720" height="720" fetchpriority="high" alt="Al Muqshith Shifan portrait">
         <figcaption>
           <span>AL · Muqshith</span>
-          <span lang="ja">オシャワ、オンタリオ</span>
+          <span lang="ja">オンタリオ、カナダ</span>
         </figcaption>
         <!-- floating windows: live-looking slices of the work, decorative -->
         <div class="float-win win-chip" aria-hidden="true"><span class="seal-dot"></span> IEEE CoG 2026 · Presented</div>
@@ -174,10 +174,29 @@
         </figure>
       </article>
 
-      <!-- Publication: SLR -->
+      <!-- Publication: PEAK poster, CSER 2026 -->
       <article class="pub-card reveal">
         <div class="pub-left">
           <div class="pub-num"><span lang="ja">論文</span> / 002</div>
+          <div class="pub-badge pub-badge-accepted"><i class="fas fa-circle-check" aria-hidden="true"></i> Accepted · CSER 2026 · Poster</div>
+        </div>
+        <div class="pub-body">
+          <h3>Evolved Neural Agents as Tireless Playtesters</h3>
+          <p class="pub-authors">AL Muqshith Mohammed Shifan · Kevin Christopher Chua · Ali Neshati · Loutfouz Zaman · Cristiano Politowski</p>
+          <p class="pub-desc">
+            A level edit can make a level harder or impossible to finish, and the code tests still pass. We train small evolved agents in PEAK once, freeze them, and keep them as tests for the level. After an edit, the frozen agents play the level again and flag what changed. Across 130 small edits to 28 levels in 4 games, they caught 70 of the 76 edits that changed play. They gave no false alarm on the 54 unchanged controls.
+          </p>
+          <div class="pub-links">
+            <a href="assets/cser26-peak-poster.webp" target="_blank" rel="noopener" class="btn btn-sm"><i class="fas fa-image" aria-hidden="true"></i> Poster</a>
+            <a href="https://github.com/Code-SorceryLab/PEAK-DRL-Tool" target="_blank" rel="noopener" class="btn btn-sm btn-ghost"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Publication: SLR -->
+      <article class="pub-card reveal">
+        <div class="pub-left">
+          <div class="pub-num"><span lang="ja">論文</span> / 003</div>
           <div class="pub-badge"><i class="fas fa-rotate" aria-hidden="true"></i> Draft · Systematic Mapping Study</div>
         </div>
         <div class="pub-body">
@@ -238,7 +257,7 @@
           With <strong>Dr. Cristiano Politowski</strong> I build research tools: PEAK, RIDGE, ROGUE, and TAST. My thesis, AFTERSTATE, is about the characters you meet in games and what they get wrong about you. With <strong>Dr. Loutfouz Zaman and Dr. Ali Neshati</strong> I study the human side: how agents show behaviour and how people interact with them. My background in networking and security is why I prefer reproducible systems and adversarial benchmarks.
         </p>
         <div class="about-meta">
-          IEEE CoG 2026 first author · Dean’s List 2026 · TA: Web Development, Advanced Networking I, Networking I &amp; II · P4 Programmable Networks RA
+          IEEE CoG 2026 first author · CSER 2026 poster · Dean’s List 2026 · TA: Web Development, Networking I, Advanced Networking I to III · P4 Programmable Networks RA
         </div>
       </div>
 
@@ -246,7 +265,7 @@
         <div class="aside-block">
           <div class="aside-label">STATUS</div>
           <div class="aside-value">Open to research &amp; engineering roles</div>
-          <div class="aside-meta">Summer / Fall 2026 · remote or relocation</div>
+          <div class="aside-meta">Remote or relocation</div>
         </div>
         <div class="aside-block">
           <div class="aside-label">CURRENTLY</div>
@@ -262,8 +281,8 @@
         </div>
         <div class="aside-block">
           <div class="aside-label">BASED IN</div>
-          <div class="aside-value">Oshawa, Ontario</div>
-          <div class="aside-meta" lang="ja">オシャワ</div>
+          <div class="aside-value">Ontario, Canada</div>
+          <div class="aside-meta" lang="ja">オンタリオ</div>
         </div>
       </aside>
     </div>
@@ -368,8 +387,8 @@
       </article>
       <article class="net reveal">
         <div class="dir-num">04 · Teaching</div>
-        <h3>Networking I, II, and Advanced I</h3>
-        <p>Teaching assistant for three networking courses. Labs on TCP/IP, subnetting, routing protocols, and enterprise firewalls for about&nbsp;120 undergraduates a term.</p>
+        <h3>Networking I and Advanced I to III</h3>
+        <p>Teaching assistant for four networking courses. Labs on TCP/IP, subnetting, routing protocols, and enterprise firewalls for about&nbsp;120 undergraduates a term.</p>
         <div class="net-tags">TCP/IP · Routing · Firewalls</div>
       </article>
     </div>
@@ -410,13 +429,13 @@
           <div class="proj-num">/ 002 · Engine</div>
           <h3>PEAK · <em>Platform Engine</em></h3>
           <p>
-            A game-balancing engine with five deterministic 2D games. Small evolved neural agents play each level as cheap, repeatable playtesters. They report the win rate, the deaths, and the routes for each of 7&nbsp;player personas. After a level edit, the seed and the search stay the same, so any change comes from the level.
+            A game-balancing engine with five deterministic 2D games. Small evolved neural agents play each level as cheap, repeatable playtesters. They report the win rate, the deaths, and the routes for each of 7&nbsp;player personas. After a level edit, the seed and the search stay the same, so any change comes from the level. Frozen agents replay the edited level and act as regression tests for game content.
           </p>
           <div class="proj-tags">
             <span class="tag">Python</span><span class="tag">Pygame</span><span class="tag">NumPy</span><span class="tag">Neuroevolution</span>
           </div>
           <div class="proj-foot">
-            <span>CSER 2026 FALL · POSTER</span>
+            <span>CSER 2026 · POSTER</span>
             <div class="proj-icons">
               <button type="button" class="readme-btn" data-repo="Code-SorceryLab/PEAK-DRL-Tool"><i class="fas fa-book-open" aria-hidden="true"></i> README</button>
               <a href="https://github.com/Code-SorceryLab/PEAK-DRL-Tool" target="_blank" rel="noopener" aria-label="PEAK on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
@@ -440,7 +459,7 @@
             <span class="tag">Unreal 5.6</span><span class="tag">UE4SS Lua</span><span class="tag">Ollama</span><span class="tag">Persona steering</span>
           </div>
           <div class="proj-foot">
-            <span>CSER 2026 FALL · SNEAK PEEK</span>
+            <span>SNEAK PEEK · IN DEVELOPMENT</span>
             <div class="proj-icons">
               <button type="button" class="readme-btn" data-repo="Al-Scripting/FATHOM"><i class="fas fa-book-open" aria-hidden="true"></i> README</button>
               <a href="https://github.com/Al-Scripting/FATHOM" target="_blank" rel="noopener" aria-label="FATHOM on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
@@ -475,7 +494,7 @@
         <p>Keep small language models in character across long adversarial conversations, without fine-tuning. It uses cartridges, capping, linear axes, and a rotational dial. Three local LLMs judge the results.</p>
         <div class="proj-tags"><span class="tag">PyTorch</span><span class="tag">Activation steering</span><span class="tag">LLMs</span></div>
         <div class="proj-foot">
-          <span>RESEARCH · LOCAL · REPO SOON</span>
+          <span>CSER 2026 POSTER · REPO SOON</span>
         </div>
       </article>
 
@@ -601,7 +620,7 @@
 
   <!-- ============== EXPERIENCE ============== -->
   <section id="experience">
-    <div class="float-win sec-win  d1" aria-hidden="true"><div class="win-title">Teaching · 2026</div><ul class="win-lines"><li>Web Development</li><li>Advanced Networking I</li><li>Networking I &amp; II</li></ul></div>
+    <div class="float-win sec-win  d1" aria-hidden="true"><div class="win-title">Teaching · 2026</div><ul class="win-lines"><li>Web Development</li><li>Networking I</li><li>Advanced Networking I to III</li></ul></div>
     <header class="sec-head reveal">
       <div class="sec-left">
         <div class="sec-eyebrow"><span lang="ja">道</span> <small>Journey</small> / 06</div>
@@ -621,7 +640,7 @@
         </div>
       </div>
       <div class="tl-row current reveal">
-        <div class="tl-date">SINCE SEP 2025</div>
+        <div class="tl-date">SINCE MAY 2026</div>
         <div class="tl-node"></div>
         <div class="tl-content">
           <h3>Graduate Research Assistant</h3>
@@ -630,19 +649,28 @@
         </div>
       </div>
       <div class="tl-row reveal">
-        <div class="tl-date">SEP 2025 - MAY 2028</div>
+        <div class="tl-date">SINCE MAY 2026</div>
         <div class="tl-node"></div>
         <div class="tl-content">
           <h3>MSc Student, Computer Science (Software Design)</h3>
           <div class="tl-org">Ontario Tech University · expected graduation May 2028</div>
-          <p>First author on RIDGE (IEEE CoG 2026). My thesis, AFTERSTATE, is coming soon. I also do a systematic mapping study on emotional memory in LLM NPCs.</p>
+          <p>First author on RIDGE (IEEE CoG 2026) and on a CSER 2026 poster about PEAK. My thesis, AFTERSTATE, is coming soon. I also do a systematic mapping study on emotional memory in LLM NPCs.</p>
         </div>
       </div>
       <div class="tl-row reveal">
-        <div class="tl-date">2024 - 2026</div>
+        <div class="tl-date">JUN 2026</div>
         <div class="tl-node"></div>
         <div class="tl-content">
-          <h3>Teaching Assistant · Networking I &amp; II</h3>
+          <h3>Bachelor of IT, Networking and IT Security</h3>
+          <div class="tl-org">Ontario Tech University · Dean’s List</div>
+          <p>Networking, systems, and security. This is the base for my move to Computer Science and AI.</p>
+        </div>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-date">2025 - 2026</div>
+        <div class="tl-node"></div>
+        <div class="tl-content">
+          <h3>Teaching Assistant · Networking I and Advanced Networking II and III</h3>
           <div class="tl-org">Ontario Tech University</div>
           <p>Ran labs on TCP/IP, subnetting, routing protocols, and enterprise firewalls for about&nbsp;120 undergraduates.</p>
         </div>
@@ -663,15 +691,6 @@
           <h3>Cyber Security Analyst</h3>
           <div class="tl-org">YYC Beeswax Ltd · Remote</div>
           <p>Did vulnerability assessments on a WooCommerce and Stripe stack. Audited more than 30&nbsp;plugins. Wrote a hardening checklist that the engineering team uses as its pre-deploy gate.</p>
-        </div>
-      </div>
-      <div class="tl-row reveal">
-        <div class="tl-date">2025</div>
-        <div class="tl-node"></div>
-        <div class="tl-content">
-          <h3>Bachelor of IT, Networking and IT Security</h3>
-          <div class="tl-org">Ontario Tech University</div>
-          <p>Networking, systems, and security. This is the base for my move to Computer Science and AI.</p>
         </div>
       </div>
       <div class="tl-row reveal">
@@ -706,7 +725,7 @@
 
   <!-- ============== FEED ============== -->
   <section id="updates">
-    <div class="float-win win-chip sec-chip d2" aria-hidden="true"><span class="seal-dot"></span> CHI 2027 · video in progress</div>
+    <div class="float-win win-chip sec-chip d2" aria-hidden="true"><span class="seal-dot"></span> CHI 2027 · under review</div>
     <header class="sec-head reveal">
       <div class="sec-left">
         <div class="sec-eyebrow"><span lang="ja">便り</span> <small>Notes</small> / 07</div>
@@ -719,7 +738,7 @@
 
   <!-- ============== CONTACT ============== -->
   <section id="contact">
-    <div class="float-win sec-win  d3" aria-hidden="true"><div class="win-title">Oshawa, Ontario</div><ul class="win-lines"><li>Summer / Fall 2026</li><li>Remote or relocation</li><li>Reply within 24&nbsp;hours</li></ul></div>
+    <div class="float-win sec-win  d3" aria-hidden="true"><div class="win-title">Ontario, Canada</div><ul class="win-lines"><li>Remote or relocation</li><li>Reply within 24&nbsp;hours</li></ul></div>
     <header class="sec-head reveal">
       <div class="sec-left">
         <div class="sec-eyebrow"><span lang="ja">連絡</span> <small>Contact</small> / 08</div>
@@ -735,7 +754,7 @@
         <ul class="contact-list">
           <li><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:almuqshith.shifan@gmail.com">almuqshith.shifan@gmail.com</a></li>
           <li><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+16475404866">+1&nbsp;647‑540‑4866</a></li>
-          <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Oshawa, Ontario, Canada</li>
+          <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Ontario, Canada</li>
           <li><i class="fas fa-graduation-cap" aria-hidden="true"></i> MSc, Computer Science · Software Design</li>
         </ul>
       </div>
