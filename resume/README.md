@@ -1,15 +1,16 @@
 # Resume source
 
-## Two documents
+## Documents
 
 | File | What it is |
 |---|---|
+| `Resume_2026_ML.tex` | **Current CV (since 2026-11-05).** Source of `assets/Al-Shifan-Resume-2026.pdf`. Build with `tectonic -X compile Resume_2026_ML.tex`; keep it to one page. |
 | `main.tex` | **Targeted one-pager**, originally tailored for Morph Labs (AI/ML Engineer). Margins are tuned to fit one page — keep it lean. Tailor a *copy* per application rather than growing this one. |
 | `main_full.tex` | **General / research-track resume**, two pages. Carries the full record: Publications, the SEGAL Lab role, and the SLR, EMBR and TAST projects. |
 
 Both carry the same corrected facts.
 
-LaTeX source for `assets/Al-Shifan-Resume-2026.pdf`, which the site links as the CV.
+`main.tex` and `main_full.tex` are the older template and are no longer published.
 Previously the source lived only in a zip in Downloads; it is versioned here so the
 published PDF and its source cannot drift apart again.
 

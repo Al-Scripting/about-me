@@ -1,0 +1,118 @@
+%-------------------------
+% Al Muqshith Shifan - Resume, ML / RL version (ATS-friendly, plain)
+% Build: tectonic Resume_2026_ML.tex
+%-------------------------
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{fontspec}
+\setmainfont{texgyreheros}[
+  Extension=.otf, UprightFont=*-regular, BoldFont=*-bold,
+  ItalicFont=*-italic, BoldItalicFont=*-bolditalic,
+  Ligatures={TeX,NoCommon}, Scale=0.93]   % no fi/fl ligatures, so ATS text extraction stays clean
+\usepackage[margin=0.5in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedright
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.2em, topsep=1pt, itemsep=0pt, parsep=0pt, after=\vspace{2pt}, label=\textbullet}
+
+\titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}[\vspace{-6pt}\rule{\linewidth}{0.4pt}]
+\titlespacing*{\section}{0pt}{6pt}{3pt}
+
+% \entry{Title}{Date}{Organization}{Location} -> one line
+\newcommand{\entry}[4]{%
+  \textbf{#1}, #3\ifx&#4&\else\ \textbar{} #4\fi \hfill #2 \par}
+
+\begin{document}
+
+%-----HEADER-----
+\begin{center}
+  {\LARGE\bfseries Al Muqshith Shifan} \\[3pt]
+  Oshawa, ON \textbar{} +1 647-540-4866 \textbar{} \href{mailto:mohamedshifan@ontariotechu.net}{mohamedshifan@ontariotechu.net} \\
+  \href{https://www.linkedin.com/in/al-mohamed-shifan-5266b924b/}{linkedin.com/in/al-mohamed-shifan} \textbar{}
+  \href{https://github.com/Al-Scripting}{github.com/Al-Scripting}
+\end{center}
+
+%-----SUMMARY-----
+\section{Summary}
+MSc Computer Science student researching reinforcement learning (RL) and LLM agents for games, and \textbf{first author of an IEEE CoG 2026 paper}.
+Builds deep RL pipelines in PyTorch, Unity ML-Agents tools, and LLM benchmarks. CCNA certified.
+
+%-----EDUCATION-----
+\section{Education}
+\entry{MSc, Computer Science (Software Design, AI/RL focus)}{May 2026 - Present}{Ontario Tech University}{}
+\entry{Bachelor of IT, Networking and Cybersecurity}{Jun 2026}{Ontario Tech University}{GPA 3.8/4.3 (final 2 years), Dean's List}
+
+%-----PUBLICATIONS-----
+\section{Publications}
+\textbf{AL Muqshith Mohammed Shifan}, Kevin Christopher Chua, Ali Neshati, Loutfouz Zaman, and Cristiano Politowski.
+``RIDGE: State-Conditioned Reward Blending for Behavioral Coverage in Deep RL Game Agents.''
+\textit{IEEE Conference on Games (CoG)}, Madrid, Spain, Sept. 1-5, 2026. \textbf{Short paper, first author, presented.}
+Preprint: \href{https://arxiv.org/abs/2611.05601}{arXiv:2611.05601}.
+\begin{itemize}
+  \item One RL agent blends 4 personas via a \textbf{multi-head PPO critic}; on Crafter it learned crafting and combat, which no baseline did.
+\end{itemize}
+
+\vspace{3pt}
+\textbf{AL Muqshith Mohammed Shifan} (second author).
+``The Resting Wrist as a Two-Axis Input Channel: Decoding Surface-Anchored Strokes from a Commodity Smartwatch IMU.''
+\textit{ACM CHI 2027}. \textbf{Under review.}
+\begin{itemize}
+  \item Decoded finger strokes from a smartwatch IMU (16 participants); personalization raised 8-way accuracy from 54\% to \textbf{74\%}.
+\end{itemize}
+
+%-----EXPERIENCE-----
+\section{Experience}
+\entry{Graduate Research Assistant}{May 2026 - Present}{Ontario Tech University}{}
+\begin{itemize}
+  \item Member of \textbf{Code \& Sorcery Lab (Empirical Game Research)}, GaMER Lab, and UXID Lab.
+  \item Built RIDGE (CoG 2026), ROGUE, and AFTERSTATE, and co-developed PEAK: RL playtesting agents and LLM characters.
+\end{itemize}
+\entry{Teaching Assistant}{Sep 2025 - Present}{Ontario Tech University}{}
+\begin{itemize}
+  \item Web Development: assisted students in weekly labs and graded coursework for all 60 students.
+  \item Advanced Networking I: taught 50+ students; also supported Networking I and Advanced Networking II and III.
+\end{itemize}
+\entry{Network Administrator (Summer Research Assistant)}{Jun 2025 - Sep 2025}{Ontario Tech University}{}
+\begin{itemize}
+  \item Wrote the lab's first working \textbf{Intel Tofino P4} telemetry programs; fixed Linux driver faults, cutting server crashes by 30\%.
+\end{itemize}
+\entry{Cyber Security Analyst}{Jun 2025 - Sep 2025}{YYC Beeswax Ltd}{Remote}
+\begin{itemize}
+  \item Found 15 exploitable issues in a WooCommerce and Stripe stack and wrote the team's pre-deployment hardening checklist.
+\end{itemize}
+
+%-----PROJECTS-----
+\section{Projects}
+\textbf{ROGUE: Persona-Based RL for Any Unity Game} \textbar{} \textit{Python, PyTorch, C\#, Unity, ML-Agents} \hfill 2026
+\begin{itemize}
+  \item One-file C\# SDK adds persona-based RL to any Unity game. Tested on 5 games: \textbf{1.6} Obstacle Tower floors vs.\ 0.66 random.
+\end{itemize}
+\textbf{AFTERSTATE: Emotional Memory Benchmark for LLM Characters (MSc thesis, in progress)} \textbar{} \textit{Python, LLMs} \hfill 2026
+\begin{itemize}
+  \item Measures how much emotion LLM characters lose when they compress their memory; 60 stories, 8 facts and 8 feelings each.
+\end{itemize}
+\textbf{RAZE: Zero-Parameter Agent for the TinyBrains Ants AI Competition} \textbar{} \textit{Python, ONNX} \hfill 2026
+\begin{itemize}
+  \item Hand-built ONNX network with no learned weights, under 16 KB; \textbf{ranked 1st of 69} on the Open ladder and 1st in 3 size classes.
+\end{itemize}
+\textbf{PEAK: Platformer Engine for RL Benchmarking} \textbar{} \textit{Python, Gymnasium, Stable-Baselines3, Hydra} \hfill 2025 - 2026
+\begin{itemize}
+  \item Co-developed a deterministic DRL benchmark with 11 stages; spatial-hash collision runs at \textbf{1000+ steps per second}.
+\end{itemize}
+\textbf{Gestura: Gesture-Based Medical Screening (HackHive 2026)} \textbar{} \textit{Python, Flask, MediaPipe, Three.js, Gemini} \hfill 2026
+\begin{itemize}
+  \item Non-verbal patient intake: real-time hand tracking selects pain regions on a 3D body model; Gemini writes clinician notes.
+\end{itemize}
+
+%-----SKILLS-----
+\section{Skills and Certifications}
+\textbf{Languages:} Python, C++, C\#, SQL, Bash, JavaScript, HTML/CSS, P4 \\
+\textbf{ML / AI:} PyTorch, Stable-Baselines3, Gymnasium, Unity ML-Agents, PPO, ONNX, LLM evaluation, Gemini API, MediaPipe, NumPy \\
+\textbf{Tools and Networking:} Git, Docker, Flask, Linux, Cisco IOS, Intel Tofino P4, Wireshark, Nmap, Vulnerability Assessment \\
+\textbf{Certifications:} Cisco Certified Network Associate (CCNA), 2024 - 2027 \textbar{} TryHackMe, 200+ hours
+
+\end{document}

@@ -686,6 +686,7 @@ body.admin-on .admin-bar{display:flex}
   .tl-content{grid-column:2}
   .proj.featured{grid-template-columns:1fr}
   .proj-img{border-left:none;border-top:1px solid var(--line)}
+  .proj-img-wide{min-height:0}.proj-img-wide img{height:auto;aspect-ratio:16/9}
   .proj-grid{grid-template-columns:1fr}
   .feed-grid{columns:1}
 }
