@@ -1,7 +1,7 @@
 /* =========================================================
    AL SHIFAN · Portfolio app logic
    - Scroll reveal + scroll-spy nav + mobile menu
-   - GitHub API: profile avatar (feed), latest pushed repo
+   - GitHub API: profile avatar (feed)
    - README renderer (libs loaded on first open): raw README
      -> marked -> DOMPurify -> highlight.js; images/links rebased
      to the repo's raw.githubusercontent.com / github.com HEAD roots
@@ -19,6 +19,7 @@ const CONFIG = {
 // ----- STORAGE KEYS -----
 const STORE_KEYS = {
   posts: 'al.feed.posts',
+  removed: 'al.feed.removed',
   hash: 'al.adminHash',
   session: 'al.session',
 };
@@ -82,6 +83,66 @@ const DEFAULT_POSTS = [
     tags: '#IEEE #CoG2026 #DeepRL #PPO #GameAI #MachineLearning',
   },
   {
+    id: 'p1784065117378',
+    author: 'Al Muqshith Shifan',
+    role: "RIDGE · CoG 2026",
+    time: 'Jun 2026',
+    content: "Our paper RIDGE has been accepted at IEEE CoG 2026! 🚀\n\nRIDGE = Reactive Inter-persona Dynamic Goal Engine. Instead of training a separate agent for every task, RIDGE uses a single PPO agent that blends Explorer, Survivor, Craftsman, and Warrior persona reward weights via smooth sigmoid functions conditioned on the internal game state, so one agent dynamically shifts its play style mid-episode.\n\nMy co-author Kevin Christopher Chua and I went from a spontaneous idea to an accepted paper in a single 20-hour sprint, during the very first month of our Master's. Huge thanks to Cristiano Politowski, Ali Neshati, and Dr. Loutfuz for the lightning-fast feedback.\n\nWe'll be presenting live at CoG 2026 in Madrid, Spain this September!",
+    image: 'assets/ridge-accepted.webp',
+    imageAlt: "The RIDGE title card: State-Conditioned Reward Blending for Behavioral Coverage in Deep RL Game Agents, with the five authors",
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7475903437470334976/',
+    linkLabel: 'Read on LinkedIn',
+    tags: '#DeepReinforcementLearning #GameAI #CoG2026 #RIDGE #PPO',
+  },
+  {
+    id: 'p1784065154376',
+    author: 'Al Muqshith Shifan',
+    role: "Re;Animate 2026 · Game Jam",
+    time: 'Jun 2026',
+    content: "🏆 We won 1st place at the Re;Animate 2026 Game Jam!\n\nAt the 3rd Summer School on Retro Gaming at Concordia University, my team built a game the way it would've been made in 1990 and came out on top. The twist: we coded in AMOS BASIC, an Amiga language older than most of us in the room, using CRVJA (the school's browser-based AMOS editor and JavaScript transpiler).\n\nThe result was Park Bedlam, a turn-based tactics game where mammals face off against birds on a 24x30 grid, with dice-driven combat and a rock-paper-scissors advantage system.\n\nWe also presented our Deep Reinforcement Learning project, PEAK, to professors and organizers. Huge thanks to Cristiano Politowski, Yann-Gaël Guéhéneuc, Kevin Christopher Chua, and my teammates Aleks, Luca, and Sikander. Retro gaming isn't just nostalgia, it's a reminder that constraints breed creativity.",
+    image: 'assets/reanimate-gamejam.webp',
+    imageAlt: "The Re;Animate 2026 summer school group in front of the projected Re;Animate Summer School title",
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7471314433793933312/',
+    linkLabel: 'Read on LinkedIn',
+    tags: '#ReAnimate2026 #GameJam #RetroGaming #AMOS #Amiga #GameDevelopment',
+  },
+  {
+    id: 'p1784065176378',
+    author: 'Al Muqshith Shifan',
+    role: "Graduation · Ontario Tech",
+    time: 'Jun 2026',
+    content: "Alhamdulillah. 🎓\n\nToday I officially graduated, and honestly there were moments I doubted this day would come. But here we are.\n\nThese years flew by. From struggling through networking concepts to competing in CTFs, from absorbing everything in lectures to standing at the front of a classroom passing it on as a TA, university was a full experience. To my students: you're next. And yes, I'm watching. 👀\n\nNone of this happens without the people who made the journey real, my closest friends, my professors who made the concepts worth learning, and Cristiano Politowski for seeing potential worth investing in and guiding me toward this next chapter.\n\nAnd to my parents, every sacrifice you made for my education lives in this degree. It belongs to you as much as it does to me.\n\nOn to the next chapter. The journey continues. 🚀",
+    image: 'assets/graduation.webp',
+    imageAlt: "AL Shifan in a graduation gown and cap, holding the diploma and roses beside a fountain on campus",
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7468452520521183232/',
+    linkLabel: 'Read on LinkedIn',
+    tags: '#Graduation #Alhamdulillah #OntarioTech #ComputerScience #NextChapter',
+  },
+  {
+    id: 'p1784065200378',
+    author: 'Al Muqshith Shifan',
+    role: "Re;Animate 2026 · Countdown",
+    time: 'Jun 2026',
+    content: "Can't wait to attend, can't wait to see all the wonderful events and people.\n\nOne month to ReAnimate'26, the 3rd Summer School on Retro Gaming History, Critique, and Development, in Montréal, QC. It's going to be a great school with lots of retro-programming and discussions about retrocomputing.",
+    image: 'assets/reanimate-countdown.webp',
+    imageAlt: "The Re;Animate Summer School banner: pixel lettering next to a retro computer",
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7467714110491758592/',
+    linkLabel: 'Read on LinkedIn',
+    tags: '#ReAnimate #RetroGaming #Retrocomputing #Concordia',
+  },
+  {
+    id: 'p1784065219379',
+    author: 'Al Muqshith Shifan',
+    role: "Grad Season · With Kevin",
+    time: 'May 2026',
+    content: "A close friend and my coding partner, Kevin Christopher Chua, and I are graduating this year. I owe him a lot for introducing me to the world of computer science and for all the projects and events we competed in together during our undergrad. Looking forward to what we accomplish during our master's programs.",
+    image: 'assets/grad-with-kevin.webp',
+    imageAlt: "Kevin Christopher Chua, AL Shifan and two friends standing in front of a whiteboard",
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7462983555216867330/',
+    linkLabel: 'Read on LinkedIn',
+    tags: '#Graduation #ComputerScience #OntarioTech #ClassOf2026',
+  },
+  {
     id: 'p2',
     author: 'Al Muqshith Shifan',
     role: 'Systematic Mapping Study',
@@ -116,8 +177,17 @@ const DEFAULT_POSTS = [
 ];
 
 const State = {
-  posts: load(STORE_KEYS.posts, DEFAULT_POSTS),
+  posts: loadPosts(),
 };
+
+// A copy saved by admin edits on this device must not hide posts added to the site later:
+// default posts the copy has never seen go on top, unless the admin removed them here.
+function loadPosts() {
+  const saved = load(STORE_KEYS.posts, null);
+  if (!saved) return structuredClone(DEFAULT_POSTS);
+  const seen = new Set([...saved.map(p => p.id), ...load(STORE_KEYS.removed, [])]);
+  return [...structuredClone(DEFAULT_POSTS.filter(p => !seen.has(p.id))), ...saved];
+}
 
 function load(key, fallback) {
   try {
@@ -283,34 +353,6 @@ async function fetchProfile() {
     sessionStorage.setItem('githubAvatar', j.avatar_url);
     renderPosts();
   } catch (e) { /* offline: keep local defaults */ }
-}
-
-async function fetchLatestRepo() {
-  const el = document.getElementById('latest-repo');
-  const showFallback = () => {
-    if (el) el.innerHTML = `
-      <h3>Latest GitHub Push</h3>
-      <p>GitHub is not available now. <a class="link-verm" href="https://github.com/${escapeAttr(CONFIG.githubUser)}" target="_blank" rel="noopener">View the profile</a></p>
-    `;
-  };
-  try {
-    const list = await getJSON(`https://api.github.com/users/${CONFIG.githubUser}/repos?sort=pushed&per_page=1`);
-    if (!Array.isArray(list) || !list.length) { showFallback(); return; }
-    const repo = list[0];
-    if (!el) return;
-    el.innerHTML = `
-      <div class="proj-tags" style="margin-bottom:12px;">
-        <span class="tag">${escapeHtml(repo.language || 'CODE')}</span>
-        <span class="tag">Just pushed</span>
-      </div>
-      <h3>${escapeHtml(repo.name)}</h3>
-      <p>${escapeHtml(repo.description || 'No description.')}</p>
-      <div class="proj-foot">
-        <span>UPDATED ${new Date(repo.pushed_at).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase()}</span>
-        <div class="proj-icons"><a href="${escapeAttr(repo.html_url)}" target="_blank" rel="noopener" aria-label="Open ${escapeAttr(repo.name)} on GitHub"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>
-      </div>
-    `;
-  } catch (e) { showFallback(); }
 }
 
 // ================= README renderer =================
@@ -570,6 +612,7 @@ function wire() {
     if (act === 'del-post' && confirm('Remove this post?')) {
       State.posts = State.posts.filter(p => p.id !== id);
       save(STORE_KEYS.posts, State.posts);
+      save(STORE_KEYS.removed, [...load(STORE_KEYS.removed, []), id]);
       renderPosts();
     }
   });
@@ -586,7 +629,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   wire();
   fetchProfile();
-  fetchLatestRepo();
   const deep = location.hash.match(/^#readme\/([\w.-]+\/[\w.-]+)$/);
   if (deep) openReadme(deep[1]);
 });

@@ -217,9 +217,13 @@ section:first-of-type{border-top:none}
 .hero-sub{
   max-width:52ch;font-size:16.5px;color:var(--ink-2);margin:18px 0 28px;
 }
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
-.hero-stats{display:flex;gap:40px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
-.hero-stats dt{font:300 26px var(--serif);color:var(--ink);font-variant-numeric:tabular-nums}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+/* the quieter row under the two main buttons: CV and profiles */
+.hero-links{display:flex;gap:8px 26px;flex-wrap:wrap;margin-bottom:32px;font:500 12px var(--mono);letter-spacing:.06em}
+.hero-links a{display:inline-flex;align-items:center;gap:8px;padding:6px 0;color:var(--ink-2);border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.hero-links a:hover,.hero-links a:focus-visible{color:var(--verm);border-bottom-color:currentColor}
+.hero-stats{display:flex;gap:48px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
+.hero-stats dt{font:300 38px/1 var(--serif);color:var(--ink);font-variant-numeric:tabular-nums}
 .hero-stats dd{font:400 10.5px var(--mono);color:var(--ink-3);letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
 
 .hero-visual{position:relative;animation:hero-float 9s ease-in-out infinite alternate}
@@ -284,22 +288,20 @@ section:first-of-type{border-top:none}
 .skill-icons li:hover{transform:translateY(-3px);background:rgba(255,255,255,.72);border-color:var(--gold-seam)}
 .skill-icons i{font-size:16px;color:var(--verm);width:18px;text-align:center}
 
-/* ---------- labs: logos in one ink tone, own colour and name on hover (as on the Chua & Shifan showcase) ---------- */
-.labs{padding:36px 0 28px;border-top:none}
+/* ---------- affiliations: logos in one ink tone with their names; own colour on hover ---------- */
+.labs{padding:36px 0 72px;border-top:none} /* the bottom room keeps the Research window (it floats 40px above its section) off the names */
 .labs::before{display:none}
-.lab-logos{list-style:none;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px clamp(36px,6vw,96px)}
-.lab-logos li{position:relative;align-self:stretch;display:flex;align-items:center} /* same height: the labels line up */
-.lab-logos img{height:var(--h);width:auto;filter:grayscale(1) brightness(.35);opacity:.7;transition:opacity .3s,filter .3s}
-.lab-logos li:hover img,.lab-logos a:focus-visible img{opacity:1;filter:none}
-.lab-logos li::after{ /* screen readers get the name from the alt text */
-  content:attr(data-name);content:attr(data-name) / "";
-  position:absolute;z-index:2;left:50%;top:calc(100% + 10px);translate:-50% 4px;
-  padding:6px 12px;border-radius:999px;white-space:nowrap;pointer-events:none;
-  background:var(--ink);color:var(--paper);font:500 11px/1 var(--mono);letter-spacing:.06em;opacity:0;
-  transition:opacity .2s,translate .25s var(--ease);
+.labs-head{text-align:center;margin-bottom:24px}
+.lab-logos{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:24px clamp(36px,6vw,96px)}
+.lab-logos a{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.lab-logos img{height:var(--h);width:auto;margin-block:calc((64px - var(--h)) / 2);filter:grayscale(1) brightness(.35);opacity:.7;transition:opacity .3s,filter .3s} /* every logo in a 64px box: the names line up */
+.lab-logos span{font:500 10.5px/1.5 var(--mono);letter-spacing:.08em;color:var(--ink-3);transition:color .2s}
+.lab-logos a:hover img,.lab-logos a:focus-visible img{opacity:1;filter:none}
+.lab-logos a:hover span,.lab-logos a:focus-visible span{color:var(--verm)}
+@media (max-width:600px){
+  .lab-logos{display:grid;grid-template-columns:1fr 1fr;gap:28px 16px}
+  .lab-logos img{height:calc(var(--h) * .7);margin-block:calc((45px - var(--h) * .7) / 2)}
 }
-.lab-logos li:hover::after,.lab-logos li:focus-within::after{opacity:1;translate:-50% 0}
-@media (max-width:600px){.lab-logos img{height:calc(var(--h) * .7)}}
 
 /* ---------- terminal (sumi ink glass) ---------- */
 .term-shell{margin:-24px 0 0;padding:12px}
@@ -368,7 +370,7 @@ section:first-of-type{border-top:none}
 
 /* ---------- projects ---------- */
 .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;grid-auto-flow:dense}
-.proj.featured,.proj.teaser{grid-column:1/-1}
+.proj.featured{grid-column:1/-1}
 .proj{
   border:1px solid var(--line);background:var(--card);
   padding:24px 26px;display:flex;flex-direction:column;
@@ -749,5 +751,5 @@ body.admin-on .admin-bar{display:flex}
 @media (max-width:520px){
   section{padding:44px 0}
   .about-card,.contact-card,.stack-col{padding:28px 24px}
-  .hero-stats{gap:24px}
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px} /* three stats in one row; the labels wrap */
 }
