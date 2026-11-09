@@ -43,6 +43,7 @@
       <a href="#research"><span lang="ja">研究</span> <small>Research</small></a>
       <a href="#networks"><span lang="ja">通信</span> <small>Networks</small></a>
       <a href="#projects"><span lang="ja">作品</span> <small>Projects</small></a>
+      <a href="https://kevinccme.github.io/Project_Showcase/" target="_blank" rel="noopener" class="nav-ext"><span lang="ja">展示</span> <small>Showcase ↗</small></a>
       <a href="#sorcery"><span lang="ja">魔術</span> <small>Lab</small></a>
       <a href="#experience"><span lang="ja">道</span> <small>Journey</small></a>
       <a href="#updates"><span lang="ja">便り</span> <small>Notes</small></a>
@@ -86,8 +87,10 @@
         </p>
         <div class="hero-actions">
           <a href="#research" class="btn btn-ink">Research <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="https://kevinccme.github.io/Project_Showcase/" target="_blank" rel="noopener" class="btn btn-vermilion">Project Showcase <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
           <a href="assets/Al-Shifan-Resume-2026.pdf" download class="btn"><i class="fas fa-arrow-down" aria-hidden="true"></i> CV</a>
           <a href="https://github.com/Al-Scripting" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+          <a href="https://scholar.google.ca/citations?user=0OwX660AAAAJ&amp;hl=en" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Scholar</a>
         </div>
         <dl class="hero-stats">
           <div><dt>IEEE&nbsp;CoG&nbsp;2026</dt><dd>Short paper · Madrid</dd></div>
@@ -133,6 +136,16 @@
       </div>
     </div>
   </div>
+
+  <!-- the university and labs I work with -->
+  <section class="labs" aria-label="The university and labs I work with">
+    <ul class="lab-logos">
+      <li data-name="Ontario Tech · Faculty of Science"><a href="https://science.ontariotechu.ca/" target="_blank" rel="noopener"><img src="assets/labs/ontario-tech.svg" alt="Ontario Tech University, Faculty of Science" width="227" height="282" style="--h:60px"></a></li>
+      <li data-name="Code &amp; Sorcery Lab"><a href="https://cslab.quest/" target="_blank" rel="noopener"><img src="assets/labs/code-sorcery.png" alt="Code &amp; Sorcery Lab" width="230" height="240" style="--h:64px"></a></li>
+      <li data-name="GaMER Lab"><a href="https://businessandit.ontariotechu.ca/faculty-research/research-labs/gamer_lab_page.php" target="_blank" rel="noopener"><img src="assets/labs/gamer.png" alt="GaMER Lab" width="261" height="240" style="--h:58px"></a></li>
+      <li data-name="UXID Lab"><a href="https://uxid.ca/" target="_blank" rel="noopener"><img src="assets/labs/uxid.png" alt="UXID Lab" width="492" height="160" style="--h:40px"></a></li>
+    </ul>
+  </section>
 
   <!-- ============== RESEARCH ============== -->
   <section id="research">
@@ -193,10 +206,29 @@
         </div>
       </article>
 
-      <!-- Publication: SLR -->
+      <!-- Publication: TAST poster, CSER 2026 (Kevin Chua, first author) -->
       <article class="pub-card reveal">
         <div class="pub-left">
           <div class="pub-num"><span lang="ja">論文</span> / 003</div>
+          <div class="pub-badge pub-badge-accepted"><i class="fas fa-circle-check" aria-hidden="true"></i> Accepted · CSER 2026 · Poster</div>
+        </div>
+        <div class="pub-body">
+          <h3>Trait Activation Steering: Keeping Small-Model NPCs in Character</h3>
+          <p class="pub-authors">Kevin Christopher Chua · AL Muqshith Mohammed Shifan · Ali Neshati · Loutfouz Zaman · Cristiano Politowski</p>
+          <p class="pub-desc">
+            Small language models let NPCs talk freely, but a player can attack the character until it breaks. Without steering, 79% of attacked sessions break character. TAST edits the hidden state of the model at run time with a 1&nbsp;MB trait cartridge, and does not fine-tune the model. Over a 20-turn attack it raises the judge score from 3.3 to 4.8, and it helps 4 of 5 small models.
+          </p>
+          <div class="pub-links">
+            <a href="assets/cser26-tast-poster.webp" target="_blank" rel="noopener" class="btn btn-sm"><i class="fas fa-image" aria-hidden="true"></i> Poster</a>
+            <a href="https://doi.org/10.5281/zenodo.21184301" target="_blank" rel="noopener" class="btn btn-sm btn-ghost"><i class="fas fa-database" aria-hidden="true"></i> Dataset</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Publication: SLR -->
+      <article class="pub-card reveal">
+        <div class="pub-left">
+          <div class="pub-num"><span lang="ja">論文</span> / 004</div>
           <div class="pub-badge"><i class="fas fa-rotate" aria-hidden="true"></i> Draft · Systematic Mapping Study</div>
         </div>
         <div class="pub-body">
@@ -257,7 +289,7 @@
           With <strong>Dr. Cristiano Politowski</strong> I build research tools: PEAK, RIDGE, ROGUE, and TAST. My thesis, AFTERSTATE, is about the characters you meet in games and what they get wrong about you. With <strong>Dr. Loutfouz Zaman and Dr. Ali Neshati</strong> I study the human side: how agents show behaviour and how people interact with them. My background in networking and security is why I prefer reproducible systems and adversarial benchmarks.
         </p>
         <div class="about-meta">
-          IEEE CoG 2026 first author · CSER 2026 poster · Dean’s List 2026 · TA: Web Development, Networking I &amp; II, Advanced Networking I to III · P4 Programmable Networks RA
+          IEEE CoG 2026 first author · 2 CSER 2026 posters · Dean’s List 2026 · TA: Web Development, Networking I &amp; II, Advanced Networking I to III · P4 Programmable Networks RA
         </div>
       </div>
 
@@ -409,7 +441,27 @@
 
       <article class="proj featured reveal">
         <div class="proj-body">
-          <div class="proj-num">/ 001 · Thesis</div>
+          <div class="proj-num">/ 001 · Showcase</div>
+          <h3>Chua &amp; Shifan · <em>Project Showcase</em></h3>
+          <p>
+            Kevin Chua and I build agents that play as different kinds of players and catch what an edit broke. The showcase puts our joint projects on one page: ROGUE, Dynamesh, PEAK, TAST, and more. Each project has a demo video and its README.
+          </p>
+          <div class="proj-tags">
+            <span class="tag">Playtesting agents</span><span class="tag">Game AI</span><span class="tag">Demos</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://kevinccme.github.io/Project_Showcase/" target="_blank" rel="noopener" class="btn btn-sm btn-ink">Open the Showcase <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </div>
+          <div class="proj-foot">
+            <span>KEVIN CHUA · AL SHIFAN</span>
+          </div>
+        </div>
+        <a class="proj-img" href="https://kevinccme.github.io/Project_Showcase/" target="_blank" rel="noopener" aria-label="Open the Chua and Shifan project showcase"><img src="assets/showcase.webp" width="1200" height="700" loading="lazy" alt="The Chua and Shifan showcase: the headline Agents that playtest like real players, on a dark page with film grain"></a>
+      </article>
+
+      <article class="proj featured reveal">
+        <div class="proj-body">
+          <div class="proj-num">/ 002 · Thesis</div>
           <h3>AFTERSTATE · <em>Coming Soon</em></h3>
           <p>
             My master’s thesis. It is about the characters you meet in games and what they get wrong about you. More when the paper is out.
@@ -426,7 +478,7 @@
 
       <article class="proj featured reveal" data-repo="Code-SorceryLab/PEAK-DRL-Tool">
         <div class="proj-body">
-          <div class="proj-num">/ 002 · Engine</div>
+          <div class="proj-num">/ 003 · Engine</div>
           <h3>PEAK · <em>Platform Engine</em></h3>
           <p>
             A game-balancing engine with five deterministic 2D games. Small evolved neural agents play each level as cheap, repeatable playtesters. They report the win rate, the deaths, and the routes for each of 7&nbsp;player personas. After a level edit, the seed and the search stay the same, so any change comes from the level. Frozen agents replay the edited level and act as regression tests for game content.
@@ -451,7 +503,7 @@
       </article>
       <article class="proj featured peek reveal" data-repo="Al-Scripting/FATHOM">
         <div class="proj-body">
-          <div class="proj-num">/ 003 · Companion AI · Sneak peek</div>
+          <div class="proj-num">/ 004 · Companion AI · Sneak peek</div>
           <h3>FATHOM · <em>Helpful, Not Omniscient</em></h3>
           <p>
             An AI companion that lives in the Subnautica PDA and is built to stay quiet. It watches oxygen, depth, the dark, and what circles the player. It speaks only when a line changes what the player does, in the original PDA voice. The research question: can an adaptive AI guide a lost diver and keep the fear of survival horror?
@@ -472,7 +524,7 @@
 
       <article class="proj featured reveal" data-repo="Code-SorceryLab/RIDGE">
         <div class="proj-body">
-          <div class="proj-num">/ 004 · Paper</div>
+          <div class="proj-num">/ 005 · Paper</div>
           <h3>RIDGE · <em>Reward Blending</em></h3>
           <p>One PPO agent blends four persona rewards from the game state with smooth sigmoids. It is the only condition that reaches both wood-tier branches on Crafter. Presented at IEEE CoG 2026.</p>
           <div class="proj-tags"><span class="tag">PyTorch</span><span class="tag">Crafter</span><span class="tag">Multi-head critic</span></div>
@@ -490,18 +542,21 @@
 
       <article class="proj half reveal">
         <img class="proj-shot" src="assets/tast-demo.webp" width="880" height="396" loading="lazy" alt="TAST Dungeon demo: a pixel-art dungeon map with the NPC the player talks to and the active quest">
-        <div class="proj-num">/ 005 · Tool</div>
+        <div class="proj-num">/ 006 · Tool</div>
         <h3>TAST · <em>Trait Activation Steering</em></h3>
         <p>Keep small language models in character across long adversarial conversations, without fine-tuning. It uses cartridges, capping, linear axes, and a rotational dial. Three local LLMs judge the results.</p>
         <div class="proj-tags"><span class="tag">PyTorch</span><span class="tag">Activation steering</span><span class="tag">LLMs</span></div>
         <div class="proj-foot">
           <span>CSER 2026 POSTER · REPO SOON</span>
+          <div class="proj-icons">
+            <a href="assets/cser26-tast-poster.webp" target="_blank" rel="noopener" aria-label="TAST poster, CSER 2026"><i class="fas fa-image" aria-hidden="true"></i></a>
+          </div>
         </div>
       </article>
 
       <article class="proj half reveal">
         <video class="proj-shot" style="object-position:50% 0" data-src="assets/rogue-tower.mp4" poster="assets/rogue-tower-poster.webp" width="640" height="360" muted loop playsinline preload="none" aria-label="ROGUE plays Obstacle Tower while its live panel shows the persona blend change from step to step"></video>
-        <div class="proj-num">/ 006 · Sequel to RIDGE</div>
+        <div class="proj-num">/ 007 · Sequel to RIDGE</div>
         <h3>ROGUE · <em>Portable Personas</em></h3>
         <p>RIDGE for any Unity ML-Agents game. The game reports named events and state values through one C# file. Each persona is a YAML block that prices those events. One PPO agent trains on a new game with no new agent code.</p>
         <div class="proj-tags"><span class="tag">Unity ML-Agents</span><span class="tag">PyTorch</span><span class="tag">C#</span></div>
@@ -512,7 +567,7 @@
 
       <article class="proj half reveal">
         <img class="proj-shot" src="assets/raven-alarm.webp" width="1000" height="750" loading="lazy" alt="RAVEN packing game: a critical fire-alarm alert tells the player to take off the headset and check around">
-        <div class="proj-num">/ 007 · VR</div>
+        <div class="proj-num">/ 008 · VR</div>
         <h3>RAVEN · <em>Reality-Aware Alerts</em></h3>
         <p>In a VR headset you stop hearing the room. RAVEN listens for real-world sounds, such as a fire alarm, a door, or a dog. It tells the player in a way that matches the risk. A door gets a short chime. A fire alarm lowers the game audio and repeats a spoken warning until the player confirms.</p>
         <div class="proj-tags"><span class="tag">Unity 6</span><span class="tag">Meta Quest 3</span><span class="tag">YAMNet</span><span class="tag">ONNX</span></div>
@@ -523,7 +578,7 @@
 
       <article class="proj half reveal">
         <video class="proj-shot" data-src="assets/raze-match.mp4" poster="assets/raze-match-poster.webp" width="1116" height="1152" muted loop playsinline preload="none" aria-label="A TinyBrains Ants match: two colonies of pixel ants race for food across the map"></video>
-        <div class="proj-num">/ 008 · Competition</div>
+        <div class="proj-num">/ 009 · Competition</div>
         <h3>RAZE · <em>Hand-Built Brains</em></h3>
         <p>Entries for the TinyBrains Ants ladder, where size in bytes sets the weight class. RAZE has no learned weights. I wrote a flood fill straight into ONNX convolution layers, then added hand-designed tactics one at a time. My entry Perfectionism finished #1 of 69 on the Open ladder.</p>
         <div class="proj-tags"><span class="tag">ONNX</span><span class="tag">NumPy</span><span class="tag">Python</span></div>
@@ -537,7 +592,7 @@
 
       <article class="proj half reveal">
         <img class="proj-shot" src="assets/gestura.webp" width="1200" height="554" loading="lazy" alt="Gestura clinician view: a 3D body with marked pain areas, a pain list sorted by severity, and AI clinical notes">
-        <div class="proj-num">/ 009 · Hackathon</div>
+        <div class="proj-num">/ 010 · Hackathon</div>
         <h3>Gestura</h3>
         <p>Real-time AI body mapping for telehealth. Computer vision and a 3D digital twin turn gestures into structured clinical data. HackHive 2026 · Code &amp; Sorcery Students.</p>
         <div class="proj-tags"><span class="tag">Flask</span><span class="tag">CV</span><span class="tag">Three.js</span></div>
@@ -551,7 +606,7 @@
       </article>
 
       <article class="proj half reveal" id="latest-repo-card">
-        <div class="proj-num">/ 010 · Live</div>
+        <div class="proj-num">/ 011 · Live</div>
         <div id="latest-repo">
           <h3>Latest GitHub Push</h3>
           <p>Fetching <code translate="no">@Al-Scripting</code>…</p>
@@ -560,7 +615,7 @@
 
       <article class="proj teaser reveal">
         <div class="teaser-text">
-          <div class="proj-num">/ 011 · Sneak peek</div>
+          <div class="proj-num">/ 012 · Sneak peek</div>
           <h3>Something New Is in the Lab</h3>
           <p>A new project is in development at Code &amp; Sorcery Lab. It is not public yet. Ask me about it.</p>
         </div>
@@ -575,7 +630,7 @@
 
   <!-- ============== CODE & SORCERY ============== -->
   <section id="sorcery">
-    <div class="float-win win-chip sec-chip d3" aria-hidden="true"><span class="seal-dot"></span> 6 tracks · cpoli.live/projects</div>
+    <div class="float-win win-chip sec-chip d3" aria-hidden="true"><span class="seal-dot"></span> 6 tracks · cslab.quest/projects</div>
     <header class="sec-head reveal">
       <div class="sec-left">
         <div class="sec-eyebrow"><span lang="ja">コードと魔術</span> <small>Code &amp; Sorcery</small> / 05</div>
@@ -583,35 +638,35 @@
       </div>
       <a href="https://github.com/Code-SorceryLab" target="_blank" rel="noopener" class="btn"><i class="fab fa-github" aria-hidden="true"></i> Code-SorceryLab</a>
     </header>
-    <p class="sorcery-sub reveal">Game development, software engineering, and AI meet here. These are the 6 tracks I work in, from <a href="https://cpoli.live/projects/" target="_blank" rel="noopener">cpoli.live/projects</a>.</p>
+    <p class="sorcery-sub reveal">Game development, software engineering, and AI meet here. These are the 6 tracks I work in, from <a href="https://cslab.quest/projects/" target="_blank" rel="noopener">cslab.quest/projects</a>.</p>
 
     <div class="sorc-grid">
-      <a class="sorc-card reveal" href="https://cpoli.live/projects/llm-npc-landscape/" target="_blank" rel="noopener">
+      <a class="sorc-card reveal" href="https://cslab.quest/projects/llm-npc-landscape/" target="_blank" rel="noopener">
         <div class="sorc-cat">LLM · Landscape</div>
         <h3>The LLM-NPC Landscape</h3>
         <p>A systematic map of how large language models drive non-player characters, and where the gaps are.</p>
       </a>
-      <a class="sorc-card reveal" href="https://cpoli.live/projects/emotional-memory-npcs/" target="_blank" rel="noopener">
+      <a class="sorc-card reveal" href="https://cslab.quest/projects/emotional-memory-npcs/" target="_blank" rel="noopener">
         <div class="sorc-cat">LLM · Memory</div>
         <h3>Emotional Memory in Generative Characters</h3>
         <p>Do LLM characters remember what was important to them? Is that memory based on psychology?</p>
       </a>
-      <a class="sorc-card reveal" href="https://cpoli.live/projects/persona-stability/" target="_blank" rel="noopener">
+      <a class="sorc-card reveal" href="https://cslab.quest/projects/persona-stability/" target="_blank" rel="noopener">
         <div class="sorc-cat">LLM · Stability</div>
         <h3>Staying in Character</h3>
         <p>Keep a character consistent over a long conversation. Work inside the model, not in the prompt.</p>
       </a>
-      <a class="sorc-card reveal" href="https://cpoli.live/projects/behavioural-coverage-rl/" target="_blank" rel="noopener">
+      <a class="sorc-card reveal" href="https://cslab.quest/projects/behavioural-coverage-rl/" target="_blank" rel="noopener">
         <div class="sorc-cat">RL · Coverage</div>
         <h3>One Agent, Many Play Styles</h3>
         <p>Get many play styles from one playtesting agent. Do not train one agent for each style.</p>
       </a>
-      <a class="sorc-card reveal" href="https://cpoli.live/projects/peak-engine/" target="_blank" rel="noopener">
+      <a class="sorc-card reveal" href="https://cslab.quest/projects/peak-engine/" target="_blank" rel="noopener">
         <div class="sorc-cat">RL · Engine</div>
         <h3>PEAK: Authoring and Training in One Loop</h3>
         <p>An open-source 2D platformer engine. Design a level and train an agent on it in the same tool.</p>
       </a>
-      <a class="sorc-card reveal" href="https://cpoli.live/blog/2026/hackathon-css/" target="_blank" rel="noopener">
+      <a class="sorc-card reveal" href="https://cslab.quest/blog/2026/hackathon-css/" target="_blank" rel="noopener">
         <div class="sorc-cat">Lab · Hackathon</div>
         <h3>Code &amp; Sorcery Students at HackHive 2026</h3>
         <p>Team CSS built Gestura. It identifies body parts and helps a medic and a patient communicate, also across languages.</p>
@@ -655,7 +710,7 @@
         <div class="tl-content">
           <h3>MSc Student, Computer Science (Software Design)</h3>
           <div class="tl-org">Ontario Tech University · expected graduation May 2028</div>
-          <p>First author on RIDGE (IEEE CoG 2026) and on a CSER 2026 poster about PEAK. My thesis, AFTERSTATE, is coming soon. I also do a systematic mapping study on emotional memory in LLM NPCs.</p>
+          <p>First author on RIDGE (IEEE CoG 2026) and on a CSER 2026 poster about PEAK. Second author on Kevin Chua’s CSER 2026 poster about TAST. My thesis, AFTERSTATE, is coming soon. I also do a systematic mapping study on emotional memory in LLM NPCs.</p>
         </div>
       </div>
       <div class="tl-row reveal">
@@ -769,6 +824,7 @@
           <div class="socials">
             <a href="https://www.linkedin.com/in/al-mohamed-shifan-5266b924b/" target="_blank" rel="noopener" class="btn"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a>
             <a href="https://github.com/Al-Scripting" target="_blank" rel="noopener" class="btn"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+            <a href="https://scholar.google.ca/citations?user=0OwX660AAAAJ&amp;hl=en" target="_blank" rel="noopener" class="btn"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Google Scholar</a>
             <a href="assets/Al-Shifan-Resume-2026.pdf" download class="btn"><i class="fas fa-arrow-down" aria-hidden="true"></i> CV</a>
           </div>
         </div>

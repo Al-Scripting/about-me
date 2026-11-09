@@ -138,6 +138,7 @@ section:first-of-type{border-top:none}
   background:var(--verm);transform:scaleX(0);transform-origin:left;transition:transform .25s;
 }
 .nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-links a.nav-ext,.nav-links a.nav-ext small{color:var(--verm)} /* the one link that leaves the page: the showcase */
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
 .nav-cta{display:flex;align-items:center;gap:10px}
 .menu-btn{
@@ -282,6 +283,23 @@ section:first-of-type{border-top:none}
 }
 .skill-icons li:hover{transform:translateY(-3px);background:rgba(255,255,255,.72);border-color:var(--gold-seam)}
 .skill-icons i{font-size:16px;color:var(--verm);width:18px;text-align:center}
+
+/* ---------- labs: logos in one ink tone, own colour and name on hover (as on the Chua & Shifan showcase) ---------- */
+.labs{padding:36px 0 28px;border-top:none}
+.labs::before{display:none}
+.lab-logos{list-style:none;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px clamp(36px,6vw,96px)}
+.lab-logos li{position:relative;align-self:stretch;display:flex;align-items:center} /* same height: the labels line up */
+.lab-logos img{height:var(--h);width:auto;filter:grayscale(1) brightness(.35);opacity:.7;transition:opacity .3s,filter .3s}
+.lab-logos li:hover img,.lab-logos a:focus-visible img{opacity:1;filter:none}
+.lab-logos li::after{ /* screen readers get the name from the alt text */
+  content:attr(data-name);content:attr(data-name) / "";
+  position:absolute;z-index:2;left:50%;top:calc(100% + 10px);translate:-50% 4px;
+  padding:6px 12px;border-radius:999px;white-space:nowrap;pointer-events:none;
+  background:var(--ink);color:var(--paper);font:500 11px/1 var(--mono);letter-spacing:.06em;opacity:0;
+  transition:opacity .2s,translate .25s var(--ease);
+}
+.lab-logos li:hover::after,.lab-logos li:focus-within::after{opacity:1;translate:-50% 0}
+@media (max-width:600px){.lab-logos img{height:calc(var(--h) * .7)}}
 
 /* ---------- terminal (sumi ink glass) ---------- */
 .term-shell{margin:-24px 0 0;padding:12px}
@@ -698,7 +716,7 @@ body.admin-on .admin-bar{display:flex}
   .pub-card{grid-template-columns:1fr;gap:18px;padding:30px 32px}
   .dir-grid{grid-template-columns:1fr}
 }
-@media (max-width:1000px){
+@media (max-width:1140px){ /* the 8 links plus the brand and buttons need about 1120px */
   .nav-links{
     position:absolute;top:100%;left:0;right:0;background:rgba(255,253,249,.94);
     flex-direction:column;gap:0;padding:10px 5vw 20px;border-bottom:1px solid var(--glass-line);
