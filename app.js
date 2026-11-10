@@ -27,6 +27,18 @@ const STORE_KEYS = {
 // ----- DEFAULT POSTS (research-facing, recruiter-friendly) -----
 const DEFAULT_POSTS = [
   {
+    id: 'p9',
+    author: 'Al Muqshith Shifan',
+    role: 'CASCON 2026 · Poster',
+    time: 'Nov 2026',
+    content: "Presented my poster at CASCON 2026 this week! Evolved Neural Agents as Tireless Playtesters\n\nThe project starts with a simple problem: a designer edits a level, the code tests still pass, but nobody notices that the level now plays differently (or may no longer be completable) until someone playtests it again.\n\nTo address this, we developed Playtesting Regression Tests (PRTs). We evolve small neural agents using a genetic algorithm, freeze them, and replay them after every level edit. If key gameplay metrics change (completion, win rate, death hotspots, or the leading cause of failure), the PRT flags the edit.\n\nWhat's next?\nWe're looking to extend PRTs to Godot, Unity, and Unreal, evaluate them on procedurally generated levels, and compare the evolved agents against human players.\nA big thank you to everyone who stopped by the poster and shared their questions and feedback!\n\nKevin also presented TAST (Trait Activation Steering), exploring how to keep small-model NPCs in character.\n\nBeyond the research, it was an absolute blast getting to talk with professors, students, and members of the CSER community. I really enjoyed the conversations, questions, and opportunities to connect with people working across different areas of research.\n\nA special thank you to Jeremy Bradbury for taking the photos and helping introduce us to people throughout the event. It genuinely made the experience even better.\n\nI'm also grateful to my co-authors Kevin Christopher Chua, Ali Neshati, Loutfouz Zaman, and Cristiano Politowski\n\nProud to represent the Code & Sorcery Lab (Ontario Tech University Computer Science) at CASCON 2026!\n\n🔗 Projects and papers: https://lnkd.in/g2CbTqP7",
+    image: 'assets/cascon26.webp',
+    imageAlt: 'AL Shifan and Kevin Christopher Chua with two other attendees at CASCON 2026',
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7525757537548230656/',
+    linkLabel: 'Read on LinkedIn',
+    tags: '#CASCON2026 #GameDev #GameAI #SoftwareTesting #MachineLearning #OntarioTech',
+  },
+  {
     id: 'p8',
     author: 'Al Muqshith Shifan',
     role: 'CSER 2026 · Two posters',
